@@ -6,6 +6,7 @@ gem 'better_errors'
 gem 'flay'
 gem 'annotate', '2.5.0'
 gem 'devise'
+gem 'simple_form'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

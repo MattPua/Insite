@@ -2,6 +2,7 @@ Hackathon::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registration" }
 
   get "home/index"
+  get "home/main"
   resources :companies
 
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- register to banner -->
 <%= render 'layouts/shared/registerHeader' %>
  
@@ -15,7 +16,7 @@
 				</ul>
 			</div>
 		<% end %>
-		<div  class="row" style="width:100%">
+		<div  class="row">
 		<div class = "col-md-1"></div>
 		<div class = "col-md-10" style="padding: 10px 50px;"><h1 style="font-size: 30px;"> Registration  </h1></div>
 		<div class = "col-md-1"></div>
@@ -53,28 +54,20 @@
 				<div class="form-group">
 					<%= f.number_field :phone , class:"form-control input-lg", placeholder:"Phone Number (Optional)"%>
 				</div>
-				<form>
-		<div class="form-group">
-			<%= f.submit "Sign up", class:"btn btn-lg btn-warning pull-right"%>
-			</div>
-			<!-- <div><%= f.submit "Sign up" %></div> -->
-		</form>
 			</div>			
 		<!-- add span 1 as place holder -->
 		<div class = "col-md-1"></div>
 		</div>
-		
+		<form>
+		<div style="width:100%; text-align: center;">
+			<button type="submit" class="btn btn-lg btn-warning">Sign Up</button>
+			</div>
+			<!-- <div><%= f.submit "Sign up" %></div> -->
+		</form>
 		</div>
 				
 	<% end %>
  </div>
- 
- <div id="footer">
-
-        <div id="company-logo" class="pull-right" style="margin-right: 10px; height: 100%">
-            <%= image_tag("YNCN-boxes-text.png") %>
-            </div>
-    </div>
   
 <!-- <%= render "devise/shared/links" %> -->
 
@@ -85,23 +78,70 @@
 	
 	.content{
 	background-color: #f3faf5;
-	height: 500px;
+	height: 600px;
 	}
 	
 	#register-form
 	{
-		width: 100%;
-		height: 275px;
+		height: 260px;
 	}
-	#footer{
-            height: 100px;
-            width: 100%;
-            padding: 20px;
-            }
-            
-            #footer img{
-            width: 200px;
-            }
 
 </style>
 
+=======
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+ <div class="field group1">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>  
+  <div class="field group1"><%= f.label :password %> <br />
+  <%= f.password_field :password, :autocomplete => "off" %></div>
+
+  <div class="group1"><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+<div class="field group2">
+    Full Name<br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field group2">
+    Graduating Year<br />
+    <%= f.number_field :year %>
+  </div>
+  <div class="field group2">
+    Program of Study<br />
+    <%= f.text_field :program %>
+  </div>
+  <div class="field group2">
+    <%= f.label :faculty %><br />
+    <%= f.text_field :faculty %>
+  </div>
+  <div class="field group2">
+    <%= f.label :phone %>(Optional)<br />
+    <%= f.number_field :phone %>
+  </div>
+    <div class="field group3">
+    <%= f.label :registerterms %><br />
+    <%= f.check_box :registerterms %>
+  </div> 
+
+  <div class="actions group3">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
+>>>>>>> c7c37e647d98bf5326b0807a2dfe35c6f326bbad

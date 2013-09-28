@@ -1,13 +1,11 @@
-﻿<!doctype html>
-
-<html lang="en">
+﻿<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Home</title>
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+  
   <style type="text/css">
       .center {
       float: none;
@@ -28,7 +26,7 @@
       }
 
       #header #header-background {
-      background: white;
+      background: #5d86b2;
       filter:alpha(opacity=20); /* IE */
       -moz-opacity:0.2; /* Mozilla */
       opacity: 0.2; /* CSS3 */
@@ -140,36 +138,58 @@
         </style>
 </head>
 
-<body>
 
+<body>
+	<div id="header">
+		<!-- for transparent header background -->
+		<div id="header-background"></div>
+        <div id="header-content" class="row">
+				<div id="logo" class="pull-left" style="margin-left: 10px; height: 100%">
+				<%= link_to image_tag("insite-logo.png"),root_path %>
+				</div>
+				<div id="header-nav" class="pull-right" style="margin-top: 30px; margin-right: 10px; height: 100%">
+					
+						<% if !user_signed_in? %>
+							<%= link_to "Log In", new_user_session_path, class:"btn btn-lg btn-default"%>
+							<%= link_to "Sign Up", new_user_registration_path , class:"btn btn-lg btn-warning"%>
+						<% else %>
+							<%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"btn btn-lg btn-warning" %>
+						<% end %>
+						
+					
+				</div>
+        </div>
+    </div>
     <div id="sign-up">
         <div id="sign-up-content">
             <div class="center" style="width:650px; margin-bottom:20px;">
+				<% if !user_signed_in? %>
                 <h1> Where will you be in May 2014? </h1>
+				<% else %>
+				<h1> Welcome back, <%= @user.name %> </h1>
+				<% end %>
             </div>
+			<% if !user_signed_in? %>
             <div id="sign-up-form" class="center">
                 <div id="sign-up-form-background"></div>
-                <div id="sign-up-form-content">
-                    <form role="form">
+                <div id="sign-up-form-content">                  
                         <div class="form-group">
 
-                            <input type="email" class="form-control input-lg" id="exampleInputEmail1" placeholder="Your uToronto email address">
+                            <input type="email" class="form-control input-lg" placeholder="Your UTOR email address">
 
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control input-lg" id="exampleInputPassword1" placeholder="Password">
+                            <input type="password" class="form-control input-lg" placeholder="Password">
                         </div>
-
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>-->
-
-=======
-                        <button type="submit" class="btn btn-lg btn-warning pull-right">Sign Up</button>
-                    </form>
-
+                    <form>
+					<button type="submit" class="btn btn-lg btn-warning pull-right">Sign Up</button>
+                    </form>	
+				
                 </div>
             </div>
+			<% end %>
         </div>
+		
     </div>
     <div id="message-1" class="marketing-message row">
         <div class="marketing-message-image col-md-3 ">

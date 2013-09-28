@@ -1,0 +1,219 @@
+﻿<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Home</title>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  
+  <style type="text/css">
+      .center {
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+      }
+
+      #header {
+      color: black;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      padding: 0;
+      margin: 0;
+      z-index:99;
+      }
+
+      #header #header-background {
+      background: #5d86b2;
+      filter:alpha(opacity=20); /* IE */
+      -moz-opacity:0.2; /* Mozilla */
+      opacity: 0.2; /* CSS3 */
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width:100%;
+      }
+
+      #header #header-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      }
+
+      #header #header-content #header-nav button {
+      margin: 3px;
+      }
+
+      #sign-up
+      {
+      background-image: url(<%= asset_path('feet-image.jpg') %>);
+            background-size: 100%;
+            background-repeat:no-repeat;
+            height:800px;
+            margin-top: -20px; /*hack for the top margin */s
+            }
+
+            #sign-up #sign-up-content{
+            padding-top: 150px;
+            }
+
+
+            #sign-up #sign-up-content h1
+            {
+            margin:0px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+            font-size:45px;
+            }
+
+            #sign-up #sign-up-content #sign-up-form{
+            height: 250px;
+            width:600px;
+            position: relative;
+            }
+
+            #sign-up #sign-up-content #sign-up-form #sign-up-form-background{
+            background: white;
+            filter:alpha(opacity=20); /* IE */
+            -moz-opacity:0.2; /* Mozilla */
+            opacity: 0.2; /* CSS3 */
+            border-radius: 8px;
+            -moz-border-radius: 8px;
+            -webkit-border-radius: 8px;
+            }
+
+            #sign-up #sign-up-content #sign-up-form #sign-up-form-content{
+            padding: 50px 25px;
+            }
+
+            #sign-up #sign-up-content #sign-up-form #sign-up-form-background,
+            #sign-up #sign-up-content #sign-up-form #sign-up-form-content{
+            height: 100%;
+            width:100%;
+            position: absolute;
+            }
+
+            .marketing-message{
+            width: 100%;
+            height: 500px;
+            padding: 100px; 100px;
+            }
+
+            .marketing-message div{
+            height: 100%;
+            }
+
+            .marketing-message-content h2{
+            margin:20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            font-size:40px;
+            }
+
+            .marketing-message-content p{
+            text-align:justify;
+            font-size: 14px;
+            }
+
+            #footer{
+            height: 100px;
+            width: 100%;
+            padding: 20px;
+            }
+            
+            #footer img{
+            width: 200px;
+            }
+        </style>
+</head>
+
+
+<body>
+	<div id="header">
+		<!-- for transparent header background -->
+		<div id="header-background"></div>
+        <div id="header-content" class="row">
+				<div id="logo" class="pull-left" style="margin-left: 10px; height: 100%">
+				<%= link_to image_tag("insite-logo.png"),root_path %>
+				</div>
+				<div id="header-nav" class="pull-right" style="margin-top: 30px; margin-right: 10px; height: 100%">
+					
+						<% if !user_signed_in? %>
+							<%= link_to "Log In", new_user_session_path, class:"btn btn-lg btn-default"%>
+							<%= link_to "Sign Up", new_user_registration_path , class:"btn btn-lg btn-warning"%>
+						<% else %>
+							<%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"btn btn-lg btn-warning" %>
+						<% end %>
+				</div>
+        </div>
+    </div>
+    <div id="sign-up">
+        <div id="sign-up-content">
+            <div class="center" style="width:650px; margin-bottom:20px;">
+				<% if !user_signed_in? %>
+                <h1> Where will you be in May 2014? </h1>
+				<% else %>
+				<h1> Welcome back, <%= @user.name %> </h1>
+				<% end %>
+            </div>
+			<% if !user_signed_in? %>
+            <div id="sign-up-form" class="center">
+                <div id="sign-up-form-background"></div>
+                <div id="sign-up-form-content">                  
+                        <div class="form-group">
+
+                            <input type="email" class="form-control input-lg" placeholder="Your UTOR email address">
+
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control input-lg" placeholder="Password">
+                        </div>
+                    <form>
+					<button type="submit" class="btn btn-lg btn-warning pull-right">Sign Up</button>
+                    </form>	
+				
+                </div>
+            </div>
+			<% end %>
+        </div>
+		
+    </div>
+    <div id="message-1" class="marketing-message row">
+        <div class="marketing-message-image col-md-3 ">
+            <img src="http://placehold.it/300x300">
+        </div>
+        <div class="marketing-message-content col-md-8 ">
+            <h2>Marketing Message</h2>
+            <p>It may also be objected that my opening remark about the appealing character of Pyrrhonism is wrong or surprising, given that it is not possible for anyone to think that the stance I have presented is attractive and worth adopting. For instance, not only does the Skeptic not promise that the suspensive attitude will certainly make possible the attainment of ataraxia, but he does not even regard this as an aim that is intrinsic to his philosophy. To this objection, I would first reply that the appeal of Skepticism seems to lie in the sort of radical changes that this philosophy may entail in a person’s life. For, if adopted, the cautious Pyrrhome point the Skeptic broke some of the most important moral rules of the society to which he belongs, he would perhaps experience some kind of discomfort, but he would not believe that he has done somethined a priori. For it depends on whether one values such attitudes as caution, open-mindedness, and intellectual modesty; or, if one does, on whether these attitudes are preferred to, for example, the sense of assurance that one may experience when espousing philosophic systems or religious beliefs. This is why my opening comment was just that Pyrrhonism may still be found attractive and worth adopting."</p>
+        </div>
+    </div>
+    <div id="message-2" class="marketing-message" style="background-color:#e5e5e5;">
+        <div class="marketing-message-image col-md-3 ">
+            <img src="http://placehold.it/300x300">
+        </div>
+        <div class="marketing-message-content col-md-8 ">
+            <h2>Marketing Message</h2>
+            <p>It may also be objected that my opening remark about the appealing character of Pyrrhonism is wrong or surprising, given that it is not possible for anyone to think that the stance I have presented is attractive and worth adopting. For instance, not only does the Skeptic not promise that the suspensive attitude will certainly make possible the attainment of ataraxia, but he does not even regard this as an aim that is intrinsic to his philosophy. To this objection, I would first reply that the appeal of Skepticism seems to lie in the sort of radical changes that this philosophy may entail in a person’s life. For, if adopted, the cautious Pyrrhome point the Skeptic broke some of the most important moral rules of the society to which he belongs, he would perhaps experience some kind of discomfort, but he would not believe that he has done somethined a priori. For it depends on whether one values such attitudes as caution, open-mindedness, and intellectual modesty; or, if one does, on whether these attitudes are preferred to, for example, the sense of assurance that one may experience when espousing philosophic systems or religious beliefs. This is why my opening comment was just that Pyrrhonism may still be found attractive and worth adopting."</p>
+        </div>
+
+    </div>
+    <div id="footer">
+
+        <div id="company-logo" class="pull-right" style="margin-right: 10px; height: 100%">
+            <%= image_tag("YNCN-boxes-text.png") %>
+            </div>
+    </div>
+    
+</body>
+</html>

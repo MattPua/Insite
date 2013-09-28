@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+<div style="height:100%; width:100%; border:3px solid black;">
+  <%= gravatar_for @user %>
+  <%= @user.name %>
+</div>
+<div>
+Edit companies worked at
+<button> Click to Add Companies </button>
+</div>
+
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

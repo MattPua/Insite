@@ -1,4 +1,14 @@
 Hackathon::Application.routes.draw do
+  devise_for :users, :controllers => { :registrations => "registration" }
+
+  get "home/index"
+  resources :companies
+
+
+  resources :users
+ 
+
+  root to:'home#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

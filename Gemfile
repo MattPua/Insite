@@ -5,6 +5,9 @@ gem 'thin'
 gem 'better_errors'
 gem 'flay'
 gem 'annotate', '2.5.0'
+gem 'devise'
+gem 'will_paginate'
+gem 'simple_form'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -46,8 +49,8 @@ group :doc do
 end
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
+gem 'bcrypt-ruby'
+gem 'modernizr-rails'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

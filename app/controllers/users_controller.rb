@@ -2,10 +2,10 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    if !params[:search].empty?
-      @users= User.search(params[:search])
-    else
+    if params[:search]==nil
       @users=User.all
+    else
+      @users= User.search(params[:search])
     end
    #@total=User.all
     

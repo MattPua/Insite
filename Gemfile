@@ -5,6 +5,7 @@ gem 'thin'
 gem 'better_errors'
 gem 'flay'
 gem 'annotate', '2.5.0'
+gem 'devise'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -47,7 +48,6 @@ end
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby'
-gem 'angularjs-rails'
 gem 'modernizr-rails'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

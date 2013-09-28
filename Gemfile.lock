@@ -55,6 +55,7 @@ GEM
     debugger-ruby_core_source (1.2.3)
     diff-lcs (1.1.3)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
     execjs (2.0.2)
     flay (2.4.0)
@@ -72,6 +73,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25)
     multi_json (1.8.0)
+    pg (0.12.2)
     pg (0.12.2-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -128,6 +130,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.5)
     sqlite3 (1.3.5-x86-mingw32)
     thin (1.5.1)
       daemons (>= 1.0.9)
@@ -147,6 +150,7 @@ GEM
     uniform_notifier (1.3.0)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES

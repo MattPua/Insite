@@ -36,6 +36,8 @@ GEM
     better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.0.4)
     bullet (4.6.0)
       uniform_notifier
@@ -50,6 +52,7 @@ GEM
     coffee-script-source (1.6.3)
     columnize (0.3.6)
     daemons (1.1.9)
+    debug_inspector (0.0.2)
     debugger (1.6.2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -169,9 +172,10 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  annotate (= 2.5.0)
+  annotate
   bcrypt-ruby
   better_errors
+  binding_of_caller
   bullet
   cancan
   coffee-rails (~> 3.2.1)

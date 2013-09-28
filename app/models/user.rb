@@ -5,9 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :company_id
   attr_accessible :faculty, :name, :phone, :program, :registerterms, :year, :position
-
+ 
+  has_many :relationships, foreign_key: "company_id", dependent: :destroy 
+  has_many :companies, through: :relationships, source: :company
+  belongs_to :company
+  
 
  # validates :name, #:uniqueness => true,
  #    uniqueness: true,
@@ -48,8 +52,14 @@ class User < ActiveRecord::Base
 
 def self.search(search)
   @user = User.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
-
 end
 
+def works_for?(company)
+	relationships.find_by_company_id(company.id)
+end
+
+def works_at!(company)
+	relationships.create!(company_id: company.id)
+end 
 
 end

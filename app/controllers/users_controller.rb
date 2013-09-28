@@ -2,13 +2,20 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if !params[:search].empty?
+      @users= User.search(params[:search])
+    else
+      @users=User.all
+    end
+   #@total=User.all
+    
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
     end
   end
+
 
   # GET /users/1
   # GET /users/1.json

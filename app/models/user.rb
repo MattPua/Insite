@@ -46,7 +46,10 @@ class User < ActiveRecord::Base
  #      message:"Please enter your 10 digit phone number"
  #    }
 
-  
+def self.search(search)
+  @user = User.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+
+end
 
 
 end

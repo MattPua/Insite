@@ -1,7 +1,11 @@
-<h1>Listing users</h1>
+<h1>Listing all users </h1>
 
-<table>
-  <tr>
+<%= form_tag users_path, method: :get do %>
+  <%= text_field_tag :search, ''    %>
+  <%= submit_tag "Search", :value => nil %>
+<% end %>
+
+ <!-- <tr>
     <th>Name</th>
     <th>Email</th>
     <th>Year</th>
@@ -12,24 +16,34 @@
     <th></th>
     <th></th>
     <th></th>
-  </tr>
+  </tr> -->
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.name %></td>
-    <td><%= user.email %></td>
-    <td><%= user.year %></td>
-    <td><%= user.program %></td>
-    <td><%= user.faculty %></td>
-    <td><%= user.phone %></td>
-    <td><%= user.registerterms %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<div style="margin:0 auto; width:100%;">
+<ul>
+   <% @users.each do |user| %>
+    <li style="border: 3px solid black;  height:200px; width:200px;float:left; list-style:none;overflow:hidden">
+        
+            
+            <%= gravatar_for user %>
+         
+            <%= user.name %>
+            <%= user.email %>
+            <%= user.year %>
+            <%= user.program %>
+            <%= user.faculty %>
+            <%= user.phone %>
+            <%= user.registerterms %>
+            <%= link_to 'Show', user %>
+            <%= link_to 'Edit', edit_user_path(user) %>
+            <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+       
+
+        <% end %>
+       
+    </li>
+</ul>
+</div>
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<!--<%= link_to 'New User', new_user_path %>-->

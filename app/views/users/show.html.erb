@@ -1,39 +1,13 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
+<div style="height:100%; width:100%; border:3px solid black;">
+  <%= gravatar_for @user %>
   <%= @user.name %>
-</p>
+</div>
+<div>
+Edit companies worked at
+<button> Click to Add Companies </button>
+</div>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Year:</b>
-  <%= @user.year %>
-</p>
-
-<p>
-  <b>Program:</b>
-  <%= @user.program %>
-</p>
-
-<p>
-  <b>Faculty:</b>
-  <%= @user.faculty %>
-</p>
-
-<p>
-  <b>Phone:</b>
-  <%= @user.phone %>
-</p>
-
-<p>
-  <b>Registerterms:</b>
-  <%= @user.registerterms %>
-</p>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

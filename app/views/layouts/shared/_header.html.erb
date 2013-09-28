@@ -1,9 +1,9 @@
 <div id="header">
 		<!-- for transparent header background -->
 		<div id="background"></div>
-        <div id="content" class="row">
+        <div id="content" class="row" style="<%= "background: #399996; width: 100%; height: 80px; margin:0;" unless params[:controller]=="home"%>">
 				<div id="logo" class="pull-left" style="margin-left: 10px; height: 100%">
-				<%= link_to image_tag("insite-logo.png"),root_path %>
+				<%= image_tag("insite-logo.png") %>
 				</div>
 				<div id="nav" class="pull-right" style="margin-top: 30px; margin-right: 10px; height: 100%">
 					

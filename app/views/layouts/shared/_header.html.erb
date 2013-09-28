@@ -44,6 +44,5 @@
     </div>
 	
 <!-- dummy header for non transparent banner -->
-<% if params[:controller]!="home"%>
-	<div style="height: 80px" ></div>
-<% end %> 
+	<div style="<%= "height: 80px;" unless params[:controller]!="home" && params[:action] =="index"%>"></div>
+

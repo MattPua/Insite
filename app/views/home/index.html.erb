@@ -7,73 +7,131 @@
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+  <style type="text/css">
+        .center {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        }
         #header {
-            color: black;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            padding: 0;
-            margin: 0;
+        color: black;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        padding: 0;
+        margin: 0;
         }
-		#header #background {
-			background: white;
-			filter:alpha(opacity=20); /* IE */
-			-moz-opacity:0.2; /* Mozilla */
-			opacity: 0.2; /* CSS3 */
-			position: absolute;
-			top: 0; 
-			left: 0;
-			height: 100%; 
-			width:100%;
-		}
-        #header #content {
-			position: absolute;
-			top: 0; 
-			left: 0;
-			width: 100%; 
-			height: 100%;
+        #header #header-background {
+        background: white;
+        filter:alpha(opacity=20); /* IE */
+        -moz-opacity:0.2; /* Mozilla */
+        opacity: 0.2; /* CSS3 */
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width:100%;
         }
-		
-		#header #content #nav button {
-			margin: 3px;
-		}
+        #header #header-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        }
 
-        #sign-up  
+        #header #header-content #header-nav button {
+        margin: 3px;
+        }
+
+        #sign-up
         {
-            background: url(feet-image.jpg);
+        background-image: url(<%= asset_path('feet-image.jpg') %>);
             background-size: 100%;
-			background-repeat:no-repeat;
+            background-repeat:no-repeat;
             height:800px;
-        }
-		
-		#sign-up h1
-		{
-			margin:0px auto;
-		}
-        
-    </style>
+            margin-top: -20px; /*hack for the top margin */s
+            }
 
+            #sign-up #sign-up-content h1
+            {
+            margin:0px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+            font-size:45px;
+            }
+
+            #sign-up #sign-up-content #sign-up-form{
+            height: 400px;
+            width:600px;
+            position: relative;
+            }
+
+            #sign-up #sign-up-content #sign-up-form #sign-up-form-background{
+            background: white;
+            filter:alpha(opacity=20); /* IE */
+            -moz-opacity:0.2; /* Mozilla */
+            opacity: 0.2; /* CSS3 */
+            border-radius: 8px;
+            -moz-border-radius: 8px;
+            -webkit-border-radius: 8px;
+            }
+
+            #sign-up #sign-up-content #sign-up-form #sign-up-form-content{
+
+            }
+
+            #sign-up #sign-up-content #sign-up-form #sign-up-form-background,
+            #sign-up #sign-up-content #sign-up-form #sign-up-form-content{
+            height: 100%;
+            width:100%;
+            position: absolute;
+
+            }
+        </style>
 </head>
 
 <body>
     <div id="header">
 		<!-- for transparent header background -->
-		<div id="background"></div>
-        <div id="content" class="row">
-				<div id="logo" class="pull-left" style="margin-left: 10px; height: 100%"><img src="insite-logo.png"/></div>
-				<div id="nav" class="pull-right" style="margin-top: 30px; margin-right: 10px; height: 100%">
-					<button type="button" class="btn btn-lg btn-default">Log In</button>
-					<button type="button" class="btn btn-lg btn-warning">Sign Up</button>
-				</div>
+		<div id="header-background"></div>
+        <div id="header-content" class="row">
+            <div id="company-logo" class="pull-left" style="margin-left: 10px; height: 100%">
+                <%= link_to (image_tag("insite-logo.png")) %>
+                </div>
+			<div id="header-nav" class="pull-right" style="margin-top: 30px; margin-right: 10px; height: 100%">
+				<button type="button" class="btn btn-lg btn-default">Log In</button>
+				<button type="button" class="btn btn-lg btn-warning">Sign Up</button>
+			</div>
         </div>
     </div>
     <div id="sign-up">
-		<h1> Where will you be in May 2014? </h1>
-    
+        <div id="sign-up-content" style="padding-top:200px;">
+            <div class="center" style="width:650px; margin-bottom:20px;">
+                <h1> Where will you be in May 2014? </h1>
+            </div>
+            <div id="sign-up-form" class="center">
+                <div id="sign-up-form-background"></div>
+                <div id="sign-up-form-content">
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Your uToronto email address">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+             </div>
+        </div>
     </div>
 
 

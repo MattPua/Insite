@@ -9,9 +9,8 @@ class HomeController < ApplicationController
   end
   
   def main 
-	@user = User.new
-
-end
+	 @user = User.new
+  end
 
   def get_current_user
   	@user = current_user

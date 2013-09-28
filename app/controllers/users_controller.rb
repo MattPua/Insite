@@ -37,6 +37,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def signin_1
+    @user= current_user
+  end
+
+  def signin_2
+    @user = current_user
+  end
+
   # POST /users
   # POST /users.json
   def create

@@ -8,6 +8,7 @@ gem 'annotate', '2.5.0'
 gem 'devise'
 gem 'will_paginate'
 gem 'simple_form'
+gem 'cancan'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

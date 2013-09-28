@@ -2,8 +2,6 @@ Hackathon::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registration" }
 
   get "home/index"
-  match 'register_1' => 'users#signin_1', :as =>"register_1"
-  match 'register_2' => 'users#signin_2', :as =>"register_2"
   resources :companies
 
 

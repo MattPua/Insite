@@ -1,20 +1,55 @@
-<h2>Sign up</h2>
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  <!--<div>Full Name<br /> -->
-  <!--<%= f.text_field :name %> </div>-->
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
 
-  <div>Retype Password<br />
-  <%= f.password_field :password_confirmation %></div> 
 
-  <div><%= f.submit "Sign up" %></div>
+ <div class="field group1">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>  
+  <div class="field group1"><%= f.label :password %> <br />
+  <%= f.password_field :password, :autocomplete => "off" %></div>
+
+  <div class="group1"><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+<div class="field group2">
+    Full Name<br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field group2">
+    Graduating Year<br />
+    <%= f.number_field :year %>
+  </div>
+  <div class="field group2">
+    Program of Study<br />
+    <%= f.text_field :program %>
+  </div>
+  <div class="field group2">
+    <%= f.label :faculty %><br />
+    <%= f.text_field :faculty %>
+  </div>
+  <div class="field group2">
+    <%= f.label :phone %>(Optional)<br />
+    <%= f.number_field :phone %>
+  </div>
+    <div class="field group3">
+    <%= f.label :registerterms %><br />
+    <%= f.check_box :registerterms %>
+  </div> 
+
+  <div class="actions group3">
+    <%= f.submit "Submit" %>
+  </div>
 <% end %>
-
-<%= render "devise/shared/links" %>

@@ -47,12 +47,16 @@
 
       
 				<% if !user_signed_in? %>
+				<div id="nav" class="pull-right" style="margin-top: 18px; margin-right: 30px; height: 100%">
 					<%= link_to "Log In", new_user_session_path, class:"btn btn-lg btn-default"%>
 					<%= link_to "Sign Up", new_user_registration_path , class:"btn btn-lg btn-warning"%>
+					</div>
 				<% else %>
           
           <%= link_to "#{current_user.name}", user_path(current_user), class:"btn btn-lg btn-default" %>
+		  <div id="nav" class="pull-right" style="margin-top: 18px; margin-right: 30px; height: 100%">
 					<%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"btn btn-lg btn-warning" %>
+					</div>
 				<% end %>				
 			</div>
         </div>

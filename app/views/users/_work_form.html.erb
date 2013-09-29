@@ -1,7 +1,8 @@
 
   <div id="work_form">
-  <% if !current_user.works_for?(@company) %>
-
-    <%= render partial:'/users/works_at' %>
+  <% if current_user.works_for?(@company) %>
+    <%= render partial: 'users/fired' %>
+  <% else %>
+    <%= render partial: 'users/works_at' %>
   <% end %>
   </div>

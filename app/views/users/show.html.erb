@@ -3,9 +3,14 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </div>
-<div>
-Edit companies worked at
-<button> Click to Add Companies </button>
+
+<div class="stats">
+  <a href="<%= worked_at_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @user.worked_at.count %>
+    </strong>
+    Companies connected with
+  </a>
 </div>
 
 

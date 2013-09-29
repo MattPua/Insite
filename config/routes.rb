@@ -6,7 +6,12 @@ Hackathon::Application.routes.draw do
 
   get "home/index"
   match "main" =>'home#main'
-  resources :companies
+
+  resources :companies do
+    member do
+      get :works_for #get array of people who work for company
+    end
+  end
 
 
   resources :users do

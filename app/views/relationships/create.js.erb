@@ -1,2 +1,1 @@
-$("#work_form").html("<%= escape_javascript(render('/shared/layouts/worked')) %>")
-$("#worked_at").html('<%= @user.worked_at.count %>')
+$("#work_form").html("<%= escape_javascript(render partial:('/users/fired')) %>")

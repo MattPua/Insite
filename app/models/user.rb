@@ -54,12 +54,16 @@ def self.search(search)
   @user = User.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
 end
 
-def works_for?(company)
-	relationships.find_by_company_id(company.id)
+def works_for?(other_company)
+	relationships.find_by_company_id(other_company.id)
 end
 
-def works_at!(company)
-	relationships.create!(company_id: company.id)
+def works_at!(other_company)
+	relationships.create!(company_id: other_company.id)
 end 
+
+def fired!(other_company)
+  relationships.find_by_company_id(other_company.id).destroy!
+end
 
 end

@@ -63,6 +63,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def works_for
+    @user = current_user
+    @company = Company.find(params[:id])
+    @companies = @company.worked_for.paginate(page: params[:page])
+    render 'show_worked_for'
+  end
+
  
   # PUT /users/1
   # PUT /users/1.json
@@ -91,4 +98,9 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+
+
 end

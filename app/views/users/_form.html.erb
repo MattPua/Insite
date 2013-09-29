@@ -11,7 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div id="form-content" class="row">
+		<!-- add span 1 as placeholder -->
+		<div class = "col-md-3"></div>
+		
+		<div class = "register-form col-md-6">
+				<div class="form-group">
+					<%= f.text_field :name, class:"form-control input-lg", placeholder:"Full Name"%>
+				</div>
+				<div class="form-group">
+					<%= f.email_field :email, :autofocus => true, class:"form-control input-lg", placeholder:"Your UTOR email address" %>
+				</div>
+				<div class="form-group">
+					<%= f.number_field :year, class:"form-control input-lg", placeholder:"Graduating Year"%>
+				</div>
+				<div class="form-group">
+					<%= f.number_field :year, class:"form-control input-lg", placeholder:"Graduating Year"%>
+				</div>
+				<div class="form-group">
+					<%= f.text_field :faculty, class:"form-control input-lg", placeholder:"Program"%>
+				</div>
+				<div class="form-group">
+					<%= f.number_field :phone , class:"form-control input-lg", placeholder:"Phone Number (Optional)"%>
+				</div>
+				<form>
+				<div class=" form-group">
+					<%= f.submit "Sign up", class:"btn btn-lg btn-warning pull-right"%>
+				</div>
+				<!-- <div><%= f.submit "Submit" %></div> -->
+		</form>
+			</div>
+<div class="field">
     Full Name<br />
     <%= f.text_field :name %>
   </div>

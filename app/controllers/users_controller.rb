@@ -5,7 +5,9 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    if params[:search]!=nil
+    if params[:search]==nil
+      @users=User.all
+    else
       @users= User.search(params[:search])
     end
     @user= current_user

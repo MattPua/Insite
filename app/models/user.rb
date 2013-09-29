@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   has_many :companies, through: :relationships, source: :company
   
 
-  has_many  :interviews, through: :relationships, source: :interview
-  has_many :relationships, foreign_key: "interview_id", dependent: :destroy
+  #has_many  :interviews, through: :relationships, source: :interview
+  #has_many :relationships, foreign_key: "interview_id", dependent: :destroy
 
  # validates :name, #:uniqueness => true,
  #    uniqueness: true,

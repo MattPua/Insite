@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :faculty, :name, :phone, :program, :registerterms, :year, :position
  
   has_many :relationships, foreign_key: "user_id", dependent: :destroy 
+  
   has_many :companies, through: :relationships, source: :company
   
 

@@ -1,5 +1,3 @@
 class Interview < ActiveRecord::Base
-  # attr_accessible :title, :body
-  belongs_to :user
-  belongs_to :company
+  attr_accessible :company_name, :position
 end

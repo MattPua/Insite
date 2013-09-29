@@ -2,6 +2,8 @@
 
 <table>
   <tr>
+    <th>Company name</th>
+    <th>Position</th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,6 +11,8 @@
 
 <% @interviews.each do |interview| %>
   <tr>
+    <td><%= interview.company_name %></td>
+    <td><%= interview.position %></td>
     <td><%= link_to 'Show', interview %></td>
     <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
     <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>

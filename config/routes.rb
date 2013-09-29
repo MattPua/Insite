@@ -13,6 +13,8 @@ Hackathon::Application.routes.draw do
     end
   end
 
+  resources :interviews
+
 
   resources :users do
     member do

@@ -1,5 +1,123 @@
-<h1>New interview</h1>
+<!-- Default -->
+	<!--<h1>New interview</h1> -->
+	<!--<%= render 'form' %>-->
+	<!--<%= link_to 'Back', interviews_path %>-->
+<!-- Default Ends -->
 
-<%= render 'form' %>
+<!-- register to banner -->
+<!--<%= render 'layouts/shared/registerHeader' %> -->
+ 
+<div class = "content">
+	
+	<!--commented out because form is not linked"-->
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	<!-- User Form -->
+		<% if @user.errors.any? %>
+		<div  class="row" style="width:100%">
+				<div class = "col-md-2"></div>
+				<div class = "col-md-8 alert alert-danger">
+					<b><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved</b>
+				</div>
+				<div class = "col-md-2"></div>
+			</div>
+			<% @user.errors.full_messages.each do |msg| %>
+				<div  class="row" style="width:100%">
+					<div class = "col-md-2"></div>
+					<div class="col-md-8 alert alert-danger">
+						<%= msg %>
+					</div>
+					<div class = "col-md-2"></div>
+				</div>
+			<% end %>
+		<% end %>
+		<div class ="row" style="width:100%">
+		<div class = "col-md-1"></div>
+		<div class = "col-md-10" style="padding: 10px 50px;">
+			<h2 style="font-size: 30px;">Welcome to Insite! Please take a momemt and introduce yourself.</h2></div><div class = "col-md-1"></div>
+		</div>
 
-<%= link_to 'Back', interviews_path %>
+		
+		<div id="register-form-content" class="row">
+		<!-- add span 1 as placeholder -->
+		<div class = "col-md-1"></div>
+		<div class = "register-form col-md-5">
+				<h3 style="font-size: 28px">Your Work Experience</h3>
+				<div class="form-group">
+					<%= f.text_field :company_worked, :autofocus => true, class:"form-control input-lg", placeholder:"Company Name" %>
+				</div>
+				<div class="form-group">
+					<%= f.text_field :position_worked, class:"form-control input-lg", placeholder:"Position"%>
+				</div>
+				<div class="form-group">
+					<%= f.date_select :time_worked, class:"form-control input-lg", placeholder:"Time Period (yy/mm-yy/mm)"%>
+				</div>
+			<div>
+		</div>
+		</div>
+		<div class = "register-form col-md-5">
+				<h3 style="font-size: 28px">Your Upcoming Interviews</h3>
+				<div class="form-group">
+					<%= f.text_field :company_interviewing, class:"form-control input-lg", placeholder:"Company Name"%>
+				</div>
+				<div class="form-group">
+					<%= f.text_field :position_interviewing, class:"form-control input-lg", placeholder:"Position"%>
+				</div>
+				<div class="form-group">
+					<%= f.text_field :type, class:"form-control input-lg", placeholder:"Scheduled or Potential"%>
+				</div>
+				<div class="form-group">
+					<%= f.number_field :date , class:"form-control input-lg", placeholder:"Date(yy/mm/dd)"%>
+				</div>
+				<form>
+		<div class=" form-group">
+			<%= f.submit "Sign up", class:"btn btn-lg btn-warning pull-right"%>
+			</div>
+			<!-- <div><%= f.submit "Sign up" %></div> -->
+		</form>
+			</div>			
+		<!-- add span 1 as place holder -->
+		<div class = "col-md-1"></div>
+		</div>
+		
+		</div>
+				
+	<% end %>
+ </div>
+ 
+ <div id="footer">
+
+        <div id="company-logo" class="pull-right" style="margin-right: 10px; height: 100%">
+            <%= image_tag("YNCN-boxes-text.png") %>
+            </div>
+    </div>
+  
+<!-- <%= render "devise/shared/links" %> -->
+
+<style type="text/css">
+	.register-form{
+		padding: 10px 50px;
+	}
+	
+	.content{
+	background-color: #f3faf5;
+	
+	}
+	
+	#register-form-content
+	{
+		width: 100%;
+		padding-bottom: 100px;
+	}
+	#footer{
+            height: 100px;
+            width: 100%;
+            padding: 20px;
+    }
+	#footer img{
+            width: 200px;
+    }
+    h2, h3{text-align: center}
+
+
+</style>
+

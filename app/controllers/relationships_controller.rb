@@ -2,10 +2,9 @@ class RelationshipsController < ApplicationController
   before_filter :signed_in_user
 
   def create
-    @company = User.find(params[:relationship][:company_id])
-    @user= User.find(params[:relationship][:user_id])
-    @user.works_at!(@company)
-    redirect_to @company
+    @company = Company.find(params[:relationship][:company_id])
+    @user=current_user
+    @user.works_at!(@company) 
     respond_to do |format|
       format.html { redirect_to @company }
       format.js

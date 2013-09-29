@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :company_id
   attr_accessible :faculty, :name, :phone, :program, :registerterms, :year, :position
  
-  has_many :relationships, foreign_key: "company_id", dependent: :destroy 
+  has_many :relationships, foreign_key: "user_id", dependent: :destroy 
   has_many :companies, through: :relationships, source: :company
   
   
@@ -60,6 +60,7 @@ end
 
 def works_at!(other_company)
 	relationships.create!(company_id: other_company.id)
+  #relationships.save(:validate => false)
 end 
 
 def fired!(other_company)

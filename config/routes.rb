@@ -18,9 +18,10 @@ Hackathon::Application.routes.draw do
     member do
       get :worked_at   #get action for companies that you have worked at or are currently working at
     end
+    
   end
  
- resources :relationships, only: :create
+ resources :relationships, only: [:create, :delete]
 
   root to:'home#index'
   # The priority is based upon order of creation:

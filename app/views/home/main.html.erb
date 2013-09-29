@@ -1,9 +1,34 @@
+<div id = "body">
+<div id = "content">
+	<div class="tabbable">
+	<!-- Tab Navigation -->
+		<ul class="nav nav-tabs" id="companyTab">
+			<li class="active"><a data-toggle="tab" href="#facebook">facebook</a></li>
+			<li><a data-toggle="tab" href="#extra"> + </a></li>
+		</ul>
 
+		<div class="tab-content">
+			<div class="tab-pane active" id="company-name">
+				<div id="wrapper">
+					<% @users.each do |company_user| %>
+						<div class="profile">
+							<%= image_tag("http://www.gravatar.com/avatar.php?gravatar_id=@user", :alt => 'Avatar', :class => 'img-circle') %>
+							<h3 class="name"><%= company_user.name %></h3>
+							<h4 class="position"><%= company_user.email %></h3>
+							<!-- DO NOT HAVE LOCATION ENTITY -->
+							</p>
+						</div>
+					<% end %>
+				</div>
+			</div>
 
- 
-<div class = "content">
-TESTIN
- </div>
+			<div class="tab-pane" id="extra> 
+				TODO
+			</div>
+		</div>
+	</div>
+</div>
+ </body>
  
 <div id="footer">
 	<div id="company-logo" class="pull-right" style="margin-right: 10px; height: 100%">
@@ -12,14 +37,67 @@ TESTIN
 </div>
   
   <style type="text/css">
+  
+	# body{
+		background: #f3faf5;
+	}
+	
+	#content
+	{
+		margin:30px;
+		margin-top: 5px;
+	}
+	
+	.tabbable .tab-content
+	{
+		margin: 10px;
+	}
 
-	#footer{
+	/* list of user available */
+
+	#wrapper {
+		width: 90%;
+	}
+
+	.profile {
+		background: #e6eeec;
+		width: 290px;
+		height: 290px;
+		display: block;
+		margin: 5px;
+		float:left;
+	}
+
+	.profile img {
+		width: 175px;
+		height: 175px;
+		border: 5px solid white;
+		display:block;
+		margin: 15px auto;
+	}
+
+	.profile .name, .profile .position{
+		margin-left: 20px;
+		margin-right: 20px;
+		text-align: center;
+	}
+
+	.profile .name{
+		font-size: 16pt;
+	
+	}
+	
+	
+	
+	#footer
+	{
         height: 100px;
         width: 100%;
         padding: 20px;
      }
             
-    #footer img{
+    #footer img
+	{
         width: 200px;
     }
 

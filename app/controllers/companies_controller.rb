@@ -14,7 +14,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @company = Company.find(params[:id])
-
+    @user = current_user
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @company }
@@ -57,7 +57,7 @@ class CompaniesController < ApplicationController
   # PUT /companies/1.json
   def update
     @company = Company.find(params[:id])
-
+    
     respond_to do |format|
       if @company.update_attributes(params[:company])
         format.html { redirect_to @company, notice: 'Company was successfully updated.' }

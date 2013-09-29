@@ -57,21 +57,16 @@ class CompaniesController < ApplicationController
   # PUT /companies/1.json
   def update
     @company = Company.find(params[:id])
-    @company.name=params[:company]
-    @company.company_id=params[:company][:company_id]
-    if @company.save
-      flash[:success] = t('activerecord.successful.messages.updated', :model => Company.model_name.human)
-    end     
-    respond_with @company
-    # respond_to do |format|
-    #   if @company.update_attributes(params[:company])
-    #     format.html { redirect_to @company, notice: 'Company was successfully updated.' }
-    #     format.json { head :no_content }
-    #   else
-    #     format.html { render action: "edit" }
-    #     format.json { render json: @company.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    
+    respond_to do |format|
+      if @company.update_attributes(params[:company])
+        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @company.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # DELETE /companies/1

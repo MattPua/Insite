@@ -15,7 +15,7 @@ Hackathon::Application.routes.draw do
     end
   end
  
- resources :relationships, only: [:create, :destroy]
+ resources :relationships, only: :create
 
   root to:'home#index'
   # The priority is based upon order of creation:

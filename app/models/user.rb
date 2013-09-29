@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
  
   has_many :relationships, foreign_key: "company_id", dependent: :destroy 
   has_many :companies, through: :relationships, source: :company
-  belongs_to :company
+  
   
 
  # validates :name, #:uniqueness => true,

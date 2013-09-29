@@ -1,7 +1,4 @@
 Hackathon::Application.routes.draw do
-  resources :interviews
-
-
   devise_for :users, :controllers => { :registrations => "registration" }
 
   get "home/index"
@@ -12,6 +9,8 @@ Hackathon::Application.routes.draw do
       get :works_for #get array of people who work for company
     end
   end
+
+  resources :interviews
 
 
   resources :users do

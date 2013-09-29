@@ -9,12 +9,12 @@ class User < ActiveRecord::Base
   attr_accessible :faculty, :name, :phone, :program, :registerterms, :year, :position
  
   has_many :relationships, foreign_key: "user_id", dependent: :destroy 
-  
+
   has_many :companies, through: :relationships, source: :company
   
 
   has_many  :interviews, through: :relationships, source: :interview
-  
+  has_many :relationships, foreign_key: "interview_id", dependent: :destroy
 
  # validates :name, #:uniqueness => true,
  #    uniqueness: true,
@@ -68,6 +68,18 @@ end
 
 def fired!(other_company)
   relationships.find_by_company_id(other_company.id).destroy!
+end
+
+def has_interview?(interview)
+  relationships.find_by_user_id(interview.id)
+end
+
+def interviewing_with!(interview)
+  relationships.create!(interview: interview.id)
+end
+
+def finished_interview!(interview)
+  relationships.find_by_interview_id(interview.id).destroy!
 end
 
 end

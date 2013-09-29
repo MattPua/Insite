@@ -36,40 +36,11 @@
 				</div>
 				<form>
 				<div class=" form-group">
-					<%= f.submit "Sign up", class:"btn btn-lg btn-warning pull-right"%>
+				<button type="button" class="btn btn-default">Default</button>
+					<%= f.cancel "Cancel", href: "<%= link_to 'Back', users_path %>" ,class: "btn  btn-lg btm-warning pull-right" %>
+					<%= f.submit "Submit", class:"btn btn-lg btn-warning pull-right"%>
 				</div>
 				<!-- <div><%= f.submit "Submit" %></div> -->
 		</form>
 			</div>
-<div class="field">
-    Full Name<br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    Graduating Year<br />
-    <%= f.number_field :year %>
-  </div>
-  <div class="field">
-    Program of Study<br />
-    <%= f.text_field :program %>
-  </div>
-  <div class="field">
-    <%= f.label :faculty %><br />
-    <%= f.text_field :faculty %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %>(Optional)<br />
-    <%= f.number_field :phone %>
-  </div>
-  <!--<div class="field">
-    <%= f.label :registerterms %><br />
-    <%= f.check_box :registerterms %>
-  </div> -->
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

@@ -1,4 +1,4 @@
-<%= form_for(current_user.relationships.find_by_interview_id(@interview.id),
+<%= form_for(current_user.interview_relationships.find_by_interview_id(@interview.id),
              html: { method: :delete },
              remote: true) do |f| %>
   <%= f.submit "Finished Interview!", class: "btn btn-large" %>

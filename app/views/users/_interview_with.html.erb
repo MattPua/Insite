@@ -1,0 +1,4 @@
+<%= form_for(current_user.interview_relationships.build(interview_id: @interview.id),  remote: true) do |f| %>
+  <div><%= f.hidden_field :interview_id %></div>
+  <%= f.submit "Have an interview with them!", class: "btn btn-large btn-primary" %>
+<% end %>

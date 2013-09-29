@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   has_many :companies, through: :relationships, source: :company
   
 
-  #has_many  :interviews, through: :relationships, source: :interview
-  #has_many :relationships, foreign_key: "interview_id", dependent: :destroy
+  has_many  :interviews, through: :interview_relationships, source: :interview
+  has_many  :interview_relationships, foreign_key: "interview_id", dependent: :destroy
 
  # validates :name, #:uniqueness => true,
  #    uniqueness: true,
@@ -71,15 +71,15 @@ def fired!(other_company)
 end
 
 def has_interview?(interview)
-  relationships.find_by_user_id(interview.id)
+  interview_relationships.find_by_interview_id(interview.id)
 end
 
 def interviewing_with!(interview)
-  relationships.create!(interview: interview.id)
+  interview_relationships.create!(interview: interview.id)
 end
 
 def finished_interview!(interview)
-  relationships.find_by_interview_id(interview.id).destroy!
+  interview_relationships.find_by_interview_id(interview.id).destroy!
 end
 
 end

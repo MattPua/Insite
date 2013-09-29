@@ -11,13 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130929135054) do
+ActiveRecord::Schema.define(:version => 20130929144423) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "interview_relationships", :force => true do |t|
+    t.integer  "interview_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "interview_relationships", ["interview_id"], :name => "index_interview_relationships_on_interview_id"
+  add_index "interview_relationships", ["user_id", "interview_id"], :name => "index_interview_relationships_on_user_id_and_interview_id", :unique => true
+  add_index "interview_relationships", ["user_id"], :name => "index_interview_relationships_on_user_id"
 
   create_table "interviews", :force => true do |t|
     t.string   "company_name"

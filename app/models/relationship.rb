@@ -4,7 +4,4 @@ class Relationship < ActiveRecord::Base
   validates :company_id, presence: true
   validates :user_id, presence: true
 
-
-  belongs_to :interview
-  validates	:interview_id, presence: true 
 end

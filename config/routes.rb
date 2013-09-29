@@ -6,16 +6,22 @@ Hackathon::Application.routes.draw do
 
   get "home/index"
   match "main" =>'home#main'
-  resources :companies
+
+  resources :companies do
+    member do
+      get :works_for #get array of people who work for company
+    end
+  end
 
 
   resources :users do
     member do
       get :worked_at   #get action for companies that you have worked at or are currently working at
     end
+    
   end
  
- resources :relationships, only: :create
+ resources :relationships, only: [:create, :delete]
 
   root to:'home#index'
   # The priority is based upon order of creation:

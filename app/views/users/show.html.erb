@@ -3,11 +3,23 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </div>
-<div>
-Edit companies worked at
-<button> Click to Add Companies </button>
-</div>
 
+<div class="stats">
+  <a href="<%= worked_at_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @companies.count %>
+    </strong>
+    Companies connected with
+  </a>
+</div>
+ <% @companies.each do |company| %>
+                        <div class="profile">
+
+                            <h3 class="name">
+                                <%= link_to "#{company.name}", company_path(company)%>
+                            </h3>
+                        </div>
+                        <% end %>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

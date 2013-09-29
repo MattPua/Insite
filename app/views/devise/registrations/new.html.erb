@@ -2,9 +2,8 @@
 <!--<%= render 'layouts/shared/registerHeader' %> -->
  
 <div class = "content">
-	
+	<!-- Error Checking Message -->
 	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-	<!-- User Form -->
 		<% if @user.errors.any? %>
 		<div  class="row" style="width:100%">
 				<div class = "col-md-2"></div>
@@ -23,6 +22,8 @@
 				</div>
 			<% end %>
 		<% end %>
+		
+		<!-- Title -->
 		<div  class="row" style="width:100%">
 		<div class = "col-md-1"></div>
 		<div class = "col-md-10" style="padding: 10px 50px;"><h1 style="font-size: 30px;"> Registration  </h1></div>
@@ -80,7 +81,7 @@
  <div id="footer">
 
         <div id="company-logo" class="pull-right" style="margin-right: 10px; height: 100%">
-            <%= image_tag("YNCN-boxes-text.png") %>
+            <%= image_tag("YNCN-boxes-text.png"), :style=>"width:200px"%>
             </div>
     </div>
   

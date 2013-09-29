@@ -7,20 +7,17 @@
 <div class="stats">
   <a href="<%= worked_at_user_path(@user) %>">
     <strong id="following" class="stat">
-      <%= @user.companies.count %>
+      <%= @companies.count %>
     </strong>
     Companies connected with
   </a>
 </div>
- <% @user.companies.each do |company| %>
+ <% @companies.each do |company| %>
                         <div class="profile">
-                            <!--<%= link_to (image_tag("http://www.gravatar.com/avatar.php?gravatar_id=#{company.name}", :alt => 'Avatar', :class => 'img-circle')),user_path(company) %> -->
 
                             <h3 class="name">
-                                <%= company.name %>
+                                <%= link_to "#{company.name}", company_path(company)%>
                             </h3>
-    
-                            <!-- DO NOT HAVE LOCATION ENTITY -->
                         </div>
                         <% end %>
 

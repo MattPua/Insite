@@ -1,51 +1,90 @@
+<div class="content">
+    <div style="margin:0 auto; width:50%; text-align:center;">
+        <h1>Search Result</h1>
+    </div>
+    <div id ="result">
+    <div id="wrapper">
 
-<div style="margin:0 auto; width:50%; text-align:center;">
-<h1>Listing all users </h1>
-
-</div>
-
- <!-- <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Year</th>
-    <th>Program</th>
-    <th>Faculty</th>
-    <th>Phone</th>
-    <th>Registerterms</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr> -->
-
-<div style="margin:0 auto; width:100%;">
-    <ul>
-        <% @users.each do |user| %>
-        <li style="border: 3px solid black;  height:200px; width:200px;float:left; list-style:none;overflow:hidden">
-            
-                
-                <%= gravatar_for user %>
-             
-                <%= user.name %>
-                <%= user.email %>
-                <%= user.year %>
-                <%= user.program %>
-                <%= user.faculty %>
-                <%= user.phone %>
-                <%= user.registerterms %>
-
-                <%= link_to 'Show', user %>
-                <% if can? :update, @user %>
-                    <%= link_to 'Edit', edit_user_path(user) %>
-                    <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
-                <% end %>
-           
-
+            <% @users.each do |user| %>
+            <div class="profile">
+                <%= gravatar_for(user) %>
+                <h3 class="name">
+                    <%= user.name %>
+                </h3>
+                <h4 class="position">
+                    <%= user.email %>
+                 </h4>
+            </div>
             <% end %>
-           
-        </li>
-    </ul>
-</div>
 
-<br />
+    </div>
+    </div>
+
+</div>
 
 <!--<%= link_to 'New User', new_user_path %>-->
+
+<style type="text/css">
+
+    #content{
+    background: #f3faf5;
+    width: 100%;
+
+    }
+
+    #result{
+    display:block;
+    margin: 10px;
+    }
+
+    /* list of user available */
+
+    #wrapper {
+    width: 90%;
+    }
+
+    .profile {
+    background: #e6eeec;
+    width: 290px;
+    height: 290px;
+    display: block;
+    margin: 5px;
+    float:left;
+    }
+
+    .profile img {
+    width: 175px;
+    height: 175px;
+    border: 5px solid white;
+    display:block;
+    margin: 15px auto;
+    }
+
+    .profile .name, .profile .position{
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+    }
+
+    .profile .name{
+    font-size: 16pt;
+
+    }
+
+
+
+    #footer
+    {
+    height: 100px;
+    width: 100%;
+    padding: 20px;
+    }
+
+    #footer img
+    {
+    width: 200px;
+    }
+
+
+
+</style>

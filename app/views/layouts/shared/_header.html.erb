@@ -1,27 +1,32 @@
 <style type="text/css">
-#header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 80px;
-      padding: 0;
-      margin: 0;
-	  margin-bottom: 80px;
-      z-index:99;
-      }
-	  
-#header #header-background {
-      background: #5d86b2;
-      filter:alpha(opacity=20); /* IE */
-      -moz-opacity:0.2; /* Mozilla */
-      opacity: 0.2; /* CSS3 */
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width:100%;
-}
+    #header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 80px;
+    z-index:99;
+    }
+
+    #header #header-background {
+    background: #5d86b2;
+    filter:alpha(opacity=20); /* IE */
+    -moz-opacity:0.2; /* Mozilla */
+    opacity: 0.2; /* CSS3 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width:100%;
+    }
+
+    #logo a:hover{
+    background-color: transparent;
+    }
+
 </style>
 <div id="header">
 		<!-- for transparent header background -->
@@ -32,17 +37,9 @@
 
 
 			<div id="logo" class="pull-left" style="margin-top: -7px; margin-left: 10px; height: 100%">
-				<%= image_tag("insite-logo.png") %>
+				<%= link_to image_tag("insite-logo.png"),  "/"%>
 			</div>
-          <% if user_signed_in? %>
-          <span style=" text-align:center; ">
-
-                <%= form_tag users_path, style:"margin:3% auto; width:20%;", method: :get do %>
-                <%= text_field_tag :search, ''    %>
-                <%= submit_tag "Search", :name => nil %>
-                  <% end %>
-          <span>
-          <% end %>
+         
 			<div id="nav" class="pull-right" style="margin-top:1%; margin-right: 30px; height: 100%">
 
       

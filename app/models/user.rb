@@ -1,3 +1,28 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  name                   :string(255)
+#  email                  :string(255)
+#  year                   :integer
+#  program                :string(255)
+#  faculty                :string(255)
+#  phone                  :integer
+#  registerterms          :boolean
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  encrypted_password     :string(255)      default(""), not null
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
+#
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -13,8 +38,8 @@ class User < ActiveRecord::Base
   has_many :companies, through: :relationships, source: :company
   
 
-  #has_many  :interviews, through: :relationships, source: :interview
-  #has_many :relationships, foreign_key: "interview_id", dependent: :destroy
+  has_many  :interviews, through: :interview_relationships, source: :interview
+  has_many  :interview_relationships, foreign_key: "interview_id", dependent: :destroy
 
  # validates :name, #:uniqueness => true,
  #    uniqueness: true,
@@ -71,15 +96,15 @@ def fired!(other_company)
 end
 
 def has_interview?(interview)
-  relationships.find_by_user_id(interview.id)
+  interview_relationships.find_by_interview_id(interview.id)
 end
 
 def interviewing_with!(interview)
-  relationships.create!(interview: interview.id)
+  interview_relationships.create!(interview: interview.id)
 end
 
 def finished_interview!(interview)
-  relationships.find_by_interview_id(interview.id).destroy!
+  interview_relationships.find_by_interview_id(interview.id).destroy!
 end
 
 end

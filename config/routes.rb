@@ -13,18 +13,19 @@ Hackathon::Application.routes.draw do
     end
   end
 
-  resources :interviews
+  
 
 
   resources :users do
     member do
       get :worked_at   #get action for companies that you have worked at or are currently working at
+      get :my_interviews
     end
     
   end
  
  resources :relationships, only: [:create, :delete]
-
+ resources :interview_relationships, only: [:create, :delete]
   root to:'home#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.

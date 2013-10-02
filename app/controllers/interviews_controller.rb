@@ -5,7 +5,7 @@ class InterviewsController < ApplicationController
     @interviews = Interview.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html  # index.html.erb
       format.json { render json: @interviews }
     end
   end

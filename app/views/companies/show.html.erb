@@ -4,6 +4,14 @@
   <b>Name:</b>
   <%= @company.name %>
 </p>
+<p>
+  <b>Industry:</b>
+  <%= @company.industry %>
+</p>
+<p>
+  <b>Number of Connections at <%= @company.name %>:</b>
+  <%= @company.connections %>
+</p>
 
 
 <%= link_to 'Edit', edit_company_path(@company) %> |

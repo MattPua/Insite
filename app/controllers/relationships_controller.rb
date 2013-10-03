@@ -3,6 +3,7 @@ class RelationshipsController < ApplicationController
 
   def create
     @company = Company.find(params[:relationship][:company_id])
+    @company.connections +=1
     @user=current_user
     @user.works_at!(@company) 
     respond_to do |format|

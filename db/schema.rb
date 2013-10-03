@@ -15,8 +15,10 @@ ActiveRecord::Schema.define(:version => 20130929144423) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "connections"
+    t.string   "industry"
   end
 
   create_table "interview_relationships", :force => true do |t|

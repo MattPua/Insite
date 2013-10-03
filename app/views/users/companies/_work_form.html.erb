@@ -3,6 +3,6 @@
   <% if current_user.works_for?(@company) %>
   
   <% else %>
-    <%= render partial: 'users/works_at' %>
+    <%= render partial: 'users/companies/works_at' %>
   <% end %>
   </div>

@@ -10,18 +10,11 @@ Hackathon::Application.routes.draw do
     end
   end
 
-  
-
-
   resources :users do
     member do
-      resources :interviews do
-        
-      end
+      resources :interviews 
       get :worked_at   #get action for companies that you have worked at or are currently working at
-    end
-
-    
+    end  
   end
  
  resources :relationships, only: [:create, :delete]

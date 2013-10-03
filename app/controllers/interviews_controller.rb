@@ -5,7 +5,7 @@ class InterviewsController < ApplicationController
     @interviews = Interview.all
 
     respond_to do |format|
-      format.html  # index.html.erb
+      format.html  { render "/users/interviews/index" }# index.html.erb
       format.json { render json: @interviews }
     end
   end
@@ -16,7 +16,7 @@ class InterviewsController < ApplicationController
     @interview = Interview.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render "/users/interviews/show" }# show.html.erb
       format.json { render json: @interview }
     end
   end
@@ -27,7 +27,7 @@ class InterviewsController < ApplicationController
     @interview = Interview.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render "/users/interviews/new" }# new.html.erb
       format.json { render json: @interview }
     end
   end
@@ -47,7 +47,7 @@ class InterviewsController < ApplicationController
         format.html { redirect_to @interview, notice: 'Interview was successfully created.' }
         format.json { render json: @interview, status: :created, location: @interview }
       else
-        format.html { render action: "new" }
+        format.html { render "/users/interviews/new" }
         format.json { render json: @interview.errors, status: :unprocessable_entity }
       end
     end
@@ -63,7 +63,7 @@ class InterviewsController < ApplicationController
         format.html { redirect_to @interview, notice: 'Interview was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render "/users/interviews/edit" }
         format.json { render json: @interview.errors, status: :unprocessable_entity }
       end
     end

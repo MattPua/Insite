@@ -28,10 +28,6 @@ ActiveRecord::Schema.define(:version => 20130929144423) do
     t.datetime "updated_at",   :null => false
   end
 
-  add_index "interview_relationships", ["interview_id"], :name => "index_interview_relationships_on_interview_id"
-  add_index "interview_relationships", ["user_id", "interview_id"], :name => "index_interview_relationships_on_user_id_and_interview_id", :unique => true
-  add_index "interview_relationships", ["user_id"], :name => "index_interview_relationships_on_user_id"
-
   create_table "interviews", :force => true do |t|
     t.string   "company_name"
     t.string   "position"
@@ -49,8 +45,6 @@ ActiveRecord::Schema.define(:version => 20130929144423) do
 
   add_index "relationships", ["company_id", "user_id"], :name => "index_relationships_on_company_id_and_user_id", :unique => true
   add_index "relationships", ["company_id"], :name => "index_relationships_on_company_id"
-  add_index "relationships", ["interview_id"], :name => "index_relationships_on_interview_id"
-  add_index "relationships", ["user_id", "interview_id"], :name => "index_relationships_on_user_id_and_interview_id", :unique => true
   add_index "relationships", ["user_id"], :name => "index_relationships_on_user_id"
 
   create_table "users", :force => true do |t|

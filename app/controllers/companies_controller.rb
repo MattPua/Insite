@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  before_filter :authenticate_user!
   # GET /companies
   # GET /companies.json
   def index
@@ -41,7 +42,6 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(params[:company])
-    @company.connections = 0
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: 'Company was successfully created.' }

@@ -41,17 +41,17 @@ class User < ActiveRecord::Base
   has_many  :interviews, through: :interview_relationships, source: :interview
   has_many  :interview_relationships, foreign_key: "interview_id", dependent: :destroy
 
- # validates :name, #:uniqueness => true,
- #    uniqueness: true,
- #    presence: true,
- #    length: { 
- #      maximum: 100, 
- #      minimum: 2,
- #      message: " must be a minimum: 2 letters and a maximum: 100 letters"},
- #    format: {
- #      with: /[\w\-\']+([\s]+[\w\-\']+){1}+/,
- #      message: "entered must be first and last name"
- #    }
+ validates :name, #:uniqueness => true,
+    uniqueness: true,
+    presence: true,
+    length: { 
+      maximum: 100, 
+      minimum: 2,
+      message: " must be a minimum: 2 letters and a maximum: 100 letters"},
+    format: {
+      with: /[\w\-\']+([\s]+[\w\-\']+){1}+/,
+      message: "entered must be first and last name"
+    }
 
   
  #  validates :email,

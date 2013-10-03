@@ -63,6 +63,7 @@
           
             <div id="nav" class="pull-right" style="margin-top: 8px; margin-right: 30px; height: 100%">
                 <%= link_to "#{current_user.name}", user_path(current_user), class:"btn btn-lg btn-default" %>
+                <%= link_to "Companies", companies_path, class:"btn btn-lg btn-default" %>
                 <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"btn btn-lg btn-warning" %>
             </div>
             <% end %>

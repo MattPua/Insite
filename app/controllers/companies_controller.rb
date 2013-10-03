@@ -15,6 +15,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @company = Company.find(params[:id])
+    @count = Relationship.where(:company_id => @company.id).count
     @user = current_user
     respond_to do |format|
       format.html # show.html.erb

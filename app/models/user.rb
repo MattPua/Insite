@@ -24,6 +24,7 @@
 #
 
 class User < ActiveRecord::Base
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -95,16 +96,6 @@ def fired!(other_company)
   relationships.find_by_company_id(other_company.id).destroy!
 end
 
-def has_interview?(interview)
-  interview_relationships.find_by_interview_id(interview.id)
-end
 
-def interviewing_with!(interview)
-  interview_relationships.create!(interview: interview.id)
-end
-
-def finished_interview!(interview)
-  interview_relationships.find_by_interview_id(interview.id).destroy!
-end
 
 end

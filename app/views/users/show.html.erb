@@ -4,10 +4,10 @@
   <%= @user.name %>
 </div>
 
-
+<%= link_to "My Interviews", interviews_path %>
 
 <div class="stats">
-  <a href="<%= worked_at_user_path(@user) %>">
+  <a href="">
     <strong id="following" class="stat">
       <%= @companies.count %>
     </strong>

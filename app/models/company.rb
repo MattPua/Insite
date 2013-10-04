@@ -16,7 +16,7 @@ class Company < ActiveRecord::Base
 
   has_many :users, through: :relationships, source: :user
   has_many :relationships, foreign_key: "company_id", dependent: :destroy
-
+  has_many :interviews, through: :interviews, source: :interview
   validates :name, 
   	uniqueness: {
   		case_sensitive: false,

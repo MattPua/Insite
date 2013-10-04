@@ -14,7 +14,7 @@ class InterviewsController < ApplicationController
   # GET /interviews/1.json
   def show
     @interview = Interview.find(params[:id])
-
+    @company = Company.find_by_name(@interview.company_name)
     respond_to do |format|
       format.html { render "/users/interviews/show" }# show.html.erb
       format.json { render json: @interview }

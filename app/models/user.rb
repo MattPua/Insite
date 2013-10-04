@@ -38,9 +38,11 @@ class User < ActiveRecord::Base
 
   has_many :companies, through: :relationships, source: :company
   
+  #has_many :companies, through: :interviews, scope: :interview
 
-  has_many  :interviews, through: :interview_relationships, source: :interview
-  has_many  :interview_relationships, foreign_key: "interview_id", dependent: :destroy
+  #has_many  :interviews, through: :relationships, source: :interview
+  has_many :interviews, dependent: :destroy
+  has_many  :relationships, foreign_key: "interview_id", dependent: :destroy
 
  validates :name, #:uniqueness => true,
     uniqueness: true,
@@ -88,12 +90,24 @@ def works_for?(other_company)
 end
 
 def works_at!(other_company)
-	relationships.create!(company_id: other_company.id)
+	relationships.create!(company_id: other_company.id, user_id: self.id)
   #relationships.save(:validate => false)
 end 
 
 def fired!(other_company)
   relationships.find_by_company_id(other_company.id).destroy!
+end
+
+def interviewing_with?(interview,company)
+  relationships.where(interview_id: interview.id, company_id: company.id)
+end
+
+def schedule_interview(interview,company)
+  relationships.create!(interview_id: interview.id, company_id: company.id)
+end
+
+def finished_interview!(interview, company)
+  relationships.where(interview_id: interview.id, company_id: company.id).destroy!
 end
 
 

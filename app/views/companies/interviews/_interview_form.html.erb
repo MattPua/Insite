@@ -1,0 +1,8 @@
+
+  <div id="interview_form">
+  <% if current_user.interviewing_with?(@interview,@company) %>
+  	<%= render partial: '/companies/interviews/finish_interview' %>
+  <% else %>
+    <%= render partial: '/companies/interviews/schedule_interview' %>
+  <% end %>
+  </div>

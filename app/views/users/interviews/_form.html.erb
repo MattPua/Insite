@@ -8,7 +8,11 @@ Schedule a new interview <%= "with " + @company.name if !@company.nil? %>
     <%= f.input :company_name %> 
     <!-- Place company.name into text_field or use javascript to hide this field and automatically send value-->
     <%= f.input :position %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %> 
+    <!-- Use above to send value into newly created object by default. -->
+    <!-- f.hidden_field :company_id, :value => VALUE OF COMPANY ID %> -->
+    <!-- Need to search for company from above input and check if company already exists. If company exists, place 
+    company_id within interview. Else, need to create an entirely new company from here -->
   </div>
 
   <div class="form-actions">

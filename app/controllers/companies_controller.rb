@@ -15,9 +15,8 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @company = Company.find(params[:id])
-    @interview=Interview.new
-    @count = Relationship.where(:company_id => @company.id).count
-    @user = current_user
+    @interviews= Interview.where(:company_name => @company.name)
+    # Perhaps transfer the above searching code into model for simplicity
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @company }

@@ -21,7 +21,13 @@ namespace :db do
       Interview.create!(company_name: name,
                         position: position,
                         user_id: user_id)
-    end
+      end
+      10.times do |n|
+      name = "Test Company # #{n+1}"
+      industry = "test-#{n+1}"
+      Company.create!(name: name,
+                      industry: industry)
+      end
 
 
   end

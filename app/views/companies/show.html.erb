@@ -12,7 +12,14 @@
   <b>Number of Connections at <%= @company.name %>:</b>
   <%= @count %>
 </p>
-
-<%= render partial:"/users/interviews/form" %>
+<p>
+	<b> Interviews scheduled at <%= @company.name %>: </b>
+	<br/>
+	<% @interviews.each do |interview| %>
+	<%= interview.user.name %>
+	- 
+	<%= interview.position %>
+	<% end %>
+</p>
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>

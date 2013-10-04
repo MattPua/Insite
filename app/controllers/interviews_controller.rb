@@ -2,7 +2,7 @@ class InterviewsController < ApplicationController
   # GET /interviews
   # GET /interviews.json
   def index
-    @interviews = Interview.all
+    @interviews = Interview.where(:user_id => current_user.id)
 
     respond_to do |format|
       format.html  { render "/users/interviews/index" }# index.html.erb

@@ -10,9 +10,9 @@
 #
 
 class Interview < ActiveRecord::Base
-  attr_accessible :company_name, :position
-
+  attr_accessible :company_name, :position, :user_id, :company_id
+  
   belongs_to :user
   belongs_to :company
-  has_many 	 :relationships, foreign_key:"interview_id", dependent: :destroy
+  #has_many 	 :relationships, foreign_key:"interview_id", dependent: :destroy
 end

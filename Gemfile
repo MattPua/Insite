@@ -4,6 +4,7 @@ gem 'rails', '3.2.13'
 gem 'thin'
 gem 'better_errors'
 gem 'flay'
+gem 'faker'
 
 gem 'devise'
 gem 'will_paginate'

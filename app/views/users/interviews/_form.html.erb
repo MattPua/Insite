@@ -8,7 +8,7 @@ Schedule a new interview <%= "with " + @company.name if !@company.nil? %>
     <%= f.input :company_name %> 
     <!-- Place company.name into text_field or use javascript to hide this field and automatically send value-->
     <%= f.input :position %>
-
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
 
   <div class="form-actions">

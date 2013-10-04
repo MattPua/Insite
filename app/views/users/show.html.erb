@@ -6,22 +6,7 @@
 
 <%= link_to "My Interviews", interviews_path %>
 
-<div class="stats">
-  <a href="">
-    <strong id="following" class="stat">
-      <%= @companies.count %>
-    </strong>
-    Companies connected with
-  </a>
-</div>
- <% @companies.each do |company| %>
-                        <div class="profile">
 
-                            <h3 class="name">
-                                <%= link_to "#{company.name}", company_path(company)%>
-                            </h3>
-                        </div>
-                        <% end %>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

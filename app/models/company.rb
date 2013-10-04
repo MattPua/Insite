@@ -12,11 +12,22 @@
 
 class Company < ActiveRecord::Base
 	after_initialize :default_values
-  attr_accessible :name, :company_id, :connections, :industry
+  	attr_accessible :name, :company_id, :connections, :industry
 
-  has_many :users, through: :relationships, source: :user
-  has_many :relationships, foreign_key: "company_id", dependent: :destroy
-  has_many :interviews, through: :interviews, source: :interview
+  #has_many :users, through: :relationships, source: :user
+  #has_many :relationships, foreign_key: "company_id", dependent: :destroy
+  #has_many :interviews, through: :interviews, source: :interview
+
+
+
+
+	has_many :interviews
+	has_many :users, through: :interviews  
+  # Company has many interviews
+  # Company has many users through interviews
+
+
+
   validates :name, 
   	uniqueness: {
   		case_sensitive: false,

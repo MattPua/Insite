@@ -16,9 +16,11 @@ namespace :db do
       end
       10.times do |n|
       name = Faker::Name.name
+      user_id = 1
       position="test-#{n+1}"
       Interview.create!(company_name: name,
-                        position: position)
+                        position: position,
+                        user_id: user_id)
     end
 
 

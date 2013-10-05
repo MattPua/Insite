@@ -21,12 +21,14 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
         2.times do |i|
-        name = Faker::Name.name
-        user_id = n
+        name = array[(n)]
+        user_id = n+1
+        company_id = n
         position="test-#{i+1}"
         Interview.create!(company_name: name,
                           position: position,
-                          user_id: user_id)
+                          user_id: user_id,
+                          company_id: company_id)
         end
     end
 

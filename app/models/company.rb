@@ -11,7 +11,7 @@
 #
 
 class Company < ActiveRecord::Base
-	after_initialize :default_values
+	
   attr_accessible :name, :company_id, :connections, :industry
 
   #has_many :users, through: :relationships, source: :user
@@ -34,8 +34,5 @@ class Company < ActiveRecord::Base
   	},
   	presence: true
 
-  	private
-  		def default_values
-  			self.connections=0
-  		end
+
 end

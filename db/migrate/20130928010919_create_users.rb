@@ -15,7 +15,6 @@ class CreateUsers < ActiveRecord::Migration
 
     create_table :companies do |t|
       t.string :name
-      t.integer :connections, :default => 0
       t.string :industry
 
       t.timestamps
@@ -28,7 +27,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :company_id
       t.string :company_name
       t.string :position
-
+      t.datetime :date
       t.timestamps
     end
   end

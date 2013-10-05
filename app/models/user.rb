@@ -69,29 +69,29 @@ class User < ActiveRecord::Base
     }
 
   
- #  validates :email,
- #    uniqueness: {
- #      case_sensitive: false,
- #    },
- #    presence: true,
- #    format: {
- #      with: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/i,
- #    }
+   validates :email,
+     uniqueness: {
+       case_sensitive: false,
+     },
+     presence: true,
+     format: {
+       with: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/i,
+     }
 
- #  validates_presence_of :encrypted_password
+   validates_presence_of :encrypted_password
 
- #  validates :phone,
- #    :allow_blank => true,
- #    length: {
- #      minimum: 10,
- #      maximum: 12,
- #      too_short:"must have %{count} numbers at minimum",
- #      too_long:"must have %{count} numbers at maximum"
- #    },
- #    format:{
- #      with:/\A[0-9]{3}-?[0-9]{3}-?[0-9]{4}\Z/,
- #      message:"Please enter your 10 digit phone number"
- #    }
+  validates :phone,
+    :allow_blank => true,
+    length: {
+      minimum: 10,
+      maximum: 12,
+      too_short:"must have %{count} numbers at minimum",
+      too_long:"must have %{count} numbers at maximum"
+    },
+    format:{
+      with:/\A[0-9]{3}-?[0-9]{3}-?[0-9]{4}\Z/,
+      message:"Please enter your 10 digit phone number"
+    }
 
 def self.search(search)
   @user = User.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])

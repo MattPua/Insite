@@ -5,7 +5,16 @@
 </div>
 
 <%= link_to "My Interviews", interviews_path %>
-
+<% if !@interviews.nil? %>
+	<p>You have <%= @interviews.count %> interviews coming up!</p>
+	<% @interviews.each do |interview| %>
+		<p><%= interview.position%> @ <%= interview.company_name %></p>
+	<% end %>
+<% else %>
+	<p>Schedule an interview here!</p>
+<% end %>
+	
+<br/>
 
 
 

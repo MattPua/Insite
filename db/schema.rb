@@ -15,10 +15,9 @@ ActiveRecord::Schema.define(:version => 20130928045138) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
-    t.integer  "connections", :default => 0
     t.string   "industry"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "interviews", :force => true do |t|
@@ -26,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20130928045138) do
     t.integer  "user_id"
     t.string   "company_name"
     t.string   "position"
+    t.datetime "date"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end

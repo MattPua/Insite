@@ -12,7 +12,7 @@ class HomeController < ApplicationController
   def main 
 	 @user = User.new
 	 @users = User.all
-   # @company = Interview.where(:), ned to sort by my recent interview
+   
   end
 
   def get_current_user

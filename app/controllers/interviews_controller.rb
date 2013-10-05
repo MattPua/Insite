@@ -41,7 +41,20 @@ class InterviewsController < ApplicationController
   # POST /interviews.json
   def create
     @interview = Interview.new(params[:interview])
-
+    #@company=Company.where(:name => params[:interview][:company_name])
+    @company=Company.where("name= ?", params[:interview][:company_name]).first
+    if @company.nil?
+      @company=Company.new
+      @company.name=params[:interview][:company_name]
+      if !@company.save
+        format.html { render "/users/interviews/new"}
+        format.json {render json: @company.errors, status: :unprocessable_entity}
+      end
+      # Need to double check this works properly and create better fall-back
+    end
+    # Checks all companies to see if the company already exists, don't know why I have to grab first though.
+    # Need to probably fix that. also move to Helpers
+    @interview.company_id = @company.id
     respond_to do |format|
       if @interview.save
         format.html { redirect_to @interview, notice: 'Interview was successfully created.' }

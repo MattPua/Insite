@@ -14,5 +14,8 @@ class Interview < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :company
+
+  # Need to place in date time variable for when the interview is
+
   #has_many 	 :relationships, foreign_key:"interview_id", dependent: :destroy
 end

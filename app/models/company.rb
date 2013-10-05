@@ -12,7 +12,7 @@
 
 class Company < ActiveRecord::Base
 	after_initialize :default_values
-  	attr_accessible :name, :company_id, :connections, :industry
+  attr_accessible :name, :company_id, :connections, :industry
 
   #has_many :users, through: :relationships, source: :user
   #has_many :relationships, foreign_key: "company_id", dependent: :destroy

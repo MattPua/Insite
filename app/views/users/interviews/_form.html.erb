@@ -1,4 +1,4 @@
-Schedule a new interview <%= "with " + @company.name if !@company.nil? %>
+
 <!-- Must create new company when user enters a new interview for a company that does not yet exist -->
 <%= simple_form_for(@interview) do |f| %>
   <%= f.error_notification %>
@@ -10,7 +10,7 @@ Schedule a new interview <%= "with " + @company.name if !@company.nil? %>
     <%= f.input :position %>
     <%= f.hidden_field :user_id, :value => current_user.id %> 
     <!-- Use above to send value into newly created object by default. -->
-    <!-- f.hidden_field :company_id, :value => VALUE OF COMPANY ID %> -->
+    <%= f.hidden_field :company_id %> 
     <!-- Need to search for company from above input and check if company already exists. If company exists, place 
     company_id within interview. Else, need to create an entirely new company from here -->
   </div>

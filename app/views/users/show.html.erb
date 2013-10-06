@@ -7,6 +7,8 @@
 <%= link_to "My Interviews", interviews_path %>
 <% if !@interviews.nil? %>
 	<p>You have <%= @interviews.count %> interviews coming up!</p>
+	<p> Your next interview is in ..... </p>
+	
 	<% @interviews.each do |interview| %>
 		<p><%= interview.position%> @ <%= interview.company_name %> <%= "scheduled on " + interview.date.to_formatted_s(:long) unless interview.date.nil? %></p> 
 	<% end %>

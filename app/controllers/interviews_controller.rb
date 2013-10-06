@@ -13,6 +13,7 @@ class InterviewsController < ApplicationController
   # GET /interviews/1
   # GET /interviews/1.json
   def show
+    @user=current_user
     @interview = Interview.find(params[:id])
     @company = Company.find_by_name(@interview.company_name)
     respond_to do |format|

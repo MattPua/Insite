@@ -8,7 +8,7 @@
 <% if !@interviews.nil? %>
 	<p>You have <%= @interviews.count %> interviews coming up!</p>
 	<% @interviews.each do |interview| %>
-		<p><%= interview.position%> @ <%= interview.company_name %> scheduled for <%=interview.date%></p> 
+		<p><%= interview.position%> @ <%= interview.company_name %> scheduled on <%=interview.date.to_formatted_s(:long) unless interview.date.nil?%></p> 
 	<% end %>
 <% else %>
 	<p>Schedule an interview here!</p>

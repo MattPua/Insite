@@ -10,7 +10,7 @@
 	<p> Your next interview is in ..... </p>
 	
 	<% @interviews.each do |interview| %>
-		<p><%= interview.position%> @ <%= interview.company_name %> <%= "scheduled on " + interview.date.to_formatted_s(:long) unless interview.date.nil? %></p> 
+		<p><%= interview.position%> @ <%= interview.company_name %> <%= "scheduled on " + interview.date.to_formatted_s(:date) unless interview.date.nil? %></p> 
 	<% end %>
 <% else %>
 	<p>Schedule an interview here!</p>

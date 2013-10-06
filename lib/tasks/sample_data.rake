@@ -24,11 +24,13 @@ namespace :db do
         name = array[(n)]
         user_id = n+1
         company_id = n
+        date=DateTime.now
         position="test-#{i+1}"
         Interview.create!(company_name: name,
                           position: position,
                           user_id: user_id,
-                          company_id: company_id)
+                          company_id: company_id,
+                          date: date)
         end
     end
 

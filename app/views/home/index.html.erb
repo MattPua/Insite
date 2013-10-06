@@ -1,176 +1,219 @@
 ﻿<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Home</title>
-  <!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+	<meta charset="utf-8">
+	<title>Home</title>
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
   
-  <style type="text/css">
-      .center {
-      float: none;
-      margin-left: auto;
-      margin-right: auto;
-      }
+	<style type="text/css">
+		.center {
+		float: none;
+		margin-left: auto;
+	    margin-right: auto;
+		}
 
+		#sign-up
+		{
+		background-image: url(<%= asset_path('feet-image.jpg') %>);
+		background-size: 100%;
+	    background-repeat:no-repeat;
+		height:800px;
+		min-width: 900px;
+		margin-top: -20px; /*hack for the top margin */s
+		}
 
-      #sign-up
-      {
-      background-image: url(<%= asset_path('feet-image.jpg') %>);
-            background-size: 100%;
-            background-repeat:no-repeat;
-            height:800px;
-            margin-top: -20px; /*hack for the top margin */s
-            }
+		#sign-up #sign-up-content
+		{
+		padding-top: 150px;
+		}
 
-            #sign-up #sign-up-content{
-            padding-top: 150px;
-            }
+		#sign-up #sign-up-content h1
+        {
+        margin:0px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        color: white;
+        text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+		font-family: 'Raleway', sans-serif;
+        font-size: 40px;
+        }
 
+        #sign-up #sign-up-content #sign-up-form
+		{
+        height: 250px;
+        width:600px;
+        position: relative;
+        }
+		
+		#sign-up #sign-up-content #sign-up-form #sign-up-form-background
+		{
+        background: white;
+        filter:alpha(opacity=20); /* IE */
+        -moz-opacity:0.2; /* Mozilla */
+        opacity: 0.2; /* CSS3 */
+        border-radius: 8px;
+        -moz-border-radius: 8px;
+        -webkit-border-radius: 8px;
+        }
 
-            #sign-up #sign-up-content h1
-            {
-            margin:0px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-            color: white;
-            text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-			font-family: 'Raleway', sans-serif;
-            font-size: 40px;
-            }
+        #sign-up #sign-up-content #sign-up-form #sign-up-form-content
+		{
+        padding: 50px 25px;
+        }
 
-            #sign-up #sign-up-content #sign-up-form{
-            height: 250px;
-            width:600px;
-            position: relative;
-            }
+        #sign-up #sign-up-content #sign-up-form #sign-up-form-background,
+        #sign-up #sign-up-content #sign-up-form #sign-up-form-content
+		{
+        height: 100%;
+        width:100%;
+        position: absolute;
+        }
 
-            #sign-up #sign-up-content #sign-up-form #sign-up-form-background{
-            background: white;
-            filter:alpha(opacity=20); /* IE */
-            -moz-opacity:0.2; /* Mozilla */
-            opacity: 0.2; /* CSS3 */
-            border-radius: 8px;
-            -moz-border-radius: 8px;
-            -webkit-border-radius: 8px;
-            }
+        .marketing-message
+		{
+        width: 100%;
+        height: auto;
+        padding: 100px;
+		margin: 0px;
+		min-width: 900px;
+        }
 
-            #sign-up #sign-up-content #sign-up-form #sign-up-form-content{
-            padding: 50px 25px;
-            }
+        .marketing-message div
+		{
+		width: 100%:
+        height: 100%;
+        }
 
-            #sign-up #sign-up-content #sign-up-form #sign-up-form-background,
-            #sign-up #sign-up-content #sign-up-form #sign-up-form-content{
-            height: 100%;
-            width:100%;
-            position: absolute;
-            }
+		#developer
+		{
+		width: 900px;
+		margin-left: auto;
+		margin-right: auto;
+		overflow: hidden;
+		}
 
-            .marketing-message{
-            width: 100%;
-            height: 500px;
-            padding: 100px; 100px;
-            }
+		.marketing-message-image
+		{
+		display: block;
+		text-align: center;
+		}
 
-            .marketing-message div{
-            height: 100%;
-            }
+		.marketing-message-image .img-circle
+		{
+		border: 5px solid #e5e5e5;
+		}
 
-            .marketing-message-content h2{
-            margin:30px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-			font-family: 'Raleway', sans-serif;
-			font-size: 40px;
+		.marketing-message img
+		{
+			width: 100%;
+			max-width: 300px;
+			min-width: 200px;
+			margin-left: auto;
+			margin-right: auto;
+		}
 
-            }
+        h2
+		{
+        margin:30px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+		font-family: 'Raleway', sans-serif;
+		font-size: 40px;
+		}
 
-            .marketing-message-content p{
-            text-align:justify;
-            font-family: 'Raleway', sans-serif;
-			font-size: 20px;
-            line-height: 24px;
-            margin: 20px;
-            margin-left: 20px;
-            margin-right: 20px;
-            }
+        p
+		{
+        text-align:justify;
+        font-family: 'Raleway', sans-serif;
+		font-size: 20px;
+        line-height: 24px;
+        margin: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        }
 
-			 a:hover{
-			  background-color: transparent;
-			 }
+		a:hover
+		{
+		background-color: transparent;
+		}
 
-            #footer{
-            height: 100px;
-            width: 100%;
-            padding: 20px;
-            }
+		.credit
+		{
+		height: auto;
+		padding:10px;
+		float: left;
+		}
+		
+		.credit .content
+		{
+		background-color: white;
+		width: 100%;
+		height: auto%;
+		}
+	
+		.credit .content img
+		{
+		background-color: white;
+		width: 200px;
+		height: 200px;
+		margin: 20px;
+		}
+
+		.credit .content p
+		{
+		margin-top: -5px;
+		text-align: center;
+		font-size: 25px;
+		}
+
+        #footer
+		{
+        height: 100px;
+        width: 100%;
+        padding: 20px;
+        }
             
-            #footer img{
-            height:50px;
-            }
+        #footer img
+		{
+        height:50px;
+        }
 
-        </style>
+	</style>
 </head>
 
 
 <body>
-	<!--<div id="header">
-		<!-- for transparent header background 
-	 	<div id="header-background"></div>
-        <div id="header-content" class="row">
-				<div id="logo" class="pull-left" style="margin-left: 10px; height: 100%">
-				<%= link_to image_tag("insite-logo.png"),root_path %>
-				</div>
-				<div id="header-nav" class="pull-right" style="margin-top: 30px; margin-right: 10px; height: 100%">
-					
-						<% if !user_signed_in? %>
-							<%= link_to "Log In", new_user_session_path, class:"btn btn-lg btn-default"%>
-							<%= link_to "Sign Up", new_user_registration_path , class:"btn btn-lg btn-warning"%>
-						<% else %>
-							<%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"btn btn-lg btn-warning" %>
-						<% end %>
-				</div>
-        </div>
-    </div>-->
+	<!-- quick sign up -->
     <div id="sign-up">
-        <div id="sign-up-content">
-            <div class="center" style="width:650px; margin-bottom:20px;">
-				<% if !user_signed_in? %>
-                <h1> Where will you be next summer? </h1>
-				<% else %>
-				<h1> Welcome back, <%= @user.name %> </h1>
-				<% end %>
+		<div id="sign-up-content">
+			<div class="center" style="width:650px; margin-bottom:20px;">
+				<h1> Where will you be next summer? </h1>
             </div>
-			<% if !user_signed_in? %>
             <div id="sign-up-form" class="center">
                 <div id="sign-up-form-background"></div>
                 <div id="sign-up-form-content">                  
-                        <div class="form-group">
-
-                            <input type="email" class="form-control input-lg" placeholder="Your UTOR email address">
-
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control input-lg" placeholder="Password">
-                        </div>
+					<div class="form-group">
+						<input type="email" class="form-control input-lg" placeholder="Your UTOR email address">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-lg" placeholder="Password">
+                    </div>
                     <form>
-					<button type="submit" class="btn btn-lg btn-warning pull-right">Sign Up</button>
-                    </form>	
-				
+						<button type="submit" class="btn btn-lg btn-warning pull-right">Sign Up</button>
+                    </form>			
                 </div>
             </div>
-			<% end %>
         </div>
-		
     </div>
-    <div id="message-1" class="marketing-message row">
-        <div class="marketing-message-image col-md-3 ">
-            <img src="http://placehold.it/300x300">
 
+    <div id="message-1" class="marketing-message row">
+        <div class="marketing-message-image col-md-4 ">
+            <img src="http://placehold.it/300x300">
         </div>
         <div class="marketing-message-content col-md-8 ">
             <h2>Need help with your upcoming interview?</h2>
@@ -178,9 +221,8 @@
         </div>
     </div>
 
-
-    <div id="message-2" class="marketing-message" style="background-color:#e5e5e5;">
-        <div class="marketing-message-image col-md-3 ">
+    <div id="message-2" class="marketing-message row" style="background-color:#e5e5e5;">
+        <div class="marketing-message-image col-md-4 ">
             <%= image_tag("marketing-1.png") %>
         </div>
         <div class="marketing-message-content col-md-8 ">
@@ -189,8 +231,8 @@
         </div>
     </div>
 
-    <div id="message-3" class="marketing-message">
-        <div class="marketing-message-image col-md-3 ">
+    <div id="message-3" class="marketing-message row">
+        <div class="marketing-message-image col-md-4">
             <%= image_tag("sq-logo.png") %>
         </div>
         <div class="marketing-message-content col-md-8 ">
@@ -199,11 +241,40 @@
         </div>
     </div>
 
+	<div id="message-4" class="marketing-message row" style="background-color:#e5e5e5; padding: 0px;">
+		<h2>The Developers</h2>
+		<div id= "developer" class="row">
+		<div class="credit" style="width: 300px;">
+			<div class="content row">
+				<div class="marketing-message-image">
+					<%= image_tag("ming-yi-bian.jpg", :class => 'img-circle')%>
+				</div>
+				<p> MingYi Bian </p>
+			</div>
+		</div>
+		<div class="credit" style="width: 300px;">
+			<div class="content row">
+				<div class="marketing-message-image">
+					<%= image_tag("surprise-me.jpg", :class => 'img-circle') %>
+				</div>
+				<p> Matt Pua </p>
+			</div>
+		</div>
+		<div class="credit" style="width: 300px;">
+			<div class="content row">
+				<div class="marketing-message-image">
+					<%= image_tag("louisa-chong.jpg", :class => 'img-circle') %>
+				</div>
+				<p> Louisa Chong </p>
+			</div>
+		</div>
+		</div>
+	</div>
 
     <div id="footer" style="background-color:#e5e5e5;">
-            <%= link_to image_tag("social-facebook.png"),  "https://www.facebook.com/UofTYoureNext"%>
-            <%= link_to image_tag("social-twitter.png"),  "https://twitter.com/UofT_YoureNext" %>
-            <%= link_to image_tag("social-linkedin.png"),  "http://www.linkedin.com/company/you're-next-career-network" %>
+		<%= link_to image_tag("social-facebook.png"), "https://www.facebook.com/UofTYoureNext"%>
+        <%= link_to image_tag("social-twitter.png"), "https://twitter.com/UofT_YoureNext"%>
+        <%= link_to image_tag("social-linkedin.png"), "http://www.linkedin.com/company/you're-next-career-network"%>
         <div id="company-logo" class="pull-right" style="margin-right: 10px; height: 100%">
             <%= image_tag("YNCN-boxes-text.png") %>
         </div>

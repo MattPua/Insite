@@ -14,16 +14,17 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="company-name">
                     <div id="wrapper">
-                        <% @users.each do |company_user| %>
+                        <% @users.each do |user| %>
                         <div class="profile">
-                            <!--<%= link_to (image_tag("http://www.gravatar.com/avatar.php?gravatar_id=#{company_user.name}", :alt => 'Avatar', :class => 'img-circle')),user_path(company_user) %> -->
-                            <%= gravatar_for(company_user) %>
+                            
+                            <%= gravatar_for(user) %>
                             <h3 class="name">
-                                <%= company_user.name %>
+                                <%= user.name %>
                             </h3>
                             <h4 class="position">
-                                <%= company_user.email %>
+                                <%= user.email %>
                             </h4>
+
                             <!-- DO NOT HAVE LOCATION ENTITY -->
                         </div>
                         <% end %>

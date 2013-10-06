@@ -12,6 +12,7 @@ class HomeController < ApplicationController
   def main 
 	 @user = User.new
 	 @users = User.all
+   
   end
 
   def get_current_user

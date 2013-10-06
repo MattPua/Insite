@@ -1,10 +1,26 @@
 <p id="notice"><%= notice %></p>
-<%= render partial: '/users/work_form' if signed_in? %>
+
 <p>
   <b>Name:</b>
   <%= @company.name %>
 </p>
-
-
+<p>
+  <b>Industry:</b>
+  <%= @company.industry %>
+</p>
+<p>
+  <b>Number of Connections at <%= @company.name %>:</b>
+  <%= @count %>
+</p>
+<p>
+	<b> Interviews scheduled at <%= @company.name %>: </b>
+	<br/>
+	<% @interviews.each do |interview| %>
+	<%= interview.user.name %>
+	- 
+	<%= interview.position %>
+	<br/>
+	<% end %>
+</p>
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>

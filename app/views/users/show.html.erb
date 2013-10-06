@@ -4,24 +4,18 @@
   <%= @user.name %>
 </div>
 
+<%= link_to "My Interviews", interviews_path %>
+<% if !@interviews.nil? %>
+	<p>You have <%= @interviews.count %> interviews coming up!</p>
+	<% @interviews.each do |interview| %>
+		<p><%= interview.position%> @ <%= interview.company_name %> <%= "scheduled on " + interview.date.to_formatted_s(:long) unless interview.date.nil? %></p> 
+	<% end %>
+<% else %>
+	<p>Schedule an interview here!</p>
+<% end %>
+	
+<br/>
 
-
-<div class="stats">
-  <a href="<%= worked_at_user_path(@user) %>">
-    <strong id="following" class="stat">
-      <%= @companies.count %>
-    </strong>
-    Companies connected with
-  </a>
-</div>
- <% @companies.each do |company| %>
-                        <div class="profile">
-
-                            <h3 class="name">
-                                <%= link_to "#{company.name}", company_path(company)%>
-                            </h3>
-                        </div>
-                        <% end %>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

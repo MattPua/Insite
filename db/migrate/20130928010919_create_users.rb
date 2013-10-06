@@ -12,5 +12,23 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    create_table :companies do |t|
+      t.string :name
+      t.string :industry
+
+      t.timestamps
+    end
+
+    create_table :interviews do |t|
+      t.belongs_to :company
+      t.belongs_to :user
+      t.integer :user_id
+      t.integer :company_id
+      t.string :company_name
+      t.string :position
+      t.datetime :date
+      t.timestamps
+    end
   end
 end

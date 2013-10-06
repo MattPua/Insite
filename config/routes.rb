@@ -1,7 +1,4 @@
 Hackathon::Application.routes.draw do
-  resources :interviews
-
-
   devise_for :users, :controllers => { :registrations => "registration" }
 
   get "home/index"
@@ -13,19 +10,14 @@ Hackathon::Application.routes.draw do
     end
   end
 
-  
-
-
   resources :users do
     member do
+      resources :interviews 
       get :worked_at   #get action for companies that you have worked at or are currently working at
-      get :my_interviews
-    end
-    
+    end  
   end
  
  resources :relationships, only: [:create, :delete]
- resources :interview_relationships, only: [:create, :delete]
   root to:'home#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.

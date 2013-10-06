@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  before_filter :authenticate_user!
   # GET /companies
   # GET /companies.json
   def index
@@ -14,7 +15,10 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @company = Company.find(params[:id])
-    @user = current_user
+    @interviews= Interview.where(:company_name => @company.name)
+    @count = @company.users.count
+    # Perhaps transfer the above searching code into model for simplicity
+    # Can also change this to find interviews through company_id instead, that's probably the better choice
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @company }
@@ -41,7 +45,6 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(params[:company])
-
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: 'Company was successfully created.' }

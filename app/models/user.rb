@@ -10,6 +10,7 @@
 #  faculty                :string(255)
 #  phone                  :integer
 #  registerterms          :boolean
+#  position               :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  encrypted_password     :string(255)      default(""), not null

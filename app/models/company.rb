@@ -2,12 +2,11 @@
 #
 # Table name: companies
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  connections :integer
-#  industry    :string(255)
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  industry   :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 class Company < ActiveRecord::Base

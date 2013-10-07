@@ -98,29 +98,12 @@ def self.search(search)
   @user = User.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
 end
 
-def works_for?(other_company)
-	relationships.find_by_company_id(other_company.id)
+def next_interview
+  self.interviews.order("date").first
 end
 
-def works_at!(other_company)
-	relationships.create!(company_id: other_company.id, user_id: self.id)
-  #relationships.save(:validate => false)
-end 
-
-def fired!(other_company)
-  relationships.find_by_company_id(other_company.id).destroy!
-end
-
-def interviewing_with?(interview,company)
-  relationships.where(interview_id: interview.id, company_id: company.id)
-end
-
-def schedule_interview(interview,company)
-  relationships.create!(interview_id: interview.id, company_id: company.id)
-end
-
-def finished_interview!(interview, company)
-  relationships.where(interview_id: interview.id, company_id: company.id).destroy!
+def has_interview?
+  self.interviews.present?
 end
 
 

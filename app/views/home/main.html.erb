@@ -24,7 +24,9 @@
                             <h4 class="position">
                                 <%= user.email %>
                             </h4>
-
+                            <h4 class="interview">
+                              <%= "Next interview is at #{user.next_interview.company_name}" if user.has_interview? %>
+                            </h4>
                             <!-- DO NOT HAVE LOCATION ENTITY -->
                         </div>
                         <% end %>
@@ -72,8 +74,8 @@
 
       .profile {
       background: #e6eeec;
-      width: 290px;
-      height: 290px;
+      width: 310px;
+      height: 310px;
       display: block;
       margin: 5px;
       float:left;
@@ -87,7 +89,7 @@
       margin: 15px auto;
       }
 
-      .profile .name, .profile .position{
+      .profile .name, .profile .position, .profile .interview{
       margin-left: 20px;
       margin-right: 20px;
       text-align: center;

@@ -18,7 +18,12 @@ class Interview < ActiveRecord::Base
   belongs_to :user
   belongs_to :company
 
-  # Need to place in date time variable for when the interview is
+  def get_date
+  	self.date.to_formatted_s(:date)
+  end
 
-  #has_many 	 :relationships, foreign_key:"interview_id", dependent: :destroy
+  def is_scheduled?
+  	self.date.present?
+  end
+
 end

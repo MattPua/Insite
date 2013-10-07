@@ -5,15 +5,36 @@
 </div>
 
 <%= link_to "My Interviews", interviews_path %>
-<% if !@interviews.nil? %>
-	<p>You have <%= @interviews.count %> interviews coming up!</p>
-	<p> Your next interview is in ..... </p>
-	
+<% if @interviews.present? %>
+	<p>
+	<% if is_current_user(@user) %>
+	You have
+	<% else %>
+		<%= @user.name %> has
+	<% end %>
+	 <%= @interviews.count %> interviews coming up!</p>
+
+		<b> 	
+	<% if is_current_user(@user) %>
+	Your
+	<% else %>
+		<%= @user.name %>'s
+	<% end %> next interview is on <%= @user.next_interview.get_date if @user.next_interview.is_scheduled?%></b>
+
+	<!-- Need to move above ruby code into controller or model, also make code cleaner. -->
 	<% @interviews.each do |interview| %>
-		<p><%= interview.position%> @ <%= interview.company_name %> <%= "scheduled on " + interview.date.to_formatted_s(:date) unless interview.date.nil? %></p> 
+
+		<p><%= interview.position%> @ <%= interview.company_name %> <%= "scheduled on " + interview.get_date unless !interview.is_scheduled? %></p> 
+
 	<% end %>
 <% else %>
-	<p>Schedule an interview here!</p>
+<p>
+	<% if is_current_user(@user) %>
+		<%= link_to "Schedule an interview here!", new_interview_path %>
+	<% else %>
+		Nothing to do here.
+	<% end %>
+	</p>
 <% end %>
 	
 <br/>

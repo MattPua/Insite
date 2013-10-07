@@ -6,6 +6,13 @@ module UsersHelper
 	    link_to (image_tag(gravatar_url, :alt => 'Avatar', class: "img-circle gravatar", style:"height:175px; width:175px;")) , user_path(user)
   	end
 
+  	def is_current_user(user)
+  		if user==current_user
+  			return true
+  		else
+  			return false
+  		end
+  	end
 
 
 

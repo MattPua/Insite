@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 
 
 
-  has_many :interviews
+  has_many :interviews, dependent: :destroy
   has_many :companies, through: :interviews
   accepts_nested_attributes_for :companies 
   # Lets companies be created from users view

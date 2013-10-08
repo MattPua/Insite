@@ -20,7 +20,7 @@ class Company < ActiveRecord::Base
 
 
 
-	has_many :interviews
+	has_many :interviews, dependent: :destroy
 	has_many :users, through: :interviews  
   # Company has many interviews
   # Company has many users through interviews

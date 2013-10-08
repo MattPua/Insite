@@ -32,6 +32,7 @@
                 </div>
                 <div class="tab-pane active" id="company-name">
                     <div id="wrapper">
+                    <% if !@relevant_users.nil? %>
                         <% @relevant_users.each do |user| %>
                         <div class="profile">
                             
@@ -48,6 +49,7 @@
                             <!-- DO NOT HAVE LOCATION ENTITY -->
                         </div>
                         <% end %>
+                      <% end %>
                     </div>
                 </div>
 

@@ -1,9 +1,11 @@
 class InterviewsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /interviews
   # GET /interviews.json
   def index
-    @user = current_user
-    @interviews = @user.interviews
+    
+    @interviews = Interview.find(params[:id])
+
 
     respond_to do |format|
       format.html  { render "/users/interviews/index" }# index.html.erb
@@ -14,11 +16,10 @@ class InterviewsController < ApplicationController
   # GET /interviews/1
   # GET /interviews/1.json
   def show
-    @user=current_user
     @interview = Interview.find(params[:id])
     @company = Company.find_by_name(@interview.company_name)
     respond_to do |format|
-      format.html { render "/users/interviews/show" }# show.html.erb
+      format.html { render "users/interviews/show" }# show.html.erb
       format.json { render json: @interview }
     end
   end
@@ -37,6 +38,10 @@ class InterviewsController < ApplicationController
   # GET /interviews/1/edit
   def edit
     @interview = Interview.find(params[:id])
+    respond_to do |format|
+      format.html { render "/users/interviews/edit"} # edit.html.erb
+      format.json { render json: @interview }
+    end
   end
 
   # POST /interviews
@@ -91,8 +96,9 @@ class InterviewsController < ApplicationController
     @interview.destroy
 
     respond_to do |format|
-      format.html { redirect_to interviews_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end
+
 end

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :admin_user, only: :destroy
 
 
   # GET /users
@@ -24,9 +25,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+    @user=User.find(params[:id])
     @companies=@user.companies
-    @interviews = @user.interviews
+    @interviews = @user.interviews.where(:status=>1)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -42,7 +43,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    @user=User.find(params[:id])
   end
 
 
@@ -50,8 +51,8 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     
-    @user = User.new(params[:user])
-
+    # @user = User.new(params[:user])
+    @user= User.new(user_params)
 
    respond_to do |format|
      if @user.save
@@ -75,8 +76,7 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @user = User.find(params[:id])
-
+    @user=User.find(params[:id])
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -91,7 +91,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user = User.find(params[:id])
+    @user=User.find(params[:id])
     @user.destroy
 
     respond_to do |format|
@@ -100,8 +100,9 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-
-
+private
+  def admin_user
+    redirect_to(:root) unless current_user.admin?
+  end
 
 end

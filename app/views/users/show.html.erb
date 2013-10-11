@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 <div style="height:100%; width:100%; border:3px solid black;">
   <%= gravatar_for @user %>
-  <%= @user.name %>
+  <%= @user.name %> | 
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', :back %>
 </div>
 
-<%= link_to "My Interviews", interviews_path %>
 <% if @interviews.present? %>
 	<p>
 	<% if is_current_user(@user) %>
@@ -12,7 +13,7 @@
 	<% else %>
 		<%= @user.name %> has
 	<% end %>
-	 <%= @interviews.count %> interviews coming up!</p>
+	 <%= @interviews.count %> <%="interview".pluralize(@interviews.size)%> coming up!</p>
 
 		<b> 	
 	<% if is_current_user(@user) %>
@@ -37,9 +38,35 @@
 	</p>
 <% end %>
 	
+<h1>Listing interviews</h1>
+
+<table>
+  <tr>
+    <th>Company name</th>
+    <th>Position</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @interviews.each do |interview| %>
+  <tr>
+    <td><%= interview.company_name %></td>
+    <td><%= interview.position %></td>
+    <td><%= link_to 'Show', interview %></td>
+    <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
+    <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<br />
+
+<%= link_to 'New Interview', new_interview_path %>
+
 <br/>
 
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+

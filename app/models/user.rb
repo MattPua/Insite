@@ -25,7 +25,7 @@
 #
 
 class User < ActiveRecord::Base
-  
+  before_save { self.email = email.downcase }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -35,30 +35,17 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :company_id
   attr_accessible :faculty, :name, :phone, :program, :registerterms, :year, :position
  
-  #has_many :relationships, foreign_key: "user_id", dependent: :destroy 
-
-  #has_many :companies, through: :relationships, source: :company
-  
-  #has_many :companies, through: :interviews, scope: :interview
-
-  #has_many  :interviews, through: :relationships, source: :interview
-  #has_many :interviews, dependent: :destroy
-  #has_many  :relationships, foreign_key: "interview_id", dependent: :destroy
-
-
-
-
   has_many :interviews, dependent: :destroy
   has_many :companies, through: :interviews
-  accepts_nested_attributes_for :companies 
+  accepts_nested_attributes_for :companies, :interviews
   # Lets companies be created from users view
   # User has many interviews
   # User has many companies through interviews
 
 
 
- validates :name, #:uniqueness => true,
-    uniqueness: true,
+ validates :name,
+    uniqueness: true, #Might need to not enable this, all dem asians.
     presence: true,
     length: { 
       maximum: 100, 

@@ -5,6 +5,7 @@ gem 'thin'
 gem 'better_errors'
 gem 'flay'
 gem 'faker'
+gem 'activesupport'
 
 gem 'devise'
 gem 'will_paginate'

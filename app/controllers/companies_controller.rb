@@ -1,9 +1,11 @@
 class CompaniesController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    # Get all companies alphabetized
+    @companies = Company.order("LOWER(name)")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +17,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @company = Company.find(params[:id])
+    # Get all interviews with same company_name as @company
     @interviews= Interview.where(:company_name => @company.name)
     @count = @company.users.count
     # Perhaps transfer the above searching code into model for simplicity

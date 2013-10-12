@@ -12,7 +12,7 @@ Hackathon::Application.routes.draw do
 
   resources :users do
     member do
-      resources :interviews 
+      resources :interviews
       get :worked_at   #get action for companies that you have worked at or are currently working at
     end  
   end

@@ -1,19 +1,20 @@
-
-<!-- Must create new company when user enters a new interview for a company that does not yet exist -->
 <%= simple_form_for(@interview) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
 
-    <%= f.input :company_name %> 
+    
+    <%= f.input :company_name%> 
 
     <%= f.input :position %>
+    <%= f.input :status, :collection => [["Yes",2], ["No",1]],as: :radio_buttons, :label =>"Finished your Interview?" %>
+    
     <%= f.hidden_field :user_id, :value => current_user.id %> 
     <!-- Use above to send value into newly created object by default. -->
     <%= f.hidden_field :company_id %> 
-    <b> The date of your interview </b>
+    <b> When is your interview? </b>
     <br/>
-    <%= date_select("interview", "date", start_year: 2010, end_year:2050, prompt: true, use_month_numbers: false, with_css_classes: true,
+    <%= datetime_select("interview", "date", start_year: 2010, end_year:2050, prompt: true, use_month_numbers: false, ampm: true, with_css_classes: true,
                                   discard_day: false, include_blank: false) %>
     <!-- Need to make this a way for users to enter their time for their interview -->
 
@@ -21,5 +22,6 @@
 
   <div class="form-actions">
     <%= f.button :submit %>
+
   </div>
 <% end %>

@@ -25,7 +25,7 @@
 #
 
 class User < ActiveRecord::Base
-  
+  before_save { self.email = email.downcase }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -35,30 +35,15 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :company_id
   attr_accessible :faculty, :name, :phone, :program, :registerterms, :year, :position
  
-  #has_many :relationships, foreign_key: "user_id", dependent: :destroy 
-
-  #has_many :companies, through: :relationships, source: :company
-  
-  #has_many :companies, through: :interviews, scope: :interview
-
-  #has_many  :interviews, through: :relationships, source: :interview
-  #has_many :interviews, dependent: :destroy
-  #has_many  :relationships, foreign_key: "interview_id", dependent: :destroy
-
-
-
-
-  has_many :interviews
+  # A user has many interviews, and the interviews are dependent on the user (if the user is destroyed, the interviews are destroyed)
+  has_many :interviews, dependent: :destroy
+  # A user has many companies through interviews
   has_many :companies, through: :interviews
-  accepts_nested_attributes_for :companies 
+  accepts_nested_attributes_for :companies, :interviews
   # Lets companies be created from users view
-  # User has many interviews
-  # User has many companies through interviews
 
-
-
- validates :name, #:uniqueness => true,
-    uniqueness: true,
+ validates :name,
+    uniqueness: true, #Might need to not enable this, all dem asians.
     presence: true,
     length: { 
       maximum: 100, 
@@ -68,7 +53,6 @@ class User < ActiveRecord::Base
       with: /[\w\-\']+([\s]+[\w\-\']+){1}+/,
       message: "entered must be first and last name"
     }
-
   
    validates :email,
      uniqueness: {
@@ -76,7 +60,8 @@ class User < ActiveRecord::Base
      },
      presence: true,
      format: {
-       with: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/i,
+      # only make @utoronto or @mail.utoronto emails valid
+       with: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@(mail.)?(utoronto)(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/i,
      }
 
    validates_presence_of :encrypted_password
@@ -98,12 +83,24 @@ def self.search(search)
   @user = User.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
 end
 
+# Get the next active interview
 def next_interview
-  self.interviews.order("date").first
+  self.interviews.where(:status=>1).order("date").first
 end
 
-def has_interview?
-  self.interviews.present?
+# Does the user has active interviews
+def has_active_interview?
+  self.interviews.where(:status=>1).present?
+end
+
+# does the user have any finished/archived interviews
+def has_finished_interview?
+  self.interviews.where(:status=>2).present?
+end
+
+# Grab all the active interviews
+def active_interviews
+  self.interviews.where(:status=>1).order("date")
 end
 
 

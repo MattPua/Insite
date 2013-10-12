@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :phone
       t.boolean :registerterms
       t.string :position
-
+      t.boolean :admin, :default => false
       t.timestamps
     end
 
@@ -28,7 +28,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :company_name
       t.string :position
       t.datetime :date
+      t.integer :status, :default =>1
       t.timestamps
     end
+    
   end
 end

@@ -12,9 +12,28 @@
             </ul>
 
             <div class="tab-content">
+                            <div class="tab-pane active" id="company-name">
+                    <div id="wrapper">
+                        <div class="profile">
+                            
+                            <%= gravatar_for(@user) %>
+                            <h3 class="name">
+                                <%= @user.name %>
+                            </h3>
+                            <h4 class="position">
+                                <%= @user.email %>
+                            </h4>
+                            <h4 class="interview">
+                              <%= "Your Next interview is at #{@company.name}" if @user.has_active_interview? %>
+                            </h4>
+                            <!-- DO NOT HAVE LOCATION ENTITY -->
+                        </div>
+                    </div>
+                </div>
                 <div class="tab-pane active" id="company-name">
                     <div id="wrapper">
-                        <% @users.each do |user| %>
+                    <% if !@relevant_users.nil? %>
+                        <% @relevant_users.each do |user| %>
                         <div class="profile">
                             
                             <%= gravatar_for(user) %>
@@ -25,17 +44,18 @@
                                 <%= user.email %>
                             </h4>
                             <h4 class="interview">
-                              <%= "Next interview is at #{user.next_interview.company_name}" if user.has_interview? %>
+                              <%= "Next interview is at #{user.next_interview.company_name}" if user.has_active_interview? %>
                             </h4>
                             <!-- DO NOT HAVE LOCATION ENTITY -->
                         </div>
                         <% end %>
+                      <% end %>
                     </div>
                 </div>
 
 
 			<div class="tab-pane" id="extra"> 
-				TODO
+
 			</div>
 		</div>
 	</div>

@@ -3,9 +3,12 @@
 
   <div class="form-inputs">
 
-    <%= f.input :company_name %> 
+    
+    <%= f.input :company_name%> 
 
     <%= f.input :position %>
+    <%= f.input :status, :collection => [["Yes",2], ["No",1]],as: :radio_buttons, :label =>"Finished your Interview?" %>
+    
     <%= f.hidden_field :user_id, :value => current_user.id %> 
     <!-- Use above to send value into newly created object by default. -->
     <%= f.hidden_field :company_id %> 
@@ -19,5 +22,6 @@
 
   <div class="form-actions">
     <%= f.button :submit %>
+
   </div>
 <% end %>

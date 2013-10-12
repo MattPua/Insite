@@ -31,6 +31,6 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :status, :default =>1
       t.timestamps
     end
-    add_index :interviews, [:company_id, user_id,:position,:status]
+    
   end
 end

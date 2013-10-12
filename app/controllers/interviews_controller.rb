@@ -77,7 +77,11 @@ class InterviewsController < ApplicationController
   # PUT /interviews/1.json
   def update
     @interview = Interview.find(params[:id])
-
+    @company=@interview.company
+    if @company.name!=params[:interview][:company_name]
+      params[:interview][:company_id]=Company.find_by_name(params[:interview][:company_name]).id
+    end
+    # have to watch out when company name doesn't exist
     respond_to do |format|
       if @interview.update_attributes(params[:interview])
         format.html { redirect_to @interview, notice: 'Interview was successfully updated.' }
@@ -93,11 +97,13 @@ class InterviewsController < ApplicationController
   # DELETE /interviews/1.json
   def destroy
     @interview = Interview.find(params[:id])
-    @interview.destroy
+    # @interview.destroy
+    @interview.status=2
+    # don't actually destroy interviews, instead just archive them. Make them not accessible generally
 
     respond_to do |format|
-      format.html { redirect_to :back }
-      format.json { head :no_content }
+      format.html { redirect_to :root }
+      format.json { redirect_to :root }
     end
   end
 

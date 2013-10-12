@@ -86,7 +86,7 @@ def self.search(search)
 end
 
 def next_interview
-  self.interviews.order("date").first
+  self.interviews.where(:status=>1).order("date").first
 end
 
 def has_interview?

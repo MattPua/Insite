@@ -24,7 +24,7 @@
                                 <%= @user.email %>
                             </h4>
                             <h4 class="interview">
-                              <%= "Your Next interview is at #{@company.name}" if @user.has_interview? %>
+                              <%= "Your Next interview is at #{@company.name}" if @user.has_active_interview? %>
                             </h4>
                             <!-- DO NOT HAVE LOCATION ENTITY -->
                         </div>

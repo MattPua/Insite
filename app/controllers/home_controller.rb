@@ -1,8 +1,7 @@
 class HomeController < ApplicationController
-  before_filter :get_current_user
+  # Before all actions, all users must be authenticated
   before_filter :authenticate_user!, except: [:index]
   def index
-
   	@user = User.new
   	if user_signed_in?
   		redirect_to main_path
@@ -11,7 +10,10 @@ class HomeController < ApplicationController
   
   def main 
     @all_users = User.all
-    if @user.has_interview?
+    @user=current_user
+    # If the current_user has any ongoing interviews
+    if @user.has_active_interview?
+      # Get the next upcoming interview
       @company = Company.find(@user.next_interview.company_id)
       @relevant_users=[]
       @all_users.each do |user|
@@ -28,7 +30,5 @@ class HomeController < ApplicationController
   end
 
   private
-  def get_current_user
-  	@user = current_user
-  end
+
 end

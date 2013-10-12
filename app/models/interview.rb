@@ -24,10 +24,12 @@ class Interview < ActiveRecord::Base
   belongs_to :user
   belongs_to :company
 
+  # get the date of the interview
   def get_date
   	self.date.to_formatted_s(:date)
   end
 
+  # Has an interview been scheduled
   def is_scheduled?
   	self.date.present?
   end

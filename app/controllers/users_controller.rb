@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # Make sure the user has the correct authentication for their action, and check if the user is an admin 
+  # only for destroying users
   before_filter :authenticate_user!
   before_filter :admin_user, only: :destroy
 
@@ -27,7 +29,8 @@ class UsersController < ApplicationController
   def show
     @user=User.find(params[:id])
     @companies=@user.companies
-    @interviews = @user.interviews.where(:status=>1)
+    # Get only the active interviews
+    @interviews = @user.active_interviews
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -66,6 +69,7 @@ class UsersController < ApplicationController
   end
 
   def works_for
+    # currently not using this
     @user = current_user
     @company = Company.find(params[:id])
     @companies = @company.worked_for.paginate(page: params[:page])
@@ -102,6 +106,7 @@ class UsersController < ApplicationController
 
 private
   def admin_user
+    # Redirect them to the root page unless the status of the current_user.admin is true
     redirect_to(:root) unless current_user.admin?
   end
 

@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   # Before all actions, all users must be authenticated
+  skip_authorization_check
   before_filter :authenticate_user!, except: [:index]
   def index
   	@user = User.new
@@ -24,9 +25,8 @@ class HomeController < ApplicationController
         end
       end
     end
+    @interview=Interview.new(params[:interview])
 
-
-    
   end
 
   private

@@ -60,7 +60,8 @@ class User < ActiveRecord::Base
      },
      presence: true,
      format: {
-       with: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/i,
+      # only make @utoronto or @mail.utoronto emails valid
+       with: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@(mail.)?(utoronto)(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/i,
      }
 
    validates_presence_of :encrypted_password

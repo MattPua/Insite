@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   # Make sure the user has the correct authentication for their action, and check if the user is an admin 
   # only for destroying users
+  load_and_authorize_resource
   before_filter :authenticate_user!
   before_filter :admin_user, only: :destroy
 

@@ -44,7 +44,7 @@
                                 <%= user.email %>
                             </h4>
                             <h4 class="interview">
-                              <%= "Next interview is at #{user.next_interview.company_name}" if user.has_interview? %>
+                              <%= "Next interview is at #{user.next_interview.company_name}" if user.has_active_interview? %>
                             </h4>
                             <!-- DO NOT HAVE LOCATION ENTITY -->
                         </div>
@@ -55,7 +55,7 @@
 
 
 			<div class="tab-pane" id="extra"> 
-				TODO
+
 			</div>
 		</div>
 	</div>

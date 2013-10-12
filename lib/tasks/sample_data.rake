@@ -2,7 +2,7 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     User.create!(name: "Matt Pua",
-                 email: "mattpua49@gmail.com",
+                 email: "mattpua49@utoronto.com",
                  password: "12345678",
                  password_confirmation: "12345678")
       array = ["AMD","Microsoft","P&G","Apple","Facebook","Google","Rotman","LinkedIn","TD Bank","Scotiabank"]

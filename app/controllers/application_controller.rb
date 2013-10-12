@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  check_authorization
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error]=  exception.message
+    redirect_to current_user
+  end
 
   private 
   # The route that will load after a use has signed in

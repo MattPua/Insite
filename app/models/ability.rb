@@ -11,7 +11,9 @@ class Ability
         can :manage, :all
       else
         can :read, :all
-        can :manage, :interview
+        can :manage, Interview, :user_id =>user.id
+        can :manage, User, :id =>user.id
+        can [:create, :update], Company
       end
     #
     # The first argument to `can` is the action you are giving the user 

@@ -2,8 +2,10 @@
 <div style="height:100%; width:100%; border:3px solid black;">
   <%= gravatar_for @user %>
   <%= @user.name %> | 
+  <% if can? :manage, @user %>
   <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', :back %>
+  <%= link_to 'Back', :back %> | <%= "Is an admin" if @user.admin? %>
+	<% end %>
 </div>
 
 <% if @interviews.present? %>
@@ -54,17 +56,19 @@
     <td><%= interview.company_name %></td>
     <td><%= interview.position %></td>
     <td><%= link_to 'Show', interview_path(interview)%></td>
+    <% if can? :manage, interview %>
     <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
     <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 
 </table>
 
 <br />
-
+<% if is_current_user(@user) %>
 <%= link_to 'New Interview', new_interview_path %>
-
+<% end %>
 <br/>
 
 

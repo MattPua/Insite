@@ -5,4 +5,5 @@
 # datetime argument as the value.
 
 Time::DATE_FORMATS[:month_and_year] = "%B %Y"
-Time::DATE_FORMATS[:date] = '%B %d, %Y @ %I:%M%p'
+# Time::DATE_FORMATS[:date] = '%B %d, %Y @ %I:%M%p'
+Time::DATE_FORMATS[:date] = '%B %d, %Y'

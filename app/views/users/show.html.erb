@@ -40,7 +40,7 @@
 	</p>
 <% end %>
 	
-<h1>Listing interviews</h1>
+<h1>Current interviews</h1>
 
 <table>
   <tr>
@@ -51,21 +51,46 @@
     <th></th>
   </tr>
 
-<% @interviews.each do |interview| %>
-  <tr>
-    <td><%= interview.company_name %></td>
-    <td><%= interview.position %></td>
-    <td><%= link_to 'Show', interview_path(interview)%></td>
-    <% if can? :manage, interview %>
-    <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
-    <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
-  </tr>
-<% end %>
+	<% @active_interviews.each do |interview| %>
+	  <tr>
+	    <td><%= interview.company_name %></td>
+	    <td><%= interview.position %></td>
+	    <td><%= link_to 'Show', interview_path(interview)%></td>
+	    <% if can? :manage, interview %>
+	    <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
+	    <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	    <% end %>
+	  </tr>
+	<% end %>
 
 </table>
 
-<br />
+<hr/>
+<h1>Past interviews or Work Experiences</h1>
+
+<table>
+  <tr>
+    <th>Company name</th>
+    <th>Position</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+	<% @finished_interviews.each do |interview| %>
+	  <tr>
+	    <td><%= interview.company_name %></td>
+	    <td><%= interview.position %></td>
+	    <td><%= link_to 'Show', interview_path(interview)%></td>
+	    <% if can? :manage, interview %>
+	    <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
+	    <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	    <% end %>
+	  </tr>
+	<% end %>
+
+</table>
+<hr/>
 <% if is_current_user(@user) %>
 <%= link_to 'New Interview', new_interview_path %>
 <% end %>

@@ -103,6 +103,9 @@ def active_interviews
   self.interviews.where(:status=>1).order("date")
 end
 
+def finished_interviews
+  self.interviews.where(:status=>2).order("date")
+end
 
 
 end

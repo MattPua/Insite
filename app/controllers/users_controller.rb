@@ -31,7 +31,8 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
     @companies=@user.companies
     # Get only the active interviews
-    @interviews = @user.active_interviews
+    @active_interviews = @user.active_interviews
+    @finished_interviews=@user.finished_interviews
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }

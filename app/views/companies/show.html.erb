@@ -13,10 +13,8 @@
   <%= @count %>
 </p>
 
-
-
 <p>
-	<b> Interviews scheduled at <%= @company.name %>: </b>
+	<b> Connections at <%= @company.name %>: </b>
 	<br/>
 	<% @interviews.each do |interview| %>
 	<%= interview.user.name %>
@@ -25,5 +23,21 @@
 	<br/>
 	<% end %>
 </p>
-<%= link_to 'Edit', edit_company_path(@company) %> |
+
+<button id="worked_here">
+	Worked here before?
+</button>
+<%= render :partial => "users/interviews/company_form", :locals=>{:title =>"Your past connection", :form=>"worked_form", :time=>"work"} %>
+
+<button id="interviewed_here">
+	Interviewed here before?
+</button>
+<%= render :partial => "users/interviews/company_form", :locals=>{:title=>"Past interview", :form=>"interviewed_form",:time=>"interview"} %>
+
+<hr/>
+
+
+<% if can? :edit, @company %>
+<%= link_to 'Edit', edit_company_path(@company) %> 
+<% end %>|
 <%= link_to 'Back', companies_path %>

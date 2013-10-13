@@ -6,14 +6,12 @@ Hackathon::Application.routes.draw do
 
   get "home/index"
   match "main" =>'home#main'
-
+  match "/:id/:name" =>"users#show", :as => :show_user
   resources :companies do
-    member do
-      get :works_for #get array of people who work for company
-    end
   end
 
-  resources :users do
+ # Shallow route so interviews can be accessed without going to /user/#user.id/interviews/#interview.id
+  resources :users, :shallow=>true do 
     member do
       resources :interviews
       get :worked_at   #get action for companies that you have worked at or are currently working at

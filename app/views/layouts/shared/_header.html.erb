@@ -54,7 +54,7 @@
           
           
             <div id="nav" class="pull-right" style="margin-top: 8px; margin-right: 30px; height: 100%">
-                <%= link_to "#{current_user.name.capitalize!}", user_path(current_user), class:"btn btn-lg btn-default" %>
+                <%= link_to "#{current_user.name.capitalize!}", show_user_path(:id=>current_user.id, :name=>current_user.name), class:"btn btn-lg btn-default" %>
                 <!-- Need to uppercase initials of name -->
                 <!--<%= link_to "Interviews", "/users/#{current_user.id}/interviews", class:"btn btn-lg btn-default" %> -->
                 <%= link_to "Companies", companies_path, class: "btn btn-lg btn-default" %>

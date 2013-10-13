@@ -14,7 +14,10 @@
 #
 
 class Interview < ActiveRecord::Base
-	# Status represents the current state of interviews. 
+  include PgSearch
+  multisearchable :against =>[:company_name, :position]
+	pg_search_scope :search_by_interview ,:against =>[:company_name, :position]
+  # Status represents the current state of interviews. 
 	# 1 represents an active interview
 	# 2 represents a finished/past interview
   # 3 represents past work experience ( not yet implemented )

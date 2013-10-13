@@ -57,9 +57,25 @@
 			<div class="tab-pane" id="extra"> 
         <% if user_signed_in? %>
           <span style=" text-align:center; ">
-
+          <p>Search for Users</p>
             <%= form_tag users_path, style:"margin:3% auto; width:20%;", method: :get do %>
-              <%= text_field_tag :search, ''    %>
+              <%= text_field_tag :user_search, ''    %>
+              <%= submit_tag "Search", :name => nil %>
+            <% end %>
+          <span>
+
+          <span style=" text-align:center; ">
+          <p>Search for Companies</p>
+            <%= form_tag users_path, style:"margin:3% auto; width:20%;", method: :get do %>
+              <%= text_field_tag :company_search, ''    %>
+              <%= submit_tag "Search", :name => nil %>
+            <% end %>
+          <span>
+
+          <span style=" text-align:center; ">
+          <p>Search for Interviews</p>
+            <%= form_tag users_path, style:"margin:3% auto; width:20%;", method: :get do %>
+              <%= text_field_tag :interview_search, ''    %>
               <%= submit_tag "Search", :name => nil %>
             <% end %>
           <span>

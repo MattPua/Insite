@@ -8,7 +8,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :faculty
       t.integer :phone
       t.boolean :registerterms
-      t.string :position
       t.boolean :admin, :default => false
       t.timestamps
     end

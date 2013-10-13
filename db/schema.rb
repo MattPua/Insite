@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131010035738) do
+ActiveRecord::Schema.define(:version => 20131013022808) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(:version => 20131010035738) do
     t.integer  "status",       :default => 1
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "pg_search_documents", :force => true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "sessions", :force => true do |t|
@@ -49,7 +57,6 @@ ActiveRecord::Schema.define(:version => 20131010035738) do
     t.string   "faculty"
     t.integer  "phone"
     t.boolean  "registerterms"
-    t.string   "position"
     t.boolean  "admin",                  :default => false
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false

@@ -4,7 +4,7 @@
     </div>
     <div id ="result">
     <div id="wrapper">
-
+        <% if @users.present? %>
             <% @users.each do |user| %>
             <div class="profile">
                 <%= gravatar_for(user) %>
@@ -15,6 +15,31 @@
                     <%= user.email %>
                  </h4>
             </div>
+            <% end %>
+        <% end %>
+        <% if @companies.present? %>
+            <% @companies.each do |company| %>
+                        <div class="profile">
+                <h3 class="name">
+                    <%= company.name %>
+                </h3>
+                <h4 class="position">
+                    <%= company.industry %>
+                 </h4>
+            </div>
+            <% end %>
+        <% end %>
+        <% if @interviews.present? %>
+            <% @interviews.each do |interview| %>
+                <div class="profile">
+                <h3 class="name">
+                    <%= interview.company_name %>
+                </h3>
+                <h4 class="position">
+                    <%= interview.position %>
+                 </h4>
+            </div>
+        <% end %>
             <% end %>
 
     </div>

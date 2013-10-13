@@ -9,10 +9,14 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    if params[:search]==nil
-      @users=User.all
+    if params[:user_search].present?
+      @users= User.search(params[:user_search])
+    elsif params[:company_search].present?
+      @companies=Company.search_by_company(params[:company_search])
+    elsif params[:interview_search].present?
+      @interviews=Interview.search_by_interview(params[:interview_search])
     else
-      @users= User.search(params[:search])
+      @users=User.all
     end
     @user= current_user
    #@total=User.all
@@ -33,7 +37,7 @@ class UsersController < ApplicationController
     # Get only the active interviews
     @active_interviews = @user.active_interviews
     @finished_interviews=@user.finished_interviews
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }

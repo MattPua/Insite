@@ -10,6 +10,9 @@
 #
 
 class Company < ActiveRecord::Base
+  include PgSearch
+  multisearchable :against => [:name,:industry]
+  pg_search_scope :search_by_company, :against=>[:name,:industry]
 	
   attr_accessible :name, :company_id, :connections, :industry
 

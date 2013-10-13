@@ -26,6 +26,18 @@
 #
 
 class User < ActiveRecord::Base
+  include PgSearch
+  multisearchable :against => [:name, :email, :program, :faculty]
+  pg_search_scope :search_by_user, :against=>[:name,:email,:program,:faculty]
+  # Two types of search. Multisearch groups all models with multisearch into one big group to search through
+  # search_scope searches against specific columns of a single model
+
+  # Need to add in user privacy. If user privacy settings enabled
+  # Don't include user to be searched
+  # multisearchable :against => [:name, :email, :program, :faculty], :if => :private?
+
+
+
   before_save { self.email = email.downcase }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -81,7 +93,7 @@ class User < ActiveRecord::Base
     }
 
 def self.search(search)
-  @user = User.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+  @user = User.search_by_user(search)
 end
 
 # Get the next active interview

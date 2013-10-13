@@ -11,6 +11,7 @@
 #  phone                  :integer
 #  registerterms          :boolean
 #  position               :string(255)
+#  admin                  :boolean          default(FALSE)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  encrypted_password     :string(255)      default(""), not null

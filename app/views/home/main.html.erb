@@ -7,7 +7,7 @@
                     <a data-toggle="tab" href="#company-name">facebook</a>
                 </li>
                 <li>
-                    <a data-toggle="tab" href="#extra"> + </a>
+                    <a data-toggle="tab" href="#extra"> Search </a>
                 </li>
             </ul>
 
@@ -55,6 +55,15 @@
 
 
 			<div class="tab-pane" id="extra"> 
+        <% if user_signed_in? %>
+          <span style=" text-align:center; ">
+
+            <%= form_tag users_path, style:"margin:3% auto; width:20%;", method: :get do %>
+              <%= text_field_tag :search, ''    %>
+              <%= submit_tag "Search", :name => nil %>
+            <% end %>
+          <span>
+        <% end %>
 
 			</div>
 		</div>

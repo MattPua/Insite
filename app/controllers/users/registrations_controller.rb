@@ -1,5 +1,5 @@
 class Users::RegistrationsController <Devise::RegistrationsController
-require_no_authentication
+
 
 	protected
 	def after_sign_up_path_for(resource)

@@ -1,5 +1,5 @@
 Hackathon::Application.routes.draw do
-  devise_for :users, :controllers => { :registrations => "registration" }
+  devise_for :users, :controllers => { :registrations => "users/registrations" }
 
   get "home/index"
   match "main" =>'home#main'

@@ -33,6 +33,7 @@ class UsersController < ApplicationController
     # Get only the active interviews
     @active_interviews = @user.active_interviews
     @finished_interviews=@user.finished_interviews
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }

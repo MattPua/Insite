@@ -107,5 +107,13 @@ def finished_interviews
   self.interviews.where(:status=>2).order("date")
 end
 
+def has_work_experience?
+  self.interviews.where(:status=>3).present?
+end
+
+def work_experiences
+  self.interviews.where(:status=>3).order("date")
+end
+
 
 end

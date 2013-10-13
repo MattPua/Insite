@@ -27,12 +27,12 @@
 <button id="worked_here">
 	Worked here before?
 </button>
-<%= render :partial => "users/interviews/company_form", :locals=>{:title =>"Your past connection", :form=>"worked_form", :time=>"work"} %>
+<%= render :partial => "users/interviews/company_form", :locals=>{:title =>"Your past connection", :form=>"worked_form", :time=>"work", :interview_status=>3} %>
 
 <button id="interviewed_here">
 	Interviewed here before?
 </button>
-<%= render :partial => "users/interviews/company_form", :locals=>{:title=>"Past interview", :form=>"interviewed_form",:time=>"interview"} %>
+<%= render :partial => "users/interviews/company_form", :locals=>{:title=>"Past interview", :form=>"interviewed_form",:time=>"interview", :interview_status=>2} %>
 
 <hr/>
 

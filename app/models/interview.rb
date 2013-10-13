@@ -16,7 +16,8 @@
 class Interview < ActiveRecord::Base
 	# Status represents the current state of interviews. 
 	# 1 represents an active interview
-	# 2 represents a finished interview/ or if a user has previously interviewed/worked at a company
+	# 2 represents a finished/past interview
+  # 3 represents past work experience ( not yet implemented )
 
 
   attr_accessible :company_name, :position, :user_id, :company_id, :date, :status

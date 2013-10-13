@@ -9,7 +9,7 @@
       <%= f.hidden_field :company_name, :value=>@company.name%> 
 
       <%= f.input :position %>
-      <%= f.hidden_field :status, :value=>2 %>
+      <%= f.hidden_field :status, :value=>interview_status%>
       
       <%= f.hidden_field :user_id, :value => current_user.id %> 
       <!-- Use above to send value into newly created object by default. -->

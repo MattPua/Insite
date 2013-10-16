@@ -6,20 +6,21 @@ Hackathon::Application.routes.draw do
 
   get "home/index"
   match "main" =>'home#main'
-  match "/:id/:name" =>"users#show", :as => :show_user
+  
   resources :companies do
   end
 
  # Shallow route so interviews can be accessed without going to /user/#user.id/interviews/#interview.id
-  resources :users, :shallow=>true do 
+  resources :users do 
     member do
       resources :interviews
       get :worked_at   #get action for companies that you have worked at or are currently working at
     end  
   end
  
- resources :relationships, only: [:create, :delete]
+  
   root to:'home#index'
+  # match "/:name" =>"users#show", :as => :show_user
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -208,6 +208,7 @@ DEPENDENCIES
   faker
   flay
   jquery-rails
+  mail
   modernizr-rails
   pg (= 0.12.2)
   pg_search

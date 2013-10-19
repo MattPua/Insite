@@ -49,16 +49,15 @@ Hackathon::Application.configure do
    ActionMailer::Base.perform_deliveries = true
    ActionMailer::Base.raise_delivery_errors = true
    ActionMailer::Base.smtp_settings = 
-   {
-
-     :address            => 'smtp.gmail.com',
-     :port               => 587,
-     :domain             => 'gmail.com', #you can also use google.com
-     :authentication     => :plain,
-     :user_name          => 'insiteuoft@gmail.com',
-     :password           => 'insite2013',
-     :enable_starttls_auto => true
-   }
+ActionMailer::Base.smtp_settings = {
+  :address        => 'smtp.sendgrid.net',
+  :port           => '587',
+  :authentication => :plain,
+  :user_name      => ENV['app18384275@heroku.com'],
+  :password       => ENV['flgmojdg'],
+  :domain         => 'heroku.com',
+  :enable_starttls_auto => true
+}
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )

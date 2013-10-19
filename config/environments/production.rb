@@ -57,6 +57,7 @@ Hackathon::Application.configure do
      :authentication     => :plain,
      :user_name          => 'insiteuoft@gmail.com',
      :password           => 'insite2013'
+     :enable_starttls_auto => true
    }
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)

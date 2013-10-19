@@ -240,6 +240,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sdoc
   simple_form
+  sqlite3
   thin
   turbolinks
   uglifier (>= 1.0.3)

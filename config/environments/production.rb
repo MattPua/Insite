@@ -56,7 +56,7 @@ Hackathon::Application.configure do
      :domain             => 'gmail.com', #you can also use google.com
      :authentication     => :plain,
      :user_name          => 'insiteuoft@gmail.com',
-     :password           => 'insite2013'
+     :password           => 'insite2013',
      :enable_starttls_auto => true
    }
 

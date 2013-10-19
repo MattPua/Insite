@@ -44,7 +44,7 @@ Hackathon::Application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
-   config.action_mailer.default_url_options = { :host => 'http://insiteuoft.herokuapp.com/' }
+   config.action_mailer.default_url_options = { :host => 'insiteuoft.herokuapp.com/' }
    ActionMailer::Base.delivery_method = :smtp
    ActionMailer::Base.perform_deliveries = true
    ActionMailer::Base.raise_delivery_errors = true

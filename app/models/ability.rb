@@ -10,10 +10,13 @@ class Ability
       if user.admin?
         can :manage, :all
       else
-        can :read, :all
-        can :manage, Interview, :user_id =>user.id
-        can :manage, User, :id =>user.id
-        can [:create, :update], Company
+        # Only users who have confirmed their email accounts are allowed to view the pages
+        if user.confirmed?
+            can :read, :all
+            can :manage, Interview, :user_id =>user.id
+            can :manage, User, :id =>user.id
+            can [:create, :update], Company
+        end
       end
     #
     # The first argument to `can` is the action you are giving the user 

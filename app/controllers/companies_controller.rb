@@ -16,6 +16,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
+    
     @interview=Interview.new
     @company = Company.find(params[:id])
     # Get all interviews with same company_name as @company

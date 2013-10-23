@@ -1,24 +1,26 @@
 Hackathon::Application.routes.draw do
+  get "search/index"
+  match "search" => 'search#index'
+
   devise_for :users, :controllers => { :registrations => "users/registrations" }
 
   get "home/index"
   match "main" =>'home#main'
-
+  
   resources :companies do
-    member do
-      get :works_for #get array of people who work for company
-    end
   end
 
-  resources :users do
+ # Shallow route so interviews can be accessed without going to /user/#user.id/interviews/#interview.id
+  resources :users do 
     member do
       resources :interviews
       get :worked_at   #get action for companies that you have worked at or are currently working at
     end  
   end
  
- resources :relationships, only: [:create, :delete]
+  
   root to:'home#index'
+  # match "/:name" =>"users#show", :as => :show_user
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

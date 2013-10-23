@@ -1,0 +1,103 @@
+<%= stylesheet_link_tag "registration", :media => "all" %>
+<div class = "content">
+	<!-- Error Checking Message -->
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	<!--  LC: comment out for now, using front end  inline error messages instead 
+		  (styling this is too annoying )
+		<% if @user.errors.any? %>
+		<div  class="row" style="width:100%">
+				<div class = "col-md-2"></div>
+				<div class = "col-md-8 alert alert-danger">
+					<b><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved</b>
+				</div>
+				<div class = "col-md-2"></div>
+			</div>
+			<% @user.errors.full_messages.each do |msg| %>
+				<div  class="row" style="width:100%">
+					<div class = "col-md-2"></div>
+					<div class="col-md-8 alert alert-danger">
+						<%= msg %>
+					</div>
+					<div class = "col-md-2"></div>
+				</div>
+			<% end %>
+		<% end %>
+	-->	
+		<!-- Title -->
+		<div  class="row" style="width:100%; ">
+		<div class = "col-md-1"></div>
+		<div class = "col-md-10" style="padding: 10px 50px;"><h1 class="page-title"> Registration  </h1></div>
+		<div class = "col-md-1"></div>
+		</div>
+		
+		<div id="register-form-content" class="row" style="height: 400px;">
+			<!-- add span 1 as placeholder -->
+			<div class = "col-md-1"></div>
+			<!-- step by step registration form -->
+			<div class = "register-form col-md-5">          
+				<div id="registration-1">
+					<div class="form-group">
+						<%= f.email_field :email, :autofocus => true, class:"form-control input-lg", placeholder:"Your UTOR email address", required:"required" %>
+					</div>
+					<div class="form-group">
+						<%= f.password_field :password, class:"form-control input-lg", placeholder:"Password", required:"required"%>
+					</div>
+					<div class="form-group">
+						<%= f.password_field :password_confirmation, class:"form-control input-lg", placeholder:"Confirm Password", required:"required"%>
+					</div>
+					<div class="form-group" style="font-size: 18px;">
+						<%= f.check_box :registerterms %>  I Agree To The Terms & Conditions<br />
+					</div>
+				</div>
+				<div id="registration-2" style="display:none">
+					<div class="form-group">
+						<%= f.text_field :name, class:"form-control input-lg", placeholder:"Full Name", required:"required" %>
+					</div>
+					<div class="form-group">
+						<%= f.number_field :year, class:"form-control input-lg", placeholder:"Graduating Year", min:"2010", max:"2020", required:"required"%>
+					</div>
+					<div class="form-group">
+						<%= f.text_field :faculty, class:"form-control input-lg", placeholder:"Faculty", required:"required"	%>
+					</div>
+					<div class="form-group">
+						<%= f.telephone_field :phone , class:"form-control input-lg", placeholder:"Phone Number (Optional)"%>
+					</div>
+				</div>	
+				<form>
+					<div class="form-group" style="width:100%; position: absolute; bottom: 0; padding-right:100px">
+						<button type="button"  id="btn-next" class="btn btn-default pull-right">Next Step </button>
+						<%= f.submit "Sign up", id:"btn-submit", class:"btn btn-warning pull-right", style:"display:none" %>
+						<button type="button" id="btn-previous" class="btn btn-default pull-right" style="display: none">Previous Step </button>
+						</div>
+					<!-- <div><%= f.submit "Sign up" %></div> -->
+				</form>	
+			</div>
+			<!-- registration progress -->
+			<div class = "timeline col-md-5">
+				<div id="line"></div>
+				<table id="steps">
+					<col width="40">
+					<col width="250">
+					<tr>
+						<td><div class="circle shadow" style="background:#faa732;"></div></td>
+						<td style="padding-top:15px;">Step 1: Login Credentials</td>
+					</tr>
+					<tr>
+						<td><div class="circle shadow"></div></td>
+						<td style="padding-top:15px;">Step 2: Personal Information</td>	
+					</tr>
+					</table>
+			</div>		
+			
+			<!-- add span 1 as place holder -->
+			<div class = "col-sm-1"></div>
+			</div>
+		
+		</div>
+				
+	<% end %>
+ </div>
+ 
+ 
+<!-- <%= render "devise/shared/links" %> -->
+

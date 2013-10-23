@@ -1,13 +1,10 @@
-<!-- <p id="notice"><%= notice %></p> -->
+<p id="notice"><%= notice %></p>
 <div style="height:100%; width:100%; border:3px solid black;">
   <%= gravatar_for @user %>
-  <%= @user.name %> | 
-  <% if can? :manage, @user %>
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Back', :back %> | <%= "Is an admin" if @user.admin? %>
-	<% end %>
+  <%= @user.name %>
 </div>
 
+<%= link_to "My Interviews", interviews_path %>
 <% if @interviews.present? %>
 	<p>
 	<% if is_current_user(@user) %>
@@ -15,7 +12,7 @@
 	<% else %>
 		<%= @user.name %> has
 	<% end %>
-	 <%= @interviews.count %> <%="interview".pluralize(@interviews.size)%> coming up!</p>
+	 <%= @interviews.count %> interviews coming up!</p>
 
 		<b> 	
 	<% if is_current_user(@user) %>
@@ -40,93 +37,9 @@
 	</p>
 <% end %>
 	
-<h1>Current interviews</h1>
-
-<table>
-  <tr>
-    <th>Company name</th>
-    <th>Position</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-	<% @user.active_interviews.each do |interview| %>
-	  <tr>
-	    <td><%= interview.company_name %></td>
-	    <td><%= interview.position %></td>
-	    <td><%= link_to 'Show', interview_path(interview)%></td>
-	    <% if can? :manage, interview %>
-	    <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
-	    <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-	    <% end %>
-	  </tr>
-	<% end %>
-
-</table>
-
-<hr/>
-<h1>Past interviews</h1>
-
-<table>
-  <tr>
-    <th>Company name</th>
-    <th>Position</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-	<% @user.finished_interviews.each do |interview| %>
-	  <tr>
-	    <td><%= interview.company_name %></td>
-	    <td><%= interview.position %></td>
-	    <td><%= link_to 'Show', interview_path(interview)%></td>
-	    <% if can? :manage, interview %>
-	    <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
-	    <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-	    <% end %>
-	  </tr>
-	<% end %>
-
-</table>
-
-</table>
-
-<hr/>
-<h1>Past Work Experiences</h1>
-
-<table>
-  <tr>
-    <th>Company name</th>
-    <th>Position</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-	<% @user.work_experiences.each do |interview| %>
-	  <tr>
-	    <td><%= interview.company_name %></td>
-	    <td><%= interview.position %></td>
-	    <td><%= link_to 'Show', interview_path(interview)%></td>
-	    <% if can? :manage, interview %>
-	    <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
-	    <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-	    <% end %>
-	  </tr>
-	<% end %>
-
-</table>
-
-
-
-<hr/>
-<% if is_current_user(@user) %>
-<%= link_to 'New Interview', new_interview_path %>
-<% end %>
 <br/>
 
 
 
-
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

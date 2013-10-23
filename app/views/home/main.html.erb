@@ -1,64 +1,78 @@
-<div id = "body">
-    <div id = "content">
-        <div class="tabbable">
-            <!-- Tab Navigation -->
-            <ul class="nav nav-tabs" id="companyTab">
-                <li class="active">
-                    <a data-toggle="tab" href="#company-name">facebook</a>
-                </li>
-                <li>
-                    <a data-toggle="tab" href="#extra"> Search </a>
-                </li>
-            </ul>
+﻿<%= stylesheet_link_tag "user_main", :media => "all" %>
+<div class = "content" style="padding:0; padding-top:20px;">
+	<div style = "width: 400px;">
+		<% if @user.has_active_interview? %>
+			<!-- user upcoming interview -->
+			<div id = "upcoming-interview" class = "shadow">
+				<div class = "company-img">
+				</div>
+				<div class = "interview-details">
+					<div class = "company-info">
+						<h1> 
+							<span class="glyphicon glyphicon-briefcase"></span>
+							&nbsp; Company Information 
+						</h1>
+						<p class="clip">
+							Name: <%= "#{@company.name}" %>
+						</p>
+						<p>
+							<!-- TODO: add link to google map -->
+							<!-- Add company location -->
+							Location: {company location}
+						</p>
+					</div>
+					<div class = "interview-info">
+						<h1> 
+							<span class="glyphicon glyphicon-pencil"></span>
+							&nbsp; Interview Information 
+						</h1>
+						<p class="clip">
+							Date: {interview date} 
+						</p>
+						<p class="clip">
+							Time: {interview time}
+						</p>
+						<!-- TODO: add location to interview details -->						
+					</div>
+				</div>
+			</div>
+		<% else %>
+			<div id = "new-interview" class = "shadow">
+				<!-- create new interview form -->
+				<h1>
+					<span class="glyphicon glyphicon-calendar"></span>
+					 New Interview
+				</h1>
+				<%= form_for @interview, :url => "/users/#{@current_user.id}/interviews",
+					:html => {:method => :post} do |f| %>
+					<div class="form-inputs">
+						<div class="form-group">
+							<%= f.text_field :company_name, :class=>"form-control input-lg"
+							, :placeholder=>"Company Name" %>
+						</div>
+						<div class="form-group">
+							<%= f.text_field :position, :class=>"form-control input-lg",
+							 :placeholder=>"Position"%>
+						</div>
+						<%= f.hidden_field :user_id, :value => current_user.id %> 
+						<%= f.hidden_field :company_id %> 
+						<div class="form-group">
+							<h2>Interview Time: </h2>
+							<%= f.datetime_select :date, :start_year=>2010, :end_year=>2050,
+								:prompt=>true, :use_month_numbers=>false, :with_css_classes=>true,
+								:date_separator=>"", :discard_day=>false, :include_blank=>false %>
+						</div>
+					</div>
 
-            <div class="tab-content">
-                            <div class="tab-pane active" id="company-name">
-                    <div id="wrapper">
-                        <div class="profile">
-                            
-                            <%= gravatar_for(@user) %>
-                            <h3 class="name">
-                                <%= @user.name %>
-                            </h3>
-                            <h4 class="position">
-                                <%= @user.email %>
-                            </h4>
-                            <h4 class="interview">
-                              <%= "Your Next interview is at #{@company.name}" if @user.has_active_interview? %>
-                            </h4>
-                            <!-- DO NOT HAVE LOCATION ENTITY -->
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane active" id="company-name">
-                    <div id="wrapper">
-                    <% if !@relevant_users.nil? %>
-                        <% @relevant_users.each do |user| %>
-                        <div class="profile">
-                            
-                            <%= gravatar_for(user) %>
-                            <h3 class="name">
-                                <%= user.name %>
-                            </h3>
-                            <h4 class="position">
-                                <%= user.email %>
-                            </h4>
-                            <h4 class="interview">
-                              <%= "Next interview is at #{user.next_interview.company_name}" if user.has_active_interview? %>
-                            </h4>
-                            <!-- DO NOT HAVE LOCATION ENTITY -->
-                        </div>
-                        <% end %>
-                      <% end %>
-                    </div>
-                </div>
-
-
+					<div class="form-actions">
+						<%= f.button :submit, :class=>"pull-right btn btn-default"%>
+					</div>
+				<% end %>
 			<div class="tab-pane" id="extra"> 
         <% if user_signed_in? %>
           <span style=" text-align:center; ">
           <p>Search for Users</p>
-            <%= form_tag users_path, style:"margin:3% auto; width:20%;", method: :get do %>
+            <%= form_tag search_path, style:"margin:3% auto; width:20%;", method: :get do %>
               <%= text_field_tag :user_search, ''    %>
               <%= submit_tag "Search", :name => nil %>
             <% end %>
@@ -66,7 +80,7 @@
 
           <span style=" text-align:center; ">
           <p>Search for Companies</p>
-            <%= form_tag users_path, style:"margin:3% auto; width:20%;", method: :get do %>
+            <%= form_tag search_path, style:"margin:3% auto; width:20%;", method: :get do %>
               <%= text_field_tag :company_search, ''    %>
               <%= submit_tag "Search", :name => nil %>
             <% end %>
@@ -74,91 +88,34 @@
 
           <span style=" text-align:center; ">
           <p>Search for Interviews</p>
-            <%= form_tag users_path, style:"margin:3% auto; width:20%;", method: :get do %>
+            <%= form_tag search_path, style:"margin:3% auto; width:20%;", method: :get do %>
               <%= text_field_tag :interview_search, ''    %>
               <%= submit_tag "Search", :name => nil %>
             <% end %>
           <span>
         <% end %>
-
 			</div>
-		</div>
+		<% end %>
 	</div>
+	<div class = "contacts">
+		<!-- past interns should go here -->
+		<% if !@relevant_users.nil? %>
+			<% @relevant_users.each do |user| %>
+				<div class="profile">
+					<%= gravatar_for(user) %>
+					<h3 class="name">
+						<%= user.name %>
+					</h3>
+					<h4 class="position">
+						<%= user.email %>
+					</h4>
+					<h4 class="interview">
+					<%= "Next interview is at #{user.next_interview.company_name}" if user.has_active_interview? %>
 
-</div>
-
- 
-<div id="footer">
-	<div id="company-logo" class="pull-right" style="margin-right: 10px; height: 100%">
-		<%= image_tag("YNCN-boxes-text.png") %>
+					</h4>
+					<!-- DO NOT HAVE LOCATION ENTITY -->
+				</div>
+			<% end %>
+		<% end %>
 	</div>
 </div>
-  
-  <style type="text/css">
-
-      # body{
-      background: #f3faf5;
-      }
-
-      #content
-      {
-      margin:30px;
-      margin-top: 5px;
-      }
-
-      .tabbable .tab-content
-      {
-      margin: 10px;
-      }
-
-      /* list of user available */
-
-      #wrapper {
-      width: 90%;
-      }
-
-      .profile {
-      background: #e6eeec;
-      width: 310px;
-      height: 310px;
-      display: block;
-      margin: 5px;
-      float:left;
-      }
-
-      .profile img {
-      width: 175px;
-      height: 175px;
-      border: 5px solid white;
-      display:block;
-      margin: 15px auto;
-      }
-
-      .profile .name, .profile .position, .profile .interview{
-      margin-left: 20px;
-      margin-right: 20px;
-      text-align: center;
-      }
-
-      .profile .name{
-      font-size: 16pt;
-
-      }
-
-      #footer
-      {
-      height: 100px;
-      width: 100%;
-      padding: 20px;
-      }
-
-      #footer img
-      {
-      height:50px;
-      }
-
-  </style>
-
-
-
-

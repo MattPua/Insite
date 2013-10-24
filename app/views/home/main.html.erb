@@ -3,36 +3,40 @@
 	<div style = "width: 400px;">
 		<% if @user.has_active_interview? %>
 			<!-- user upcoming interview -->
-			<div id = "upcoming-interview" class = "shadow">
+			<div id = "upcoming-interview">
+				<div>
+					<h1> Upcoming </h1>
+				</div>
 				<div class = "company-img">
 				</div>
 				<div class = "interview-details">
 					<div class = "company-info">
-						<h1> 
+						<h2> 
 							<span class="glyphicon glyphicon-briefcase"></span>
 							&nbsp; Company Information 
-						</h1>
-						<p class="clip">
-							Name: <%= "#{@company.name}" %>
+						</h2>
+						<p>
+							Name: <%= "#{@user.next_interview.company_name}" %>
 						</p>
+						
+					</div>
+					<div class = "interview-info">
+						<h2> 
+							<span class="glyphicon glyphicon-pencil"></span>
+							&nbsp; Interview Information 
+						</h2>
 						<p>
 							<!-- TODO: add link to google map -->
 							<!-- Add company location -->
-							Location: {company location}
+							Position: <%= "#{@user.next_interview.position}" %>
 						</p>
+						<p>
+							Date: <%= "#{@user.next_interview.get_date}" %>
+						</p>			
 					</div>
-					<div class = "interview-info">
-						<h1> 
-							<span class="glyphicon glyphicon-pencil"></span>
-							&nbsp; Interview Information 
-						</h1>
-						<p class="clip">
-							Date: {interview date} 
-						</p>
-						<p class="clip">
-							Time: {interview time}
-						</p>
-						<!-- TODO: add location to interview details -->						
+					<div class = "interview-edit">
+							<button type="button" class="btn btn-default pull-right">Edit</button>
+							<button type="button" class="btn btn-warning">Create New</button>
 					</div>
 				</div>
 			</div>
@@ -47,8 +51,8 @@
 					:html => {:method => :post} do |f| %>
 					<div class="form-inputs">
 						<div class="form-group">
-							<%= f.text_field :company_name, :class=>"form-control input-lg"
-							, :placeholder=>"Company Name" %>
+							<%= f.text_field :company_name, :class=>"form-control input-lg",
+							 :placeholder=>"Company Name" %>
 						</div>
 						<div class="form-group">
 							<%= f.text_field :position, :class=>"form-control input-lg",
@@ -68,32 +72,6 @@
 						<%= f.button :submit, :class=>"pull-right btn btn-default"%>
 					</div>
 				<% end %>
-			<div class="tab-pane" id="extra"> 
-        <% if user_signed_in? %>
-          <span style=" text-align:center; ">
-          <p>Search for Users</p>
-            <%= form_tag search_path, style:"margin:3% auto; width:20%;", method: :get do %>
-              <%= text_field_tag :user_search, ''    %>
-              <%= submit_tag "Search", :name => nil %>
-            <% end %>
-          <span>
-
-          <span style=" text-align:center; ">
-          <p>Search for Companies</p>
-            <%= form_tag search_path, style:"margin:3% auto; width:20%;", method: :get do %>
-              <%= text_field_tag :company_search, ''    %>
-              <%= submit_tag "Search", :name => nil %>
-            <% end %>
-          <span>
-
-          <span style=" text-align:center; ">
-          <p>Search for Interviews</p>
-            <%= form_tag search_path, style:"margin:3% auto; width:20%;", method: :get do %>
-              <%= text_field_tag :interview_search, ''    %>
-              <%= submit_tag "Search", :name => nil %>
-            <% end %>
-          <span>
-        <% end %>
 			</div>
 		<% end %>
 	</div>

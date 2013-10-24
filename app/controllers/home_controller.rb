@@ -27,9 +27,6 @@ class HomeController < ApplicationController
     end
     @interview=Interview.new(params[:interview])
 
-    # used to create new interview from the home page 
-    @new_interview = Interview.new
-
   end
 
   private

@@ -3,15 +3,23 @@
 {
 	width: 300px;
 	margin-left: 100px;
-	background-color: white;
+	padding-top: 3px;
+	background: #334641;
+	color: #FFF;
+	text-align: center;
 	border-radius: 8px;
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
 }
 
+#upcoming-interview h1{
+	margin: 10px 0;
+}
+
 .interview-details {
 	position: relative;
 	background: #3B8686;
+	text-align: left;
 	border-radius: 0 0 8px 8px;
 	width: 100%;
 }
@@ -39,10 +47,6 @@
 	padding: 10px;
 }
 
-.interview-info{
-	border-radius: 0 0 8px 8px;
-}
-
 .company-img
 {
 	height: 175px;
@@ -52,32 +56,41 @@
     /* hard code dummy image for now */
     background:url(http://placehold.it/350x400) left center no-repeat;
     background-size:300px auto;
-    border-radius: 8px 8px 0 0 ;
 }
 
 .company-info
 {
 	background-color: #7B9D99;
-	color: #dddddd;
+	color: #FFF;
 }
 
 .interview-info
 {
-	background-color: #34574F;
-	color: #dddddd;
+	background-color: #506865;
+	color: #FFF;
 }
 
-.company-info h1, .interview-info h1
+.interview-edit
+{
+	background-color: #334641;
+	border-radius: 0 0 8px 8px;
+	height: 60px;
+}
+
+.company-info h2, .interview-info h2
 {
 	font-size: 20px;
+	font-weight: normal;
+	font-family: 'Raleway', sans-serif;
 	margin: 5px 0;
 }
 
 .company-info p, .interview-info p
 {
-	margin: 0;
+	margin: 5px;
 	width:100%;
 	font-size: 18px;
+	font-weight: normal;
 	font-family: 'Raleway', sans-serif;
 	text-align: left;
 	word-wrap:break-word;

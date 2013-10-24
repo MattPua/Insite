@@ -31,20 +31,20 @@
                 <%= link_to "Sign Up", new_user_registration_path , class:"btn btn-warning"%>
             <% else %>
                 <div class="dropdown">
-                <%= link_to user_path(current_user) , :class => "btn btn-default", :role=>"button", :"data-toggle"=>('dropdown'), :"data-target"=>"#" do %>
-                    <div id="user-name" class="clip">
-                        <%= "#{current_user.name.capitalize!}" %>
-                    </div>
-                    <div>
-                          ▼
-                    </div>
-                <% end %>
+                    <a class="btn btn-default" data-toggle="dropdown" data-target="#" srole="button">
+                        <div id="user-name" class="clip">
+                            <%= "#{current_user.name.capitalize!}" %>
+                        </div>
+                        <div>
+                              ▼
+                        </div>
+                    </a>
                     <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
                         <li role="presentation"> 
-                            <a role="menuitem" tabindex="-1" >
+                            <%= link_to user_path(current_user), :tabindex=>"-1" do %>
                                 <span class="glyphicon glyphicon-cog"></span>
                                 Settings
-                            </a>
+                            <% end %>
                         </li>
                         <li role="presentation"> 
                             <%= link_to destroy_user_session_path , method: :delete, :role=>"menuitem", :tabindex=>"-1" do %>

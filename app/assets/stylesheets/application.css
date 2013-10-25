@@ -16,8 +16,9 @@
  /* fixed scroll bar to avoid different width of the page */
 html
 {
+	width: 100%;
+	overflow-x: hidden; 
 	overflow-y: scroll; 
-	
 }
 
 body
@@ -84,25 +85,22 @@ h1
 
 h2
 {
-    font-family: 'Raleway', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	font-size: 30px;
 }
 
 h3
 {
-    font-family: 'Raleway', sans-serif;
 	font-size: 20px;
 } 
 
-/* TODO	: some of the styling is not universal */
 p
 {
-    margin: 20px;
-    text-align:justify;
-    font-family: 'Raleway', sans-serif;
-	font-size: 15px;
-    line-height: 24px;
-}   
+	font-family: 'Raleway', sans-serif;
+}
+
+/* TODO	: some of the styling is not universal */
+
 
 b, label
 {

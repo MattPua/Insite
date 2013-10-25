@@ -1,5 +1,6 @@
 
 <%= stylesheet_link_tag "registration", :media => "all" %>
+<%= javascript_include_tag "field_validation" %>
 <div class = "content">
 	<!-- Error Checking Message -->
 	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -31,20 +32,20 @@
 		<div class = "col-md-1"></div>
 		</div>
 		
-		<div id="register-form-content" class="row" style="height: 400px;">
+		<div id="register-form-content" class="row">
 			<!-- add span 1 as placeholder -->
 			<div class = "col-md-1"></div>
 			<!-- step by step registration form -->
 			<div class = "register-form col-md-5">          
 				<div id="registration-1">
 					<div class="form-group">
-						<%= f.email_field :email, :autofocus => true, class:"form-control input-lg", placeholder:"Your UTOR email address", required:"required" %>
+						<%= f.email_field :email, :autofocus => true, class:"form-control input-lg", placeholder:"Your UTOR email address"%>
 					</div>
 					<div class="form-group">
-						<%= f.password_field :password, class:"form-control input-lg", placeholder:"Password", required:"required"%>
+						<%= f.password_field :password, class:"form-control input-lg", placeholder:"Password"%>
 					</div>
 					<div class="form-group">
-						<%= f.password_field :password_confirmation, class:"form-control input-lg", placeholder:"Confirm Password", required:"required"%>
+						<%= f.password_field :password_confirmation, class:"form-control input-lg", placeholder:"Confirm Password"%>
 					</div>
 					<div class="form-group" style="font-size: 18px;">
 						<%= f.check_box :registerterms %>  I Agree To The Terms & Conditions<br />
@@ -52,13 +53,13 @@
 				</div>
 				<div id="registration-2" style="display:none">
 					<div class="form-group">
-						<%= f.text_field :name, class:"form-control input-lg", placeholder:"Full Name", required:"required" %>
+						<%= f.text_field :name, class:"form-control input-lg", placeholder:"Full Name" %>
 					</div>
 					<div class="form-group">
-						<%= f.number_field :year, class:"form-control input-lg", placeholder:"Graduating Year", min:"2010", max:"2020", required:"required"%>
+						<%= f.number_field :year, class:"form-control input-lg", placeholder:"Graduating Year", min:"2010", max:"2020" %>
 					</div>
 					<div class="form-group">
-						<%= f.text_field :faculty, class:"form-control input-lg", placeholder:"Faculty", required:"required"	%>
+						<%= f.text_field :faculty, class:"form-control input-lg", placeholder:"Faculty" %>
 					</div>
 					<div class="form-group">
 						<%= f.telephone_field :phone , class:"form-control input-lg", placeholder:"Phone Number (Optional)"%>

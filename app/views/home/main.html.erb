@@ -1,37 +1,32 @@
 ﻿<%= stylesheet_link_tag "user_main", :media => "all" %>
-<div class = "content" style="padding:0; padding-top:20px;">
-	<div style = "width: 400px;">
+<div class = "content row" style="padding:0; padding-top:20px;">
+	<div style="display: none;">
 		<% if @user.has_active_interview? %>
 			<!-- user upcoming interview -->
 			<div id = "upcoming-interview">
 				<div>
-					<h1> Upcoming </h1>
+					<h1>
+						Next Interview 
+						<span class="glyphicon glyphicon-calendar"></span>
+					</h1>
 				</div>
+				<!-- no image :( 
 				<div class = "company-img">
 				</div>
+				-->
 				<div class = "interview-details">
 					<div class = "company-info">
-						<h2> 
-							<span class="glyphicon glyphicon-briefcase"></span>
-							&nbsp; Company Information 
-						</h2>
 						<p>
-							Name: <%= "#{@user.next_interview.company_name}" %>
+							<label>Company:</label> <%= "#{@user.next_interview.company_name}" %>
 						</p>
-						
-					</div>
-					<div class = "interview-info">
-						<h2> 
-							<span class="glyphicon glyphicon-pencil"></span>
-							&nbsp; Interview Information 
-						</h2>
 						<p>
 							<!-- TODO: add link to google map -->
 							<!-- Add company location -->
-							Position: <%= "#{@user.next_interview.position}" %>
+
+							<label>Position: </label> <%= "#{@user.next_interview.position}" %>
 						</p>
 						<p>
-							Date: <%= "#{@user.next_interview.get_date}" %>
+							<label>Date:</label> <%= "#{@user.next_interview.get_date}" %>
 						</p>			
 					</div>
 					<div class = "interview-edit">
@@ -51,31 +46,32 @@
 					:html => {:method => :post} do |f| %>
 					<div class="form-inputs">
 						<div class="form-group">
-							<%= f.text_field :company_name, :class=>"form-control input-lg",
+							<%= f.text_field :company_name, :class=>"form-control",
 							 :placeholder=>"Company Name" %>
 						</div>
 						<div class="form-group">
-							<%= f.text_field :position, :class=>"form-control input-lg",
+							<%= f.text_field :position, :class=>"form-control",
 							 :placeholder=>"Position"%>
 						</div>
 						<%= f.hidden_field :user_id, :value => current_user.id %> 
 						<%= f.hidden_field :company_id %> 
 						<div class="form-group">
 							<h2>Interview Time: </h2>
-							<%= f.datetime_select :date, :start_year=>2010, :end_year=>2050,
-								:prompt=>true, :use_month_numbers=>false, :with_css_classes=>true,
-								:date_separator=>"", :discard_day=>false, :include_blank=>false %>
+							<%= datetime_select("interview", "date", start_year: 2010, end_year:2050, 
+								prompt: true, use_month_numbers: false, :discard_hour=>true, 
+								with_css_classes: true, discard_day: false, include_blank: false) %>
 						</div>
 					</div>
 
 					<div class="form-actions">
-						<%= f.button :submit, :class=>"pull-right btn btn-default"%>
+						<%= f.button :submit, :class=>"pull-right btn btn-warning"%>
 					</div>
 				<% end %>
 			</div>
 		<% end %>
 	</div>
-	<div class = "contacts">
+	<div class="col-md-1"></div>
+	<div id="contacts" class="col-md-10">
 		<!-- past interns should go here -->
 		<% if !@relevant_users.nil? %>
 			<% @relevant_users.each do |user| %>
@@ -96,4 +92,5 @@
 			<% end %>
 		<% end %>
 	</div>
+	<div class="col-md-1"></div>
 </div>

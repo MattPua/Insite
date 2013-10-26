@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.integer :year
+      t.boolean :alumni
       t.string :program
       t.string :faculty
       t.integer :phone
@@ -22,6 +23,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :interviews do |t|
       t.belongs_to :company
       t.belongs_to :user
+      t.string :comment
       t.integer :user_id
       t.integer :company_id
       t.string :company_name

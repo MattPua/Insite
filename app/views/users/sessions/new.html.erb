@@ -1,15 +1,72 @@
-<h2>Sign in</h2>
+<%= stylesheet_link_tag "login", :media => "all" %>
+<div class="content">
+	<!-- Error Checking Message -->
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  	<% if @user.errors.any? %>
+		<div  class="row" style="width:100%">
+			<div class = "col-md-2"></div>
+			<div class = "col-md-8 alert alert-danger">
+				<b><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved</b>
+			</div>
+			<div class = "col-md-2"></div>
+		</div>
+		<% @user.errors.full_messages.each do |msg| %>
+			<div  class="row" style="width:100%">
+				<div class = "col-md-2"></div>
+				<div class="col-md-8 alert alert-danger">
+					<%= msg %>
+				</div>
+				<div class = "col-md-2"></div>
+			</div>
+		<% end %>
+	<% end %>
+    <div id="log-in" class="center">
+        <div id="log-in-background" class="shadow"></div>
+        <div id="log-in-content">
+        	<!-- title -->
+        	<div class="center" style="text-align:center;" >
+        		<div><h1 style="font-size: 30px;"> Log In  </h1></div>
+        	</div>
 
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, :required => false, :autofocus => true %>
-    <%= f.input :password, :required => false %>
-    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign in" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+        	<div class="center">
+                <div class = "register-form" style="padding-left:0; padding-right:0;">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                            <%= f.email_field :email, :autofocus => true, class:"form-control input-lg", placeholder:"Your UTOR email address" %>
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                            <%= f.password_field :password, class:"form-control input-lg", placeholder:"Password"%>
+                            
+                        </div>
+                        
+                    </div>
+                    <div class=" form-group row">
+                        <div class="col-md-6">
+                            <%= render "devise/shared/links" %>
+                        </div>
+                        <div class="col-md-6">
+                            <% if devise_mapping.rememberable? -%>
+                            <div>
+                                <%= f.check_box :remember_me, :class=>"pull-right" %>
+                                <p class="pull-right" style="margin: -1px 10px 0 10px; font-size:14px;"> Remember me   </p>
+                            </div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <form>
+                        <div class=" form-group">
+                            <%= f.submit "Log In", class:"btn btn-lg btn-warning pull-right"%>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>

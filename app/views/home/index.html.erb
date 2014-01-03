@@ -1,211 +1,23 @@
-﻿<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Home</title>
-	<!--[if lt IE 9]>
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-  
-	<style type="text/css">
-		.center {
-		float: none;
-		margin-left: auto;
-	    margin-right: auto;
-		}
-
-		#sign-up
-		{
-		background-image: url(<%= asset_path('feet-image.jpg') %>);
-		background-size: 100%;
-	    background-repeat:no-repeat;
-		height:800px;
-		min-width: 900px;
-		margin-top: -20px; /*hack for the top margin */s
-		}
-
-		#sign-up #sign-up-content
-		{
-		padding-top: 150px;
-		}
-
-		#sign-up #sign-up-content h1
-        {
-        margin:0px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-        color: white;
-        text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-		font-family: 'Raleway', sans-serif;
-        font-size: 40px;
-        }
-
-        #sign-up #sign-up-content #sign-up-form
-		{
-        height: 250px;
-        width:600px;
-        position: relative;
-        }
-		
-		#sign-up #sign-up-content #sign-up-form #sign-up-form-background
-		{
-        background: white;
-        filter:alpha(opacity=20); /* IE */
-        -moz-opacity:0.2; /* Mozilla */
-        opacity: 0.2; /* CSS3 */
-        border-radius: 8px;
-        -moz-border-radius: 8px;
-        -webkit-border-radius: 8px;
-        }
-
-        #sign-up #sign-up-content #sign-up-form #sign-up-form-content
-		{
-        padding: 50px 25px;
-        }
-
-        #sign-up #sign-up-content #sign-up-form #sign-up-form-background,
-        #sign-up #sign-up-content #sign-up-form #sign-up-form-content
-		{
-        height: 100%;
-        width:100%;
-        position: absolute;
-        }
-
-        .marketing-message
-		{
-        width: 100%;
-        height: auto;
-        padding: 100px;
-		margin: 0px;
-		min-width: 900px;
-        }
-
-        .marketing-message div
-		{
-		width: 100%:
-        height: 100%;
-        }
-
-		#developer
-		{
-		width: 900px;
-		margin-left: auto;
-		margin-right: auto;
-		overflow: hidden;
-		}
-
-		.marketing-message-image
-		{
-		display: block;
-		text-align: center;
-		}
-
-		.marketing-message-image .img-circle
-		{
-		border: 5px solid #e5e5e5;
-		}
-
-		.marketing-message img
-		{
-			width: 100%;
-			max-width: 300px;
-			min-width: 200px;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-        h2
-		{
-        margin:30px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-		font-family: 'Raleway', sans-serif;
-		font-size: 40px;
-		}
-
-        p
-		{
-        text-align:justify;
-        font-family: 'Raleway', sans-serif;
-		font-size: 20px;
-        line-height: 24px;
-        margin: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
-        }
-
-		a:hover
-		{
-		background-color: transparent;
-		}
-
-		.credit
-		{
-		height: auto;
-		padding:10px;
-		float: left;
-		}
-		
-		.credit .content
-		{
-		background-color: white;
-		width: 100%;
-		height: auto%;
-		}
-	
-		.credit .content img
-		{
-		background-color: white;
-		width: 200px;
-		height: 200px;
-		margin: 20px;
-		}
-
-		.credit .content p
-		{
-		margin-top: -5px;
-		text-align: center;
-		font-size: 25px;
-		}
-
-        #footer
-		{
-        height: 100px;
-        width: 100%;
-        padding: 20px;
-        }
-            
-        #footer img
-		{
-        height:50px;
-        }
-
-	</style>
-</head>
-
-
-<body>
-	<!-- quick sign up -->
+﻿<%= stylesheet_link_tag "index", :media => "all" %>
+<div id="index">
+    <!-- quick sign up -->
     <div id="sign-up">
-		<div id="sign-up-content">
-			<div class="center" style="width:650px; margin-bottom:20px;">
-				<h1> Where will you be next summer? </h1>
+        <div id="sign-up-content">
+            <div class="center" style="width:650px; margin-bottom:20px;">
+                <h1 style="font-size: 40px;"> Where will you be next summer? </h1>
             </div>
             <div id="sign-up-form" class="center">
                 <div id="sign-up-form-background"></div>
-                <div id="sign-up-form-content">                  
-					<div class="form-group">
-						<input type="email" class="form-control input-lg" placeholder="Your UTOR email address">
+                <div id="sign-up-form-content">
+                    <div class="form-group">
+                        <input type="email" class="form-control input-lg" placeholder="Your UTOR email address">
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control input-lg" placeholder="Password">
                     </div>
                     <form>
-						<button type="submit" class="btn btn-lg btn-warning pull-right">Sign Up</button>
-                    </form>			
+                        <button type="submit" class="btn btn-lg btn-warning pull-right">Sign Up</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -214,9 +26,9 @@
     <div id="message-1" class="marketing-message row">
         <div class="marketing-message-image col-md-4 ">
             <img src="http://placehold.it/300x300">
-        </div>
-        <div class="marketing-message-content col-md-8 ">
-            <h2>Need help with your upcoming interview?</h2>
+    </div>
+        <div class="marketing-message-content col-md-8">
+            <h1>Need help with your upcoming interview?</h1>
             <p>We connect you with the upper years who have been in your shoe. They are willing to share their internship hunting experience and guide you through the journey.</p>
         </div>
     </div>
@@ -226,8 +38,10 @@
             <%= image_tag("marketing-1.png") %>
         </div>
         <div class="marketing-message-content col-md-8 ">
-            <h2>Where have your peers been?</h2>
-            <p>Google, Facebook, Microsoft, Bombardier, BCG, Deloitte, P&G... <b>Why can't YOU?</b> Starting from today, DREAM BIGGER, AIM HIGHER. Talk to the people who have been there, and learn from them. After all, "you miss 100% of the shots you don't take."</p>
+            <h1>Where have your peers been?</h1>
+            <p>
+                Google, Facebook, Microsoft, Bombardier, BCG, Deloitte, P&G... <b>Why can't YOU?</b> Starting from today, DREAM BIGGER, AIM HIGHER. Talk to the people who have been there, and learn from them. After all, "you miss 100% of the shots you don't take."
+            </p>
         </div>
     </div>
 
@@ -236,49 +50,40 @@
             <%= image_tag("sq-logo.png") %>
         </div>
         <div class="marketing-message-content col-md-8 ">
-            <h2>About Us</h2>
-            <p>Google, Facebook, Microsoft, Bombardier, BCG, Deloitte, P&G... <b>Why can't YOU?</b> Starting from today, DREAM BIGGER, AIM HIGHER. Talk to the people who have been there, and learn from them. After all, "you miss 100% of the shots you don't take."</p>
+            <h1>About Us</h1>
+            <p>
+                Google, Facebook, Microsoft, Bombardier, BCG, Deloitte, P&G... <b>Why can't YOU?</b> Starting from today, DREAM BIGGER, AIM HIGHER. Talk to the people who have been there, and learn from them. After all, "you miss 100% of the shots you don't take."
+            </p>
         </div>
     </div>
 
-	<div id="message-4" class="marketing-message row" style="background-color:#e5e5e5; padding: 0px;">
-		<h2>The Developers</h2>
-		<div id= "developer" class="row">
-		<div class="credit" style="width: 300px;">
-			<div class="content row">
-				<div class="marketing-message-image">
-					<%= image_tag("ming-yi-bian.jpg", :class => 'img-circle')%>
-				</div>
-				<p> MingYi Bian </p>
-			</div>
-		</div>
-		<div class="credit" style="width: 300px;">
-			<div class="content row">
-				<div class="marketing-message-image">
-					<%= image_tag("surprise-me.jpg", :class => 'img-circle') %>
-				</div>
-				<p> Matt Pua </p>
-			</div>
-		</div>
-		<div class="credit" style="width: 300px;">
-			<div class="content row">
-				<div class="marketing-message-image">
-					<%= image_tag("louisa-chong.jpg", :class => 'img-circle') %>
-				</div>
-				<p> Louisa Chong </p>
-			</div>
-		</div>
-		</div>
-	</div>
-
-    <div id="footer" style="background-color:#e5e5e5;">
-		<%= link_to image_tag("social-facebook.png"), "https://www.facebook.com/UofTYoureNext"%>
-        <%= link_to image_tag("social-twitter.png"), "https://twitter.com/UofT_YoureNext"%>
-        <%= link_to image_tag("social-linkedin.png"), "http://www.linkedin.com/company/you're-next-career-network"%>
-        <div id="company-logo" class="pull-right" style="margin-right: 10px; height: 100%">
-            <%= image_tag("YNCN-boxes-text.png") %>
+    <div id="message-4" class="marketing-message row" style="background-color:#e5e5e5; padding: 0px; padding-top: 40px;">
+        <h1>The Developers</h1>
+        <div id= "developer" class="center row" style="margin-bottom: 50px; width: 900px;">
+            <div class="credit col-md-4">  
+                <div class="card">
+                    <div class="marketing-message-image">
+                        <%= image_tag("ming-yi-bian.jpg", :class => 'img-circle')%>
+                    </div>
+                    <p> MingYi Bian </p>
+                </div>
+            </div>
+            <div class="credit col-md-4">
+                <div class="card">
+                    <div class="marketing-message-image">
+                        <%= image_tag("surprise-me.jpg", :class => 'img-circle') %>
+                    </div>
+                    <p> Matt Pua </p>
+                </div>
+            </div>
+            <div class="credit col-md-4">
+                <div class="card">
+                    <div class="marketing-message-image">
+                        <%= image_tag("louisa-chong.jpg", :class => 'img-circle') %>
+                    </div>
+                    <p> Louisa Chong </p>
+                </div>
+            </div>
         </div>
     </div>
-    
-</body>
-</html>
+</div>

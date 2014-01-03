@@ -1,0 +1,37 @@
+#edit-user-form
+{
+	width: 600px;
+    height: 400px;
+    padding-top: 50px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+#edit-user-background{
+	width: 100%;
+	height: 100%;
+    background: white;
+    filter:alpha(opacity=80); /* IE */
+    -moz-opacity:0.8; /* Mozilla */
+    opacity: 0.8; /* CSS3 */
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+}
+
+#edit-user-content{
+    padding: 10px 50px;
+}
+
+#edit-user-background, #edit-user-content
+{
+    width:100%;
+    height: 100%;
+    position: absolute;
+}
+
+#edit-user-content label{
+	padding-top: 7px;
+	font-size: 15px;
+	font-weight: normal;
+}

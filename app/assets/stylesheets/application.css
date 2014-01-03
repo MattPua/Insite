@@ -11,3 +11,118 @@
  *= require_self
  *= require_tree .
  */
+ 
+
+ /* fixed scroll bar to avoid different width of the page */
+html
+{
+	width: 100%;
+	overflow-x: hidden; 
+	overflow-y: scroll; 
+}
+
+body
+{
+	font-family: 'Raleway', sans-serif;
+}
+
+div.content
+{
+	min-width: 1200px;
+	min-height: 650px;
+	background: #f3faf5;
+	margin-top: -20px;
+}
+
+.center {
+    float: none;
+    margin: 0 auto;
+}
+
+a:hover
+{
+    background-color: transparent;
+}
+
+.page-title	
+{
+	margin-bottom: 5px;
+}
+
+.btn
+{
+	border: 1px; border-color: rgb(160,160,255);
+	margin: 2px;
+	font-family: 'Raleway', sans-serif;
+}
+
+.error-msg{
+	margin: 4px;
+	color: red;
+	font-size: 15px;
+}
+
+.shadow {
+	-webkit-box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    1px 1px 3px rgba(50, 50, 50, 0.75);
+	box-shadow:         1px 1px 3px rgba(50, 50, 50, 0.75);
+}
+
+.clip {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* TODO	: some of the styling is not universal */
+h1
+{
+    margin:30px;
+    display: block;
+    font-family: 'Raleway', sans-serif;
+	font-size: 40px;
+} 
+
+h2
+{
+	font-family: 'Raleway', sans-serif;
+	font-size: 30px;
+}
+
+h3
+{
+	font-size: 20px;
+} 
+
+p
+{
+	font-family: 'Raleway', sans-serif;
+}
+
+/* TODO	: some of the styling is not universal */
+
+
+b, label
+{
+	text-align:justify;
+    font-family: 'Raleway', sans-serif;
+	font-size: 15px;
+}
+
+
+/* force all place holder in input to use the same font */
+::-webkit-input-placeholder { 
+	font-family: 'Raleway', sans-serif; 
+}
+
+::-moz-placeholder { 
+	font-family: 'Raleway', sans-serif; 	/* firefox 19+ */
+} 
+
+:-ms-input-placeholder { 
+	font-family: 'Raleway', sans-serif; 	/* ie */
+}
+
+input:-moz-placeholder { 
+	font-family: 'Raleway', sans-serif; 
+}

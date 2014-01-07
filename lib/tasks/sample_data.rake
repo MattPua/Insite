@@ -16,20 +16,20 @@ namespace :db do
                     industry: industry)
     end
 
-      10.times do |n|
+      30.times do |n|
       name  = Faker::Name.name
       email = "#{n+1}@utoronto.com"
       password  = "12345678"
-      program="#{program_array[n]} Engineering"
+      program="#{program_array[n%10]} Engineering"
       User.create!(name: name,
                    email: email,
                    password: password,
                    password_confirmation: password,
                    program: program)
         2.times do |i|
-        name = array[(n)]
+        name = array[(n%10)]
         user_id = n+1
-        company_id = n+1
+        company_id = n%10+1
         date=2.days.from_now
         position="test-#{i+1}"
         Interview.create!(company_name: name,

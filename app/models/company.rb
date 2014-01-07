@@ -23,6 +23,10 @@ class Company < ActiveRecord::Base
 
 
 
+
+
+
+
   validates :name, 
   	uniqueness: {
   		case_sensitive: false,
@@ -31,3 +35,6 @@ class Company < ActiveRecord::Base
 
 
 end
+
+
+

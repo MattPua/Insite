@@ -4,8 +4,8 @@
     </div>
     <div id ="result">
     <div id="wrapper">
-        <% if @users.present? %>
-            <% @users.each do |user| %>
+        <% if @searchResult.present? %>
+            <% @searchResult.each do |user| %>
             <div class="profile">
                 <%= gravatar_for(user) %>
                 <h3 class="name">

@@ -20,7 +20,7 @@ namespace :db do
       name  = Faker::Name.name
       email = "#{n+1}@utoronto.com"
       password  = "12345678"
-      program=" {#{program_array[n]} Engineering"
+      program="#{program_array[n]} Engineering"
       User.create!(name: name,
                    email: email,
                    password: password,

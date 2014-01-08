@@ -1,13 +1,12 @@
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
-    time=Time.now
-    user=User.create!(name: "Matt Pua",
-                 email: "mp@utoronto.com",
-                 program: "Computer Engineering",
-                 password: "12345678",
-                 password_confirmation: "12345678",
-                 confirmed_at: time)
+    # time=Time.now
+    # user=User.create!(name: "Matt Pua",
+    #              email: "mp@utoronto.com",
+    #              program: "Computer Engineering",
+    #              password: "12345678",
+    #              password_confirmation: "12345678")
     array = ["AMD","Microsoft","P&G","Apple","Facebook","Google","Rotman","LinkedIn","TD Bank","Scotiabank"]
     industry_array = ["Hardware","Software","Goods","Software","Software","Software","Business","Software","Banking","Banking"]
     program_array = ["Electrical","Computer","Mineral","Industrial","Mechanical","Chemical","Materials","Civil"]

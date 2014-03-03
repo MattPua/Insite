@@ -2,7 +2,7 @@ Hackathon::Application.routes.draw do
   get "search/index"
   match "search" => 'search#index'
 
-  devise_for :users, :controllers => { :registrations => "users/registrations" }
+  devise_for :users, :controllers => { :registrations => "users/registrations", :sessions => "users/sessions" }
 
   get "home/index"
   match "main" =>'home#main'

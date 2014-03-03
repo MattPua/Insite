@@ -51,8 +51,10 @@ var password_validation = function(){
 var terms_and_conditions_validation = function(){
 	if (!$('#user_registerterms').is(':checked')){
 		$('#user_registerterms').before( '<div class=\"error-msg\"><span class=\"glyphicon glyphicon-warning-sign\"></span>   Please agree to the terms and conditions</div>');
+			$('.error-msg').delay(2500).fadeOut('slow');
 		return false;
 	}
+
 	return true;
 }
 

@@ -81,15 +81,15 @@ class User < ActiveRecord::Base
 
   validates :phone,
     :allow_blank => true,
-    length: {
-      minimum: 10,
-      maximum: 12,
-      too_short:"must have %{count} numbers at minimum",
-      too_long:"must have %{count} numbers at maximum"
-    },
+    # length: {
+    #   minimum: 10,
+    #   maximum: 12,
+    #   too_short:"must have %{count} numbers at minimum",
+    #   too_long:"must have %{count} numbers at maximum"
+    # },
     format:{
       with:/\A[0-9]{3}-?[0-9]{3}-?[0-9]{4}\Z/,
-      message:"Please enter your 10 digit phone number"
+      message:"number contains invalid characters or contains an invalid number of characters"
     }
 
 def self.search(search)

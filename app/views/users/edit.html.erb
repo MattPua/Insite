@@ -10,19 +10,19 @@
     </div>
     <div class = "col-md-1"></div>
 </div>
-<!-- LC : replace with inline error message
+
 <% if @user.errors.any? %>
-  <div id="error_explanation">
+  <div id="error_explanation" class="center" style="text-align:center; ">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-    <ul>
+    <ul style="margin-bottom: 30px; list-style:none;">
     <% @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
     </ul>
   </div>
 <% end %>
--->
+
 <div class="content row">
   <!-- add span 1 as placeholder -->
   <div class = "col-md-3"></div>
@@ -52,7 +52,7 @@
             <div class="form-group row">
               <label class="col-xs-4 control-label">Graduating Year</label>
               <div class="col-xs-8">
-                <%= f.number_field :year, class:"form-control", placeholder:"Graduating Year", min:"2010", max:"2020" %>
+                <%= f.number_field :year, class:"form-control", placeholder:"Graduating Year", min:"1950", max:"2025" %>
               </div>
             </div>
             <div class="form-group row">
@@ -69,8 +69,10 @@
               </div>
             </div>  
             <div class=" form-group">
-              <%= f.submit "Submit", class:"btn btn-lg btn-warning pull-right"%>
+              <%= f.submit "Submit", class:"btn btn-lg btn-warning pull-right btn-submit", id:"btn-user-edit"%>
+
             </div>
+
             <!-- <div><%= f.submit "Submit" %></div> -->
           <% end %>
         </div>

@@ -3,6 +3,6 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-	$('#flash_messages').delay(2500).fadeOut('slow');
+	$('#flash_messages, #error_explanation').delay(3000).fadeOut('slow');
 });
 

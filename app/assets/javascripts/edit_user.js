@@ -4,3 +4,9 @@ $(document).ready(function(){
 		password_validation();
 	});
 });
+
+$(document).ready(function(){
+	$(".btn-submit").click(function(){
+		
+	});
+});

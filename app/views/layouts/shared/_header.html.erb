@@ -33,7 +33,7 @@
                 <div class="dropdown">
                     <a class="btn btn-default" data-toggle="dropdown" data-target="#" srole="button">
                         <div id="user-name" class="clip">
-                            <%= "#{current_user.name.capitalize!}" %>
+                            <%= "#{current_user.name.titleize}" %>
                         </div>
                         <div>
                               ▼
@@ -43,7 +43,7 @@
                         <li role="presentation"> 
                             <%= link_to user_path(current_user), :tabindex=>"-1" do %>
                                 <span class="glyphicon glyphicon-briefcase"></span>
-                                Work Profile
+                                Your Profile
                             <% end %>
                         </li>
                         <li role="presentation"> 

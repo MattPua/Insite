@@ -1,35 +1,52 @@
-<h1>Listing Companies</h1>
+<h1 style="text-align:center; margin-top:3%; margin-bottom:2%;">Company List</h1>
+
+ 
+  <div>
+  <% @companies.each do |company| %>
 
 
-<% @companies.each do |company| %>
-<div>
-  <div class="company_container">
-    <div class="company_holder_left" style="<%= current_user.admin? ? "width:80%" : "width:100%" %>;">
-                  <%= link_to company.name, company %>
-    </div>
-    <!--<div class="company_holder_right">
-        Empty
+    
+  <div class="company_container" style="margin: 1% auto; margin-bottom:1.5%; width:60%; height: 10%; border: 2px solid black; border-radius:10px; padding:1% 0.5% 1% 0.5%; " >
+
+      <a href="<%= company_path(company)%>" style="display:block; color:black; text-decoration:none;">
+      <!--<%= link_to company.name, "", :style=>" width:100%; height:100%; display:block;margin-left:1%; padding:2%;" %>
+      <p style="display:inline-block; text-align:center;"> <%= company.industry unless company.industry==nil%> </p>-->
+      <div style="width:32.5%; display:inline-block; text-align:center;">
+        <%= company.name %>
+      </div>
+      <div style="width:32.5%; display:inline-block; text-align:center;">
+        <%= company.industry unless company.industry ==nil%>
+      </div>
+      <div style="width:32.5%; display:inline-block; text-align:center;">
+        <%= company.users.uniq.count %> UofT Connections
+      </div>
+      </a>
+      <!--<% if current_user.admin? %>
+      <div class="company_holder_right">
+        <%= link_to 'Edit', edit_company_path(company) %>
+      </div>
+      <div class="company_holder_right ">
+      <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+      <% end %> 
     </div> -->
-    <% if current_user.admin? %>
-    <div class="company_holder_right">
-      <%= link_to 'Edit', edit_company_path(company) %>
-    </div>
-    <div class="company_holder_right ">
-    <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
-    <% end %>
+  <!--
+    <tr>
+      <td><%= company.name %></td>
+      <td><%= link_to 'Show', company %></td>
+      <td><%= link_to 'Edit', edit_company_path(company) %></td>
+      <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr> -->
+
   </div>
-</div>
-<!--
-  <tr>
-    <td><%= company.name %></td>
-    <td><%= link_to 'Show', company %></td>
-    <td><%= link_to 'Edit', edit_company_path(company) %></td>
-    <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr> -->
-<% end %>
+
+  
+  <% end %>
+  </div>
+
+
 
 
 <br />
-
+<%= will_paginate @companies, :param_name=>:page %>
 <!--<%= link_to 'New Company', new_company_path %> -->

@@ -3,7 +3,7 @@ namespace :db do
   task populate: :environment do
     # time=Time.now
     # user=User.create!(name: "Matt Pua",
-    #              email: "mp@utoronto.com",
+    #              email: "matt.pua@utoronto.com",
     #              program: "Computer Engineering",
     #              password: "12345678",
     #              password_confirmation: "12345678")

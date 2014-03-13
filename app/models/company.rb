@@ -21,9 +21,18 @@ class Company < ActiveRecord::Base
   # Company has many interviews
   # Company has many users through interviews
 
+  # Get active and most recent interviews
+  def latest_interviews
+    self.interviews.order("DATE DESC").where(:status=>1)
+  end
 
+  def past_interviews
+    self.interviews.order("DATE DESC").where(:status=>2)
+  end
 
-
+  def employees
+    self.interviews.order("DATE DESC").where(:status=>3)
+  end
 
 
 

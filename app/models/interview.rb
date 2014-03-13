@@ -29,6 +29,12 @@ class Interview < ActiveRecord::Base
   belongs_to :company
 
   # get the date of the interview
+
+  def get_interviewee
+    User.find(self.user_id).name
+  end
+
+
   def get_date
   	self.date.to_formatted_s(:date)
   end

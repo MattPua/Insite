@@ -21,7 +21,7 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     # Get all interviews with same company_name as @company
     @interviews= Interview.where(:company_name => @company.name)
-    @count = @company.users.count
+    @count = @company.users.uniq.count
     # Perhaps transfer the above searching code into model for simplicity
     # Can also change this to find interviews through company_id instead, that's probably the better choice
     respond_to do |format|

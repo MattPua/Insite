@@ -12,16 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label "Company Name", :style=>"width:25%; margin:1% 0 1% 0;" %>
+    <%= f.text_field :name%>
   </div>
-  <div class="field">
-    <%= f.label :industry %><br />
+  <div class="field" >
+    <%= f.label :industry, :style=>"width:25%; margin:1% 0 1% 0;" %>
     <%= f.text_field :industry %>
   </div>
 
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions" style="margin: 2% 0 1% 0;">
+    <%= f.submit "Create Company", class:"btn btn-warning", style:" border-radius:7px; margin:0; float:left;"%>
+    <!-- What does btn, btn-warning do? --> 
   </div>
 <% end %>

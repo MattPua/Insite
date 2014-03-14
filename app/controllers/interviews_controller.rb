@@ -55,10 +55,10 @@ class InterviewsController < ApplicationController
     if @company.nil?
       @company=Company.new
       @company.name=params[:interview][:company_name]
-      if !@company.save
-        format.html { render "/users/interviews/new"}
-        format.json {render json: @company.errors, status: :unprocessable_entity}
-      end
+      # if !@company.save
+      #   format.html {render action: "new"}
+      #   format.json {render json: @company.errors, status: :unprocessable_entity}
+      # end
       # Need to double check this works properly and create better fall-back
     end
     # Checks all companies to see if the company already exists, don't know why I have to grab first though.

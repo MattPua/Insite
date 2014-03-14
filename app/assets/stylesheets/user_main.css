@@ -152,14 +152,12 @@
 
 select#interview_date_4i 
 {
-	width: 45%;
-	float: left;
+	width: 10%;
 }
 
 select#interview_date_5i
 {
-	width: 45%;
-	float: right;
+	width: 10%;
 }
 
 #time_separator{

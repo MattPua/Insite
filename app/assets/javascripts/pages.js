@@ -14,3 +14,7 @@ $(document).ready(function() {
     $(window).resize();
 
 });
+
+$(function() {
+  $('.datepicker').datepicker();
+});

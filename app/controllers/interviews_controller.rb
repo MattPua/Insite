@@ -47,9 +47,7 @@ class InterviewsController < ApplicationController
   # POST /interviews
   # POST /interviews.json
   def create
-    # should change this to be in javascript instead of here
     @interview = Interview.new(params[:interview])
-    #@company=Company.where(:name => params[:interview][:company_name])
     # Find the company using the parameters that the user filled in when creating the interview
     @company=Company.where("name= ?", params[:interview][:company_name]).first
     # If no company is found, create a new company

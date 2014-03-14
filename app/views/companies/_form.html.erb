@@ -22,7 +22,7 @@
 
 
   <div class="actions" style="margin: 2% 0 1% 0;">
-    <%= f.submit "Create Company", class:"btn btn-warning", style:" border-radius:7px; margin:0; float:left;"%>
+    <%= f.submit "#{params[:action]=="edit" ? "Edit" : "New"} Company", class:"btn btn-warning", style:" border-radius:7px; margin:0; float:left;"%>
     <!-- What does btn, btn-warning do? --> 
   </div>
 <% end %>

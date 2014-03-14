@@ -124,3 +124,10 @@ var position_validation = function(){
 	}
 	return true;
 }
+
+var format_date = function(){
+	var date = $('#interview_date').val();
+	var x =moment(date).format("dddd, MMMM Do YYYY");
+	$('#interview_date').attr("value",x);
+	return true;
+}

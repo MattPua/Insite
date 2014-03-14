@@ -58,7 +58,7 @@ class Interview < ActiveRecord::Base
   end
 
   def format_status(chosenStatus)
-    if (chosenStatus=="Active")
+    if (chosenStatus=="In Progress")
       self.status=1
     elsif (chosenStatus=="Finished")
       self.status=2

@@ -1,1 +1,9 @@
-/* CSS For New Interview Page */
+/* CSS For New/edit Interview Page */
+#interview_position, 
+#interview_status,
+#interview_date, 
+#interview_company_name,
+#interview_type{
+	float:	right;
+	width:	50%;
+}

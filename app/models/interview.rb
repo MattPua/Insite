@@ -62,7 +62,10 @@ class Interview < ActiveRecord::Base
       self.status=1
     elsif (chosenStatus=="Finished")
       self.status=2
+    else
+      self.status=3
     end
+
   end
 
   private

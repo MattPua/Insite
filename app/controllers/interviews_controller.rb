@@ -11,7 +11,6 @@ class InterviewsController < ApplicationController
       format.json { render json: @interviews }
     end
   end
-
   # GET /interviews/1
   # GET /interviews/1.json
   def show
@@ -38,6 +37,7 @@ class InterviewsController < ApplicationController
   # GET /interviews/1/edit
   def edit
     @interview = Interview.find(params[:id])
+    s
     respond_to do |format|
       format.html { render "/users/interviews/edit"} # edit.html.erb
       format.json { render json: @interview }
@@ -65,7 +65,7 @@ class InterviewsController < ApplicationController
     @interview.company_id = @company.id
 
     @interview.format_date(params[:interview][:date])
-    @interview.format_status(params[:interview][:status])
+    @interview.status = @interview.format_status(params[:interview][:status])
     respond_to do |format|
       if @interview.save
         format.html { redirect_to @interview, notice: 'Interview was successfully created.' }

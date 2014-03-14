@@ -13,6 +13,7 @@ gem 'binding_of_caller'
 gem 'pg_search'
 gem 'mail'
 gem 'jquery-ui-rails'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

@@ -28,7 +28,7 @@
 
  <div class="field" %>
     <%= f.label "Type", :style => "width:25%; margin: 1% 0 1% 0 ;" %>
-    <%= f.select(:position, [["Summer"],["PEY"],["Full Time"]]) %>
+    <%= f.select(:type, [["Summer"],["PEY"],["Full Time"]]) %>
   </div>
   <div class="field">
     <%= f.label "When is your Interview?", :style=>" margin:1% 0 1% 0;" %>
@@ -39,10 +39,10 @@
   <div class="field">
     <%= f.label "Status of Interview?", :style=>" margin:1% 0 1% 0;" %>
     <!-- Maybe add in third status to signify hired? -->
-    <%= f.select(:status, [["In Progress"],["Compeleted"]])%>
+    <%= f.select(:status, [["In Progress"],["Finished"]])%>
     
   </div>
     <div class="actions" style="margin: 2% 0 1% 0;">
-    <%= f.submit "#{params[:action]=="edit" ? "Edit" : "New"} Interview", id:"btn-submit-interview", class:"btn btn-warning", style:" border-radius:7px; margin:0; float:left;"%>
+    <%= f.submit "#{params[:action]=="edit" ? "Save Changes" : "Save Interview"}", id:"btn-submit-interview", class:"btn btn-warning", style:" border-radius:7px; margin:0; float:left;"%>
     </div>
 <% end %>

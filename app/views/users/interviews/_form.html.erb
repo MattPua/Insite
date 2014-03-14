@@ -44,10 +44,10 @@
   <div class="field">
     <%= f.label "Status of Interview?", :style=>" margin:1% 0 1% 0;" %>
     <!-- Maybe add in third status to signify hired? -->
-    <%= f.select(:status, [["Active"],["Compeleted"]]) %>
+    <%= f.select(:status, [["In Progress"],["Compeleted"]]) %>
     
   </div>
     <div class="actions" style="margin: 2% 0 1% 0;">
-    <%= f.submit "Create Interview", class:"btn btn-warning", style:" border-radius:7px; margin:0; float:left;"%>
+    <%= f.submit "Create Interview", id:"btn-submit-interview", class:"btn btn-warning", style:" border-radius:7px; margin:0; float:left;"%>
     </div>
 <% end %>

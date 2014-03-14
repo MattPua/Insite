@@ -101,3 +101,26 @@ var faculty_validation = function() {
 	}
 
 }
+
+var company_validation = function(){
+	var x = $('#interview_company_name').val();
+	if (x==null || x==""){
+		$('#interview_company_name').parent().addClass('has-error');
+		$('#interview_company_name').before( '<div class=\"error-msg\"><span class=\"glyphicon glyphicon-warning-sign\"></span>  Company Name cannot be empty</div>');
+		$('.error-msg').delay(3000).fadeOut('slow');
+		return false;
+	}
+	return true;
+}
+
+var position_validation = function(){
+	var x = $('#interview_position').val();
+	if (x==null || x==""){
+		$('#interview_position').parent().addClass('has-error');
+		$('#interview_position').before( '<div class=\"error-msg\"><span class=\"glyphicon glyphicon-warning-sign\"></span>  Position cannot be empty</div>');
+		$('.error-msg').delay(3000).fadeOut('slow');
+		return false;
+
+	}
+	return true;
+}

@@ -47,6 +47,7 @@ class InterviewsController < ApplicationController
   # POST /interviews
   # POST /interviews.json
   def create
+    # should change this to be in javascript instead of here
     @interview = Interview.new(params[:interview])
     #@company=Company.where(:name => params[:interview][:company_name])
     # Find the company using the parameters that the user filled in when creating the interview
@@ -55,15 +56,18 @@ class InterviewsController < ApplicationController
     if @company.nil?
       @company=Company.new
       @company.name=params[:interview][:company_name]
-      # if !@company.save
-      #   format.html {render action: "new"}
-      #   format.json {render json: @company.errors, status: :unprocessable_entity}
-      # end
+      if !@company.save
+        format.html {render action: "new"}
+        format.json {render json: @company.errors, status: :unprocessable_entity}
+      end
       # Need to double check this works properly and create better fall-back
     end
     # Checks all companies to see if the company already exists, don't know why I have to grab first though.
     # Need to probably fix that. also move to Helpers
     @interview.company_id = @company.id
+
+    @interview.format_date(params[:interview][:date])
+    @interview.format_status(params[:interview][:status])
     respond_to do |format|
       if @interview.save
         format.html { redirect_to @interview, notice: 'Interview was successfully created.' }

@@ -18,3 +18,18 @@ $(document).ready(function() {
 $(function() {
   $('.datepicker').datepicker();
 });
+
+
+// Validation for Company Name on Interview Creation Page
+$(document).ready(function(){
+	// TODO: some animation for the step by step registration	
+	$('#btn-submit-interview').click(function(){
+		/* field validation first */
+		var company_valid = company_validation()
+		var position_valid = position_validation()
+		if (!company_valid || !position_valid){
+			return false;
+		}
+	});
+});
+

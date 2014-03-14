@@ -25,7 +25,7 @@ class Interview < ActiveRecord::Base
 
   attr_accessible :company_name, :position, :user_id, :company_id, :date, :status
   after_initialize :default_values
-  before_save :default_date
+  #before_save :default_date
 
   belongs_to :user
   belongs_to :company
@@ -52,17 +52,25 @@ class Interview < ActiveRecord::Base
   	self.date.present?
   end
 
+  def format_date(chosenDate)
+    chosenDate.gsub!(/\//,".")
+    self.date=Date.strptime(chosenDate, '%m.%d.%Y')
+  end
+
+  def format_status(chosenStatus)
+    if (chosenStatus=="Active")
+      self.status=1
+    elsif (chosenStatus=="Finished")
+      self.status=2
+    end
+  end
+
   private
     def default_values
-      self.status||=1
+      self.status=1
     end
 
-    def default_date
-      
-      #date= self.date.to_s.gsub!(/([A-Z][a-z]*, [0-9]{2} [A-Z][a-z]* [0-9]{4})/,"")
-      newDate=self.date.to_s.sub!(/(00:00:00)/,"").sub!(/(UTC)/,"").gsub!(/\s/,"")
-      self.date=Date.parse(newDate)
-    end
+
 
 
 end

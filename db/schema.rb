@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20131013022808) do
   create_table "companies", :force => true do |t|
     t.string   "name"
     t.string   "industry"
+    t.string   "location"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20131013022808) do
     t.string   "position"
     t.datetime "date"
     t.integer  "status",       :default => 1
+    t.string   "type"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
   end

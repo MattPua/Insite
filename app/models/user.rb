@@ -6,11 +6,11 @@
 #  name                   :string(255)
 #  email                  :string(255)
 #  year                   :integer
+#  alumni                 :boolean
 #  program                :string(255)
 #  faculty                :string(255)
 #  phone                  :integer
 #  registerterms          :boolean
-#  position               :string(255)
 #  admin                  :boolean          default(FALSE)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null

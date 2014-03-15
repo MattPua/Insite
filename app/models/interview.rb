@@ -5,10 +5,12 @@
 #  id           :integer          not null, primary key
 #  company_id   :integer
 #  user_id      :integer
+#  comment      :string(255)
 #  company_name :string(255)
 #  position     :string(255)
 #  date         :datetime
 #  status       :integer          default(1)
+#  type         :string(255)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #

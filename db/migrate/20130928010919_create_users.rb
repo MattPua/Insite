@@ -30,8 +30,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :position
       t.datetime :date
       t.integer :status, :default =>1
-      t.timestamps
       t.string :type
+      t.timestamps  
     end
     
   end

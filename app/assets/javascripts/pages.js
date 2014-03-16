@@ -36,9 +36,11 @@ $(document).ready(function(){
 
 // Filtering for List interviews page
 $(document).ready(function(){
-	var dropdown= document.getElementById('interview_select').selectedIndex;
-	var dropdown_index = document.getElementById('interview_select').selectedIndex;	if (dropdown_index!=null)
+	var dropdown= document.getElementById('interview_select');
+
+	if (dropdown!=null)
 	{
+		var dropdown_index = document.getElementById('interview_select').selectedIndex;	
 		if (dropdown_index==0)
 		{
 			$('.interview_show').hide();
@@ -55,9 +57,8 @@ $(document).ready(function(){
 		}
 	}
 	$('#interview_select').click(function(){
-		dropdown_index = document.getElementById('interview_select').selectedIndex;
-		if (dropdown_index!=null)
-		{
+		if (dropdown!=null){
+			dropdown_index = document.getElementById('interview_select').selectedIndex;
 			if (dropdown_index==0)
 			{
 				$('.interview_show').hide();
@@ -73,5 +74,7 @@ $(document).ready(function(){
 				$('.interview_show').show();
 			}
 		}
+		
+		
 	});
 });

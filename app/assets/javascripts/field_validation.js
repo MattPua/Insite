@@ -127,7 +127,12 @@ var position_validation = function(){
 
 var format_date = function(){
 	var date = $('#interview_date').val();
-	var x =moment(date).format("dddd, MMMM Do YYYY");
-	$('#interview_date').attr("value",x);
-	return true;
+	if (x!=null){
+		var x =moment(date).format("M/D/YYYY");
+		//var x = moment(date).calendar();
+		$('#interview_date').attr("value",x);
+		return true;
+	}
+	return false;
+
 }

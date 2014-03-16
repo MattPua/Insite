@@ -3,7 +3,11 @@
 #interview_status,
 #interview_date, 
 #interview_company_name,
-#interview_type{
+#interview_interview_type{
 	float:	right;
 	width:	50%;
+}
+
+.interview_link > table > tbody > tr > td {
+	color:	black
 }

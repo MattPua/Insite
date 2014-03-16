@@ -2,17 +2,17 @@
 #
 # Table name: interviews
 #
-#  id           :integer          not null, primary key
-#  company_id   :integer
-#  user_id      :integer
-#  comment      :string(255)
-#  company_name :string(255)
-#  position     :string(255)
-#  date         :datetime
-#  status       :integer          default(1)
-#  type         :string(255)
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id             :integer          not null, primary key
+#  company_id     :integer
+#  user_id        :integer
+#  comment        :string(255)
+#  company_name   :string(255)
+#  position       :string(255)
+#  date           :datetime
+#  status         :integer
+#  interview_type :string(255)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 
 class Interview < ActiveRecord::Base
@@ -26,7 +26,7 @@ class Interview < ActiveRecord::Base
 
 
   attr_accessible :company_name, :position, :user_id, :company_id, :date, :status, :interview_type
-  after_initialize :default_values
+
   #before_save :default_date
 
   belongs_to :user
@@ -70,10 +70,6 @@ class Interview < ActiveRecord::Base
 
   end
 
-  private
-    def default_values
-      self.status=1
-    end
 
 
 

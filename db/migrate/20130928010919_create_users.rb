@@ -29,7 +29,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :company_name
       t.string :position
       t.datetime :date
-      t.integer :status, :default =>1
+      t.integer :status
       t.string :interview_type
       t.timestamps  
     end

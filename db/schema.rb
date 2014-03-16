@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(:version => 20131013022808) do
     t.string   "company_name"
     t.string   "position"
     t.datetime "date"
-    t.integer  "status",         :default => 1
+    t.integer  "status"
     t.string   "interview_type"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "pg_search_documents", :force => true do |t|

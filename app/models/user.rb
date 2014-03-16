@@ -102,7 +102,7 @@ def next_interview
 end
 
 def get_interviews
-  self.interviews.where(:status=>[1,2])
+  self.interviews.where(:status=>[1,2]).order("date")
 end
 
 # Does the user has active interviews

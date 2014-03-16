@@ -11,12 +11,12 @@ class Ability
         can :manage, :all
       else
         # Only users who have confirmed their email accounts are allowed to view the pages
-        if user.confirmed?
+        #if user.confirmed?
             can :read, :all
             can :manage, Interview, :user_id =>user.id
             can :manage, User, :id =>user.id
             can [:create, :update], Company
-        end
+        # end
       end
     #
     # The first argument to `can` is the action you are giving the user 

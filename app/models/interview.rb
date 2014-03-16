@@ -25,7 +25,7 @@ class Interview < ActiveRecord::Base
   # 3 represents past work experience ( not yet implemented )
 
 
-  attr_accessible :company_name, :position, :user_id, :company_id, :date, :status
+  attr_accessible :company_name, :position, :user_id, :company_id, :date, :status, :interview_type
   after_initialize :default_values
   #before_save :default_date
 

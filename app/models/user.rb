@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable #:confirmable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :company_id
@@ -99,6 +99,10 @@ end
 # Get the next active interview
 def next_interview
   self.interviews.where(:status=>1).order("date").first
+end
+
+def get_interviews
+  self.interviews.where(:status=>[1,2])
 end
 
 # Does the user has active interviews

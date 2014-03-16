@@ -34,3 +34,44 @@ $(document).ready(function(){
 	format_date();
 });
 
+// Filtering for List interviews page
+$(document).ready(function(){
+	var dropdown= document.getElementById('interview_select').selectedIndex;
+	var dropdown_index = document.getElementById('interview_select').selectedIndex;	if (dropdown_index!=null)
+	{
+		if (dropdown_index==0)
+		{
+			$('.interview_show').hide();
+			$('.status_1').show();
+		}
+		else if(dropdown_index==1)
+		{
+			$('.interview_show').hide();
+			$('.status_2').show();
+		}
+		else
+		{
+			$('.interview_show').show();
+		}
+	}
+	$('#interview_select').click(function(){
+		dropdown_index = document.getElementById('interview_select').selectedIndex;
+		if (dropdown_index!=null)
+		{
+			if (dropdown_index==0)
+			{
+				$('.interview_show').hide();
+				$('.status_1').show();
+			}
+			else if(dropdown_index==1)
+			{
+				$('.interview_show').hide();
+				$('.status_2').show();
+			}
+			else
+			{
+				$('.interview_show').show();
+			}
+		}
+	});
+});

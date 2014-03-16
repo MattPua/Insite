@@ -1,26 +1,39 @@
-<h1>Listing interviews</h1>
-
-<table>
-  <tr>
-    <th>Company name</th>
-    <th>Position</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @interviews.each do |interview| %>
-  <tr>
-    <td><%= interview.company_name %></td>
-    <td><%= interview.position %></td>
-    <td><%= link_to 'Show', interview %></td>
-    <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
-    <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-
-</table>
-
-<br />
-
-<%= link_to 'New Interview', new_interview_path %>
+<div style="width:60%; margin: 0 auto;">
+  <h1 style="margin:5% 0 2% 0;"> <%= @user.name %>'s Interviews </h1>
+  <div style="margin:2% 0 2% 0; ">
+    <select id="interview_select" name="interview_select">
+      <option id="interview_1" value="upcoming interviews"> Upcoming Interviews</option>
+      <option id="interview_2" value="finished interviews"> Finished Interviews</option>
+      <option id="interview_12" value="All Interviews"> All Interviews</option>
+    </select>
+  </div>
+  <div>
+    <% @interviews.each do |interview| %>
+    <a href="<%=interview_path(interview) %>">
+      <table style="width:100%;">
+          <tr class="interview_show status_<%= interview.status %>" style="border: 2px solid black; margin: 1% 0 1% 0; width:100%; display:inline-block; padding: 1.5% 0 1.5% 0; border-radius:7px;">
+            <td style="text-align:center; width:25%; display:inline-block; float:left;">
+              <%= interview.company_name %>
+            </td>
+            <td style="text-align:center; width:20%; display:inline-block; float:left;">
+              <%= interview.position %>
+            </td>
+            <td style="text-align:center; width:20%; display:inline-block; float:right;">
+              <%= interview.interview_type %>
+            </td>
+            <td style="text-align:center; width:25%; display:inline-block;float: right;">
+              <%= interview.get_date %>
+            </td>
+           <!-- <td style="text-align:center; width:24%; display:inline-block;">
+              <%= link_to 'Edit', edit_interview_path(interview) %>
+              <br/>
+              <%= link_to 'Delete', interview, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td> -->
+          </tr>
+      </div>
+      </table>
+  </a>
+  <% end %>
+  </div>
+  <%= will_paginate @interviews %>
+</div

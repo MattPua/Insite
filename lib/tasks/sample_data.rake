@@ -23,23 +23,25 @@ namespace :db do
       password  = "12345678"
       program="#{program_array[n%10]} Engineering"
       confirmed=Time.now
-      User.create!({name: name,
+      User.create!(name: name,
                    email: email,
                    password: password,
                    password_confirmation: password,
-                   program: program,
-                   confirmed_at: confirmed}, without_protection:true)
+                   program: program
+                   )
         2.times do |i|
         name = array[(n%10)]
         user_id = n+1
         company_id = n%10+1
         date=2.days.from_now
         position="test-#{i+1}"
+        typeJ = "Summer"
         Interview.create!(company_name: name,
                           position: position,
                           user_id: user_id,
                           company_id: company_id,
-                          date: date)
+                          date: date,
+                          interview_type: typeJ)
         end
     end
 

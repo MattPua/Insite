@@ -5,7 +5,8 @@ class InterviewsController < ApplicationController
   # GET /interviews.json
   def index
     # Currently not using index page
-    @interviews = Interview.find(params[:id])
+    @user = User.find(params[:id])
+    @interviews = @user.get_interviews.paginate(:page=>params[:page], :per_page=>10)
     respond_to do |format|
       format.html  { render "/users/interviews/index" }# index.html.erb
       format.json { render json: @interviews }

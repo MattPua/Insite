@@ -114,13 +114,11 @@ class InterviewsController < ApplicationController
   def destroy
     # Currently not using this
     @interview = Interview.find(params[:id])
-    # @interview.destroy
-    @interview.status=2
-    # don't actually destroy interviews, instead just archive them. Make them not accessible generally
-
+    @interview.destroy
+   
     respond_to do |format|
-      format.html { redirect_to :root }
-      format.json { redirect_to :root }
+      format.html { redirect_to user_path(current_user), :notice =>"Interview successfully deleted" }
+      format.json { redirect_to user_path(current_user), :notice =>"Interview successfully deleted"  }
     end
   end
 

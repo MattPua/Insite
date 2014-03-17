@@ -1,56 +1,58 @@
 <p id="notice"><%= notice %></p>
 
+
 <div style="border: 2px solid black; width:60%; border-radius:10px; margin:0 auto; margin-top: 5%;">
-	<div id="content" style="margin: 3% 5% 3% 8%;">
-		<h1>Your Interview</h1>
-
-		<table id="interview_content">
-			<tr id="company_name">
-				<td>
-					Company
-				</td>
-				<td>
-					<%= @interview.company_name %>
-				</td>
-			</tr>
-			<tr id="position">
-				<td>
-					Position
-				</td>
-				<td>
-					<%= @interview.position%>
-				</td>
-			</tr>
-			<tr id="type">
-				<td>
-					Type
-				</td>
-				<td>
-					<%= @interview.interview_type %>
-				</td>
-			</tr>
-			<tr id="status">
-				<td>
-					Status
-				</td>
-				<td id="status_content" val="<%= @interview.status %>"> 
-					
-				</td>
-			</tr>
-			<tr id="date">
-				<td>
-					Date
-				</td>
-				<td>
-					<%= @interview.get_date %>
-				</td>
-			</tr>
-		</table>
+	<div id="interview_content" style="margin: 3% 5% 3% 8%;">
+		<h1><%= current_user==@interview.user_id ? "Your Interview" : User.find(@interview.user_id).name + "'s Interview" %> </h1>
 
 
-		<%= link_to 'Edit Interview', edit_interview_path, :class=>"btn", :style=>"background-color:#7A9B75; margin-left:2%; border-radius:7px; color:white;" %>
+	  <div class="field">
+	    <div class="attribute_label"style="width;25; margin: 1% 0 1% 0;">
+	    Company
+	    </div>
+	    <div class="attribute_value"> <%= @interview.company_name  %></div>
+	  </div>
+	  <div class="field" >
+	    <div class="attribute_label"style="width;25; margin: 1% 0 1% 0;">
+	    Position
+	    </div>
+	    <div class="attribute_value">
+	    <%= @interview.position %>
+	    </div>
+	  </div>
+	  <div class="field" >
+	    <div class="attribute_label"style="width;25; margin: 1% 0 1% 0;">
+	    Type
+	    </div>
+	    <div class="attribute_value">
+	    <%= @interview.interview_type %>
+	    </div>
+	  </div>
+	  <div id="status" >
+	    <div class="attribute_label"style="width;25; margin: 1% 0 1% 0;">
+	    Status
+	    </div>
+	    <div id="status_content" class="attribute_value" val="<%=@interview.status %>">
+	    
+	    </div>
+	  </div>
+	  <div class="field" >
+	    <div class="attribute_label"style="width;25; margin: 1% 0 1% 0;">
+	    Date
+	    </div>
+	    <div class="attribute_value">
+	    <%= @interview.get_date %>
+	    </div>
+	  </div>
 
-		<!-- THIS BUTTON IS NOT ALIGNED AS THE SUBMIT BUTTON, HOW CAN I FIX THIS -->
+	  <% if can? :manage, User.find(@interview.user_id) %>
+
+	  <%= link_to 'Edit Interview', edit_interview_path, :class=>"btn", :style=>"background-color:#7A9B75;  margin-top:2%; border-radius:7px; color:white;" %>
+	  <%= link_to 'Delete Interview', interview_path(@interview), :data => {:confirm => "Are you sure?"}, :method =>:delete %>
+	  <% end %>
+		
+		<%= link_to 'Back', interviews_path, :class=>"btn btn-warning", :style=>"background-color:#D58512; margin-top:2%; border-radius:7px;" %>
+
 	</div>
 
 

@@ -131,3 +131,20 @@
     #title{
     	margin-bottom: 2%;
     }
+
+.attribute_label{
+	display:inline-block;
+	font-weight: bold;
+	text-align:justify;
+	font-family:'Raleway', sans-serif;
+	font-size: 15px;
+	width: 20%;
+}
+
+.attribute_value{
+	display:inline-block;
+}
+
+#flash_notice{
+	margin: 2% auto;
+}

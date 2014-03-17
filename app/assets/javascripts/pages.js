@@ -78,7 +78,7 @@ $(document).ready(function(){
 		
 	});
 });
-
+// Show Interview 
 $(document).ready(function(){
 	var x = $('#interview_content #status #status_content');
 	if (x!=null){
@@ -96,6 +96,7 @@ $(document).ready(function(){
 	}
 });
 
+// User edit page validation
 $(document).ready(function(){
 	$('.btn-submit').click(function(){
 		var email_valid = email_validation();

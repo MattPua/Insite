@@ -5,33 +5,47 @@
     <option id="interview_2" value="finished interviews"> Past Interviews</option>
     <option id="interview_12" value="All Interviews"> All Interviews</option>
   </select>
-  <div>
-    <% @interviews.each do |interview| %>
-    <a href="<%=interview_path(interview) %>" class="interview_link">
-      <table style="width:100%;">
-          <tr class="interview_show status_<%= interview.status %>" style="border: 2px solid black; margin: 1% 0 1% 0; width:100%; display:inline-block; padding: 1.5% 0 1.5% 0; border-radius:7px;">
-            <td style="text-align:center; width:25%; display:inline-block; float:left;">
-              <%= interview.company_name %>
-            </td>
-            <td style="text-align:center; width:20%; display:inline-block; float:left;">
-              <%= interview.position %>
-            </td>
-            <td style="text-align:center; width:20%; display:inline-block; float:right;">
-              <%= interview.interview_type %>
-            </td>
-            <td style="text-align:center; width:25%; display:inline-block;float: right;">
-              <%= interview.get_date %>
-            </td>
-           <!-- <td style="text-align:center; width:24%; display:inline-block;">
-              <%= link_to 'Edit', edit_interview_path(interview) %>
-              <br/>
-              <%= link_to 'Delete', interview, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </td> -->
-          </tr>
-      </div>
-      </table>
-  </a>
-  <% end %>
+  <div id="interview_listing">
+	  <% if !@interviews.empty? %>
+	    <% @interviews.each do |interview| %>
+		    <a href="<%=interview_path(interview) %>" class="interview_link">
+		      <table style="width:100%;">
+		          <tr class="interview_show status_<%= interview.status %>" style="border: 2px solid black; margin: 1% 0 1% 0; width:100%; display:inline-block; padding: 1.5% 0 1.5% 0; border-radius:7px;">
+		            <td style="text-align:center; width:25%; display:inline-block; float:left;">
+		              <%= interview.company_name %>
+		            </td>
+		            <td style="text-align:center; width:20%; display:inline-block; float:left;">
+		              <%= interview.position %>
+		            </td>
+		            <td style="text-align:center; width:20%; display:inline-block; float:right;">
+		              <%= interview.interview_type %>
+		            </td>
+		            <td style="text-align:center; width:25%; display:inline-block;float: right;">
+		              <%= interview.get_date %>
+		            </td>
+		           <!-- <td style="text-align:center; width:24%; display:inline-block;">
+		              <%= link_to 'Edit', edit_interview_path(interview) %>
+		              <br/>
+		              <%= link_to 'Delete', interview, method: :delete, data: { confirm: 'Are you sure?' } %>
+		            </td> -->
+		          </tr>
+		      </table>
+		  	</a>
+	  	<% end %>
+	  <% else %>
+				<table style="width:100%;">
+					<tr  style="border: 2px solid black; margin: 1% 0 1% 0; width:100%; display:inline-block; padding: 1.5% 0 1.5% 0; border-radius:7px;">
+						<td style="text-align:center; width:25%; ">
+						Looks like you don't have any interviews!
+						</td>
+
+		          </tr>
+		      </table>
+	  <% end %>
   </div>
+  <%if @interviews.empty? %>
+	  <div style="width: 800px; height: 400px;">
+	  </div>
+  <% end %>
   <%= will_paginate @interviews %>
-</div
+</div>

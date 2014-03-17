@@ -4,8 +4,9 @@ class InterviewsController < ApplicationController
   # GET /interviews
   # GET /interviews.json
   def index
-    # Currently not using index page
+   
     @user = User.find(params[:id])
+    # get all interviews, and use JS to filter them for display purposes
     @interviews = @user.get_interviews.paginate(:page=>params[:page], :per_page=>10)
     respond_to do |format|
       format.html  { render "/users/interviews/index" }# index.html.erb

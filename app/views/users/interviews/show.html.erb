@@ -48,7 +48,7 @@
 	  <% if can? :manage, User.find(@interview.user_id) %>
 
 	  <%= link_to 'Edit Interview', edit_interview_path, :class=>"btn", :style=>"background-color:#7A9B75;  margin-top:2%; border-radius:7px; color:white;" %>
-	  <%= link_to 'Delete Interview', interview_path(@interview), :data => {:confirm => "Are you sure?"}, :method =>:delete %>
+	  <%= link_to 'Delete Interview', interview_path(@interview), :data => {:confirm => "Are you sure?"}, :method =>:delete, :class=>"btn", :style=>"background-color:#7A9B75;  margin-top:2%; border-radius:7px; color:white;" %>
 	  <% end %>
 		
 		<%= link_to 'Back', interviews_path, :class=>"btn btn-warning", :style=>"background-color:#D58512; margin-top:2%; border-radius:7px;" %>

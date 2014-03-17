@@ -78,3 +78,20 @@ $(document).ready(function(){
 		
 	});
 });
+
+$(document).ready(function(){
+	var x = $('#interview_content #status #status_content');
+	if (x!=null){
+		var value = x.attr('val');
+		if (value==1)
+		{
+			var txtNode=document.createTextNode("In Progress");
+			document.getElementById("status_content").appendChild(txtNode);
+		}
+		else if (value==2)
+		{
+			var txtNode=document.createTextNode("Finished");
+			document.getElementById("status_content").appendChild(txtNode);
+		}
+	}
+});

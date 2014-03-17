@@ -9,5 +9,51 @@
 }
 
 .interview_link > table > tbody > tr > td {
-	color:	black
+	color:	black;
 }
+
+/*#profile_info > div{
+	display: inline-block;
+	border-radius:	7px;
+	border: 2px solid black;
+	margin:	1% 0 1% 0;
+	padding: 2%;
+}
+*/
+
+.profile_info li ul{
+		border: 2px solid black;
+		vertical-align: middle;
+		height:50px;
+		border-radius: 7px;
+		font-weight: bolder;
+		padding: 10px 0 10px 0;
+		width: 250px;
+		}
+.profile_info li{
+		list-style-type:	none;
+	}
+
+.profile_info li a
+{
+	text-decoration:	none;
+	color:	black;
+}
+
+.user_interviews{
+	width: 60%;
+	margin:2% auto;
+	text-align:	center;
+	border: 2px solid black;
+	border-radius:	7px;
+}
+
+.user_interviews div{
+	margin-bottom: 2%;
+}
+
+.user_interviews .interview_item{
+	text-decoration:	none;
+	color:	black;
+}
+

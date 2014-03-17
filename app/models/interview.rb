@@ -44,7 +44,6 @@ class Interview < ActiveRecord::Base
     User.find(self.user_id).name
   end
 
-
   def get_date
   	self.date.to_formatted_s(:date)
   end

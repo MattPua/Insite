@@ -1,132 +1,112 @@
 <!-- <p id="notice"><%= notice %></p> -->
-<div style="height:100%; width:100%; border:3px solid black;">
-  <%= gravatar_for @user %>
-  <%= @user.name %> | 
-  <%= @user.program %> |
-  <% if can? :manage, @user %>
-  <%= link_to 'Edit', edit_user_path(@user) %> |
+<div style="width:60%; margin: 5% auto; margin-bottom:2%; text-align:center;">
 
-        <% end %>
+  <table style="width:100%;" cellspacing="0">
+    <tr>
+      <td id="profile_picture" style="border:2px solid black; display:inline-block;border-radius:100%; padding:1.5%;">
+      <%= default_picture @user %>
+      </td>
+      <td class="profile_info">
+        <li>
+          <ul>
+            <%= @user.name %>
+          </ul>
+          <ul>
+            <%= @user.program %>
+          </ul>
+          <ul>
+            Class of <%= @user.year %>
+          </ul>
+        </li>
+
+      </td>
+      <td class="profile_info">
+        <li>
+          <ul>
+            <%= @user.email %>
+          </ul>
+          <ul>
+            <%= @user.faculty %>
+          </ul>
+          <% if can? :manage, @user %>
+          <a href="<%=edit_user_path(@user)%>" >
+            <ul>
+              Edit Profile
+            </ul>
+          </a>
+          <% else %>
+            <ul>
+            </ul>
+          <% end %> 
+        </li>       
+      </td>
+    </tr>
+
+
+  </table> 
+
 </div>
 
-<% if @interviews.present? %>
-        <p>
-        <% if is_current_user(@user) %>
-        You have
-        <% else %>
-                <%= @user.name %> has
-        <% end %>
-         <%= @interviews.count %> <%="interview".pluralize(@interviews.size)%> coming up!</p>
-
-                <b>         
-        <% if is_current_user(@user) %>
-        Your
-        <% else %>
-                <%= @user.name %>'s
-        <% end %> next interview is on <%= @user.next_interview.get_date if @user.next_interview.is_scheduled?%></b>
-
-        <!-- Need to move above ruby code into controller or model, also make code cleaner. -->
-        <% @interviews.each do |interview| %>
-
-                <p><%= interview.position%> @ <%= interview.company_name %> <%= "scheduled on " + interview.get_date unless !interview.is_scheduled? %></p> 
-
-        <% end %>
-<% else %>
-<p>
-        <% if is_current_user(@user) %>
-                <%= link_to "Schedule an interview here!", new_interview_path %>
-        <% else %>
-                Nothing to do here.
-        <% end %>
-        </p>
-<% end %>
         
-<h1>Current interviews</h1>
 
-<table>
-  <tr>
-    <th>Company name</th>
-    <th>Position</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="user_interviews"> 
+  <h3>
+    Upcoming Interviews
+  </h3>
+  <% @user.active_interviews[0,3].each do |interview| %>
+    <p>
+    <a href="<%= interview_path(interview) %>" class="interview_item">
+      <%= current_user==@user ? "You have an interview at " : "#{@user.name} has an interview at" %> <%= interview.company_name %> for a  <%= interview.position %> position [<%= interview.interview_type %>] on <%= interview.get_date %>
+      </a>
+    </p>
+  <% end %>
+  <div>
+    <% if !@user.active_interviews.empty? %>
+    <%= link_to "See All Upcoming Interviews", interviews_path %>
+    or
+    <% end %>
+    <%= link_to "Schedule a New Interview Here", new_interview_path %>
+  </div>
+</div>
 
-        <% @user.active_interviews.each do |interview| %>
-          <tr>
-            <td><%= interview.company_name %></td>
-            <td><%= interview.position %></td>
-            <td><%= link_to 'Show', interview_path(interview)%></td>
-            <% if can? :manage, interview %>
-            <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
-            <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <% end %>
-          </tr>
-        <% end %>
+<% if !@user.finished_interviews.empty? %>
+  <div class="user_interviews"> 
+    <h3>
+      Past Interviews
+    </h3>
+    <% @user.finished_interviews[0,3].each do |interview| %>
+      <p>
+        <a href="<%= interview_path(interview) %>" class="interview_item">
+        <%= current_user==@user ? "You had an interview at " : "#{@user.name} had an interview at" %> <%= interview.company_name %> for a  <%= interview.position %> position [<%= interview.interview_type %>] on <%= interview.get_date %>
+        </a>
+      </p>
+    <% end %>
+    <div>
+        <%= link_to "See All Past Interviews", interviews_path %>
+    </div>
+  </div>
+<% end %>
 
-</table>
-
-<hr/>
-<h1>Past interviews</h1>
-
-<table>
-  <tr>
-    <th>Company Name</th> |
-    <th>Position</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-        <% @user.finished_interviews.each do |interview| %>
-          <tr>
-            <td><%= interview.company_name %></td>
-            <td><%= interview.position %></td>
-            <td><%= link_to 'Show', interview_path(interview)%></td>
-            <% if can? :manage, interview %>
-            <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
-            <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <% end %>
-          </tr>
-        <% end %>
-
-</table>
-
-</table>
-
-<hr/>
-<h1>Past Work Experiences</h1>
-
-<table>
-  <tr>
-    <th>Company name</th>
-    <th>Position</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-        <% @user.work_experiences.each do |interview| %>
-          <tr>
-            <td><%= interview.company_name %></td>
-            <td><%= interview.position %></td>
-            <td><%= link_to 'Show', interview_path(interview)%></td>
-            <% if can? :manage, interview %>
-            <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
-            <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <% end %>
-          </tr>
-        <% end %>
-
-</table>
+<!-- <div class="user_interviews"> 
+  <h3>
+    Work Experience
+  </h3>
+  <div>
+    <% @user.work_experiences.each do |interview| %>
+    <p>
+      <%= current_user==@user ? "You worked at " : "#{@user.name} worked at" %> <%= interview.company_name %> as a <%= interview.position %> position[<%= interview.interview_type %>]
+    </p>
+  <% end %>
+  </div>
+</div> -->
 
 
-
+<!--
 <hr/>
 <% if is_current_user(@user) %>
 <%= link_to 'New Interview', new_interview_path %>
 <% end %>
-<br/>
+<br/>  -->
 
 
 

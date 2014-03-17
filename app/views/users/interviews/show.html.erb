@@ -1,19 +1,53 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Company name:</b>
-  <%= @interview.company_name %>
-</p>
-
-<p>
-  <b>Position:</b>
-  <%= @interview.position %>
-</p>
-
 <div style="border: 2px solid black; width:60%; border-radius:10px; margin:0 auto; margin-top: 5%;">
 	<div id="content" style="margin: 3% 5% 3% 8%;">
 		<h1>Your Interview</h1>
-		
+
+		<table id="interview_content">
+			<tr id="company_name">
+				<td>
+					Company
+				</td>
+				<td>
+					<%= @interview.company_name %>
+				</td>
+			</tr>
+			<tr id="position">
+				<td>
+					Position
+				</td>
+				<td>
+					<%= @interview.position%>
+				</td>
+			</tr>
+			<tr id="type">
+				<td>
+					Type
+				</td>
+				<td>
+					<%= @interview.interview_type %>
+				</td>
+			</tr>
+			<tr id="status">
+				<td>
+					Status
+				</td>
+				<td id="status_content" val="<%= @interview.status %>"> 
+					
+				</td>
+			</tr>
+			<tr id="date">
+				<td>
+					Date
+				</td>
+				<td>
+					<%= @interview.get_date %>
+				</td>
+			</tr>
+		</table>
+
+
 		<%= link_to 'Edit Interview', edit_interview_path, :class=>"btn", :style=>"background-color:#7A9B75; margin-left:2%; border-radius:7px; color:white;" %>
 
 		<!-- THIS BUTTON IS NOT ALIGNED AS THE SUBMIT BUTTON, HOW CAN I FIX THIS -->

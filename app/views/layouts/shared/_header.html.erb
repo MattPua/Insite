@@ -47,6 +47,11 @@
                             <% end %>
                         </li>
                         <li role="presentation"> 
+                            <%= link_to interviews_path(current_user), :role=>"menuitem", :tabindex=>"-1" do %>
+                                <span class="glyphicon glyphicon-off"></span> Your Interviews
+                            <% end %>
+                        </li> 
+                        <li role="presentation"> 
                             <%= link_to destroy_user_session_path , method: :delete, :role=>"menuitem", :tabindex=>"-1" do %>
                                 <span class="glyphicon glyphicon-off"></span> Log Out
                             <% end %>

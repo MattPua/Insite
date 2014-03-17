@@ -207,7 +207,6 @@ DEPENDENCIES
   binding_of_caller
   bullet
   cancan
-  coffee-rails (~> 3.2.1)
   debugger
   devise
   faker

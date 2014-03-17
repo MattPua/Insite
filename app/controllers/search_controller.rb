@@ -64,9 +64,9 @@ class SearchController < ApplicationController
    if !@InterviewResults.nil?
     @users=@users & @InterviewResults
    end
-   @users.uniq!
+   @users.uniq!.sort!{ |a,b| a.name.downcase<=> b.name.downcase}
 
-   @searchResult = @users
+   @searchResult = @users.paginate(:page => params[:page], :per_page => 12)
     
 
     respond_to do |format|

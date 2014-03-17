@@ -57,3 +57,77 @@
 	color:	black;
 }
 
+/*Search Page*/
+/*    #content{
+    background: #f3faf5;
+    width: 100%;
+
+    }
+
+    #result{
+    display:block;
+    margin: 10px;
+    }*/
+
+    /* list of user available */
+
+/*    .profile {
+    background: #e6eeec;
+    height: 290px;
+    display: block;
+    }
+
+    .profile img {
+    width: 175px;
+    height: 175px;
+    border: 5px solid white;
+    display:block;
+    margin: 15px auto;
+    }
+
+    .profile .name, .profile .position{
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+    }
+
+    .profile .name{
+    font-size: 16pt;
+
+    }
+
+
+
+    #footer
+    {
+    height: 100px;
+    width: 100%;
+    padding: 20px;
+    }
+
+    #footer img
+    {
+    width: 200px;
+    }*/
+
+    .user_profile{
+    	text-align: center;
+    	display: inline-block;
+    	margin: 2%;
+    	
+    }
+
+    .name, .position{
+    	border: 2px solid black;
+    	border-radius: 7px;
+    	padding-top:5%;
+    	padding-bottom:5%;
+    	position: relative;
+    	top:-50px;
+    	z-index:10;
+    	background-color: white;
+    }
+
+    #title{
+    	margin-bottom: 2%;
+    }

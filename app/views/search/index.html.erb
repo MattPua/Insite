@@ -6,7 +6,7 @@
         <div style="width:80%; margin: 0 auto;">
             <% if @searchResult.present? %>
                 <% @searchResult.each do |user| %>
-                <div class="user_profile">
+                <div class="user_profile" >
                     <%= default_picture(user) %>
                     <div class="name">
                         <%= user.name %>

@@ -95,3 +95,19 @@ $(document).ready(function(){
 		}
 	}
 });
+
+$(document).ready(function(){
+	$('.btn-submit').click(function(){
+		var email_valid = email_validation();
+		var name_valid = user_name_validation();
+		var year_valid = graduation_year_validation();
+		var faculty_valid = faculty_validation();
+		var program_valid = program_validation();
+	
+		if (!email_valid || !name_valid || !year_valid || !faculty_valid || !program_valid){
+			return false;
+		}
+		return true;
+		
+	});
+});

@@ -75,12 +75,33 @@ class User < ActiveRecord::Base
      format: {
       # only make @utoronto or @examples.utoronto emails valid where examples = ece, ecf, indy, alumni, etc
        with: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@([a-zA-Z0-9]*.)?(utoronto).(com|ca)$/i,
+       message: "Please use your Utoronto email"
      }
 
    validates_presence_of :encrypted_password
 
-  validates :phone,
+   validates :program,
+   :allow_blank =>true,
+   format: {
+      with: /[a-zA-Z]*\s?/,
+      message: "Only valid characters are allowed"
+  	}
+  validates :faculty,
+   :allow_blank =>true,
+   format: {
+      with: /[a-zA-Z]*\s?/,
+      message: "Only valid characters are allowed"
+  	}
+  validates :year,
+   :presence => true,
+   format: {
+      with: /[0-9]*/,
+      message: "Only digits are allowed"
+  	}
+
+  	validates :phone,
     :allow_blank => true,
+    
     # length: {
     #   minimum: 10,
     #   maximum: 12,
@@ -91,6 +112,7 @@ class User < ActiveRecord::Base
       with:/\A[0-9]{3}-?[0-9]{3}-?[0-9]{4}\Z/,
       message:"number contains invalid characters or contains an invalid number of characters"
     }
+
 
 def self.search(search)
   @user = User.search_by_user(search)

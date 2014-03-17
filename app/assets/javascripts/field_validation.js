@@ -63,6 +63,7 @@ var user_name_validation = function() {
 	if (x==null || x==""){
 		$('#user_name').parent().addClass('has-error');
 		$('#user_name').before( '<div class=\"error-msg\"><span class=\"glyphicon glyphicon-warning-sign\"></span>  Name cannot be empty </div>');
+		$('.error-msg').delay(3000).fadeOut('slow');
 		return false;
 	}
 	/* make sure the user at least have a first and last anme */
@@ -71,6 +72,7 @@ var user_name_validation = function() {
 	if (spcpos<1 || spcpos+2>=x.length|| !specialchartest.test(x)){
 		$('#user_name').parent().addClass('has-error');
 		$('#user_name').before( '<div class=\"error-msg\"><span class=\"glyphicon glyphicon-warning-sign\"></span>  Name entered must be first and last name</div>');
+		$('.error-msg').delay(3000).fadeOut('slow');
 		return false;
 	}
 	return true;
@@ -81,12 +83,14 @@ var graduation_year_validation = function() {
 	if (x==null || x==""){
 		$('#user_year').parent().addClass('has-error');
 		$('#user_year').before( '<div class=\"error-msg\"><span class=\"glyphicon glyphicon-warning-sign\"></span>  Graduation year cannot be empty</div>');
+		$('.error-msg').delay(3000).fadeOut('slow');
 		return false;
 	}
 	var yearint = parseInt(x);
-	if (x<2000||x>2020){
+	if (x<1990||x>2030){
 		$('#user_year').parent().addClass('has-error');
 		$('#user_year').before( '<div class=\"error-msg\"><span class=\"glyphicon glyphicon-warning-sign\"></span>  Please enter a valid graduating year</div>');
+		$('.error-msg').delay(3000).fadeOut('slow');
 		return false;
 	}
 	return true;
@@ -97,9 +101,21 @@ var faculty_validation = function() {
 	if (x==null || x==""){
 		$('#user_faculty').parent().addClass('has-error');
 		$('#user_faculty').before( '<div class=\"error-msg\"><span class=\"glyphicon glyphicon-warning-sign\"></span>  Faculty cannot be empty</div>');
+		$('.error-msg').delay(3000).fadeOut('slow');
 		return false;
 	}
+	return true;
 
+}
+var program_validation = function() {
+	var x = $('#user_program').val();
+	if (x==null || x==""){
+		$('#user_program').parent().addClass('has-error');
+		$('#user_program').before( '<div class=\"error-msg\"><span class=\"glyphicon glyphicon-warning-sign\"></span>  Program cannot be empty</div>');
+		$('.error-msg').delay(3000).fadeOut('slow');
+		return false;
+	}
+	return true;
 }
 
 var company_validation = function(){

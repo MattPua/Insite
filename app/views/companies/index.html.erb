@@ -1,53 +1,43 @@
 <h1 id="company_title" class="text-center">Company List</h1>
-
- 
   <div>
-  <% @companies.each do |company| %>
+    <% @companies.each do |company| %>
+      <div class="company_container centered width60 border2">
 
+          <a href="<%= company_path(company)%>" >
+          <!--<%= link_to company.name, "", :style=>" width:100%; height:100%; display:block;margin-left:1%; padding:2%;" %>
+          <p style="display:inline-block; text-align:center;"> <%= company.industry unless company.industry==nil%> </p>-->
+          
+          <div class="company_block_piece" >
+            <%= company.name %>
+          </div>
+          <div class="company_block_piece" >
+            <%= company.industry unless company.industry ==nil%>
+          </div>
+          <div class="company_block_piece" >
+            <%= company.users.uniq.count %> Connections
+          </div>
+          </a>
+          <!--<% if current_user.admin? %>
+          <div class="company_holder_right">
+            <%= link_to 'Edit', edit_company_path(company) %>
+          </div>
+          <div class="company_holder_right ">
+          <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+          <% end %> 
+        </div> -->
+      <!--
+        <tr>
+          <td><%= company.name %></td>
+          <td><%= link_to 'Show', company %></td>
+          <td><%= link_to 'Edit', edit_company_path(company) %></td>
+          <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr> -->
 
-    
-  <div class="company_container centered width60 border2">
-
-      <a href="<%= company_path(company)%>" >
-      <!--<%= link_to company.name, "", :style=>" width:100%; height:100%; display:block;margin-left:1%; padding:2%;" %>
-      <p style="display:inline-block; text-align:center;"> <%= company.industry unless company.industry==nil%> </p>-->
-      
-      <div class="company_block_piece" >
-        <%= company.name %>
       </div>
-      <div class="company_block_piece" >
-        <%= company.industry unless company.industry ==nil%>
-      </div>
-      <div class="company_block_piece" >
-        <%= company.users.uniq.count %> Connections
-      </div>
-      </a>
-      <!--<% if current_user.admin? %>
-      <div class="company_holder_right">
-        <%= link_to 'Edit', edit_company_path(company) %>
-      </div>
-      <div class="company_holder_right ">
-      <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </div>
-      <% end %> 
-    </div> -->
-  <!--
-    <tr>
-      <td><%= company.name %></td>
-      <td><%= link_to 'Show', company %></td>
-      <td><%= link_to 'Edit', edit_company_path(company) %></td>
-      <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr> -->
-
+    <% end %>
   </div>
-
-  
-  <% end %>
-  </div>
-
-
-
 
 <br />
 <%= will_paginate @companies, :param_name=>:page %>
-<!--<%= link_to 'New Company', new_company_path %> -->
+

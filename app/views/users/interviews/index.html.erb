@@ -9,38 +9,28 @@
 	  <% if !@interviews.empty? %>
 	    <% @interviews.each do |interview| %>
 		    <a href="<%=interview_path(interview) %>" class="interview_link">
-		      <table class="width100">
-		          <tr class="interview_show inline_block status_<%= interview.status %> border2 width100">
-		            <td class="float_l inline_block text-center">
+		      <div class="interview_show inline_block status_<%= interview.status %> border2 width100">
+		            <span class="float_l inline_block text-center">
 		              <%= interview.company_name %>
-		            </td>
-		           <td class="float_l inline_block text-center">
+		            </span>
+		           <span class="float_l inline_block text-center">
 		              <%= interview.position %>
-		            </td>
-		            <td class="float_l inline_block text-center">
+		            </span>
+		            <span class="float_l inline_block text-center">
 		              <%= interview.interview_type %>
-		            </td>
-		            <td class="float_l inline_block text-center">
+		            </span>
+		            <span class="float_l inline_block text-center">
 		              <%= interview.get_date %>
-		            </td>
-		           <!-- <td style="text-align:center; width:24%; display:inline-block;">
-		              <%= link_to 'Edit', edit_interview_path(interview) %>
-		              <br/>
-		              <%= link_to 'Delete', interview, method: :delete, data: { confirm: 'Are you sure?' } %>
-		            </td> -->
-		          </tr>
-		      </table>
+		            </span>
+		      </div>
 		  	</a>
 	  	<% end %>
 	  <% else %>
-				<table id ="no_interview" class="width100">
-					<tr  class="border2 width100 inline_block margin_1">
-						<td class="text-center">
-						Looks like you don't have any interviews!
-						</td>
-
-		          </tr>
-		      </table>
+		<div id ="no_interview" class="width100">
+			<span class="text-center">
+			Looks like you don't have any interviews!
+			</span>
+		</div>
 	  <% end %>
   </div>
   <%if @interviews.empty? %>

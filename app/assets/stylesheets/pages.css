@@ -84,27 +84,26 @@
 	margin-bottom:3%;
 }
 
-.interview_link > table > tbody > tr > td {
-	color:	black;
-}
-
 .interview_show{
 	margin: 1% 0 1% 0;
 	padding-top: 1.5%;
 	padding-bottom:1.5%;
 }
 
-.interview_show > td {
+.interview_show > span {
 	width:24%;
+	color:black;
 }
 
-#no_interview > tr{
+.interview_show:hover{
+	background-color:rgba(235, 235, 235, 0.69);
+	border-color:rgba(221, 221, 221, 0.65);
+}
+
+#no_interview > span{
 	padding-top: 1.5%;
 	padding-bottom: 1.5%;
-}
-
-#no_interview > tr > td {
-	width: 25%;
+	width:25%;
 }
 
 #empty_space{
@@ -341,6 +340,11 @@
 	margin-bottom: 1.5%;
 	height: 10%;
 	border-radius:10px !important;
+}
+
+.company_container:hover{
+	background-color:rgba(235, 235, 235, 0.69);
+	border-color:rgba(221, 221, 221, 0.65);
 }
 
 .company_container > a{

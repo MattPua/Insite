@@ -48,7 +48,12 @@
                             <%= link_to interviews_path(current_user), :role=>"menuitem", :tabindex=>"-1" do %>
                                 <span class="glyphicon glyphicon-book"></span> Your Interviews
                             <% end %>
-                        </li> 
+                        </li>
+                        <li role="presentation"> 
+                            <%= link_to companies_path, :role=>"menuitem", :tabindex=>"-1" do %>
+                                <span class="glyphicon glyphicon-book"></span> All Companies
+                            <% end %>
+                        </li>                        
                         <li role="presentation"> 
                             <%= link_to destroy_user_session_path , method: :delete, :role=>"menuitem", :tabindex=>"-1" do %>
                                 <span class="glyphicon glyphicon-off"></span> Log Out

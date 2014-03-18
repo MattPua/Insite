@@ -1,4 +1,4 @@
-<div id="flash_messages" style="text-align:center; width:auto;">
+<div id="flash_messages text-center centered">
 	<% flash.each do |name, msg| %>
 	  <% if msg.is_a?(String) %>
 	    <%= content_tag :div, msg, :id => "flash_#{name}" %>

@@ -32,8 +32,9 @@ $(document).ready(function(){
 		if (!company_valid || !position_valid){
 			return false;
 		}
-	});
 	format_date();
+	});
+	
 });
 
 // Filtering for List interviews page
@@ -127,4 +128,16 @@ $(document).ready(function(){
 		// console.log("handler:"+ event.which);
 	    
 	 });
+});
+
+
+// USed to format interview date value when editing interviews
+$(document).ready(function(){
+	var x = $('.datepicker');
+	var y = x.val();
+	if (y!=null || y!=''){
+		var w = moment(y).format("M/D/YYYY");
+		x.val(w);
+
+	}
 });

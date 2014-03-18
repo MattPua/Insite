@@ -1,12 +1,12 @@
 <div class="content">
-    <div id="title" style="margin:0 auto; width:80%; text-align:center; margin-bottom:2%;">
+    <div id="title" class="text_center centered width80">
         <h1>Relevant People</h1>
     </div>
-    <div id ="result" style="margin:0 auto; width:80%;">
-        <div style="width:80%; margin: 0 auto;">
+    <div id ="result" class="centered width80">
+        <div class="centered width80">
             <% if @searchResult.present? %>
                 <% @searchResult.each do |user| %>
-                <div class="user_profile" >
+                <span class="user_profile text-center" >
                     <%= default_picture(user) %>
                     <div class="name">
                         <%= user.name %>
@@ -14,7 +14,7 @@
                     <div class="position">
                         <%= user.program %>
                      </div>
-                </div>
+                </span>
                 <% end %>
             <% end %>
         </div>

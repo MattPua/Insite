@@ -8,18 +8,6 @@
 	width:	50%;
 }
 
-.interview_link > table > tbody > tr > td {
-	color:	black;
-}
-
-/*#profile_info > div{
-	display: inline-block;
-	border-radius:	7px;
-	border: 2px solid black;
-	margin:	1% 0 1% 0;
-	padding: 2%;
-}
-*/
 
 .profile_info li ul{
 		border: 2px solid black;
@@ -57,81 +45,26 @@
 	color:	black;
 }
 
-/*Search Page*/
-/*    #content{
-    background: #f3faf5;
-    width: 100%;
 
-    }
+.user_profile{
+	text-align: center;
+	display: inline-block;
+	margin: 2%;
+	
+}
 
-    #result{
-    display:block;
-    margin: 10px;
-    }*/
-
-    /* list of user available */
-
-/*    .profile {
-    background: #e6eeec;
-    height: 290px;
-    display: block;
-    }
-
-    .profile img {
-    width: 175px;
-    height: 175px;
-    border: 5px solid white;
-    display:block;
-    margin: 15px auto;
-    }
-
-    .profile .name, .profile .position{
-    margin-left: 20px;
-    margin-right: 20px;
-    text-align: center;
-    }
-
-    .profile .name{
-    font-size: 16pt;
-
-    }
-
-
-
-    #footer
-    {
-    height: 100px;
-    width: 100%;
-    padding: 20px;
-    }
-
-    #footer img
-    {
-    width: 200px;
-    }*/
-
-    .user_profile{
-    	text-align: center;
-    	display: inline-block;
-    	margin: 2%;
-    	
-    }
-
-    .name, .position{
-    	border: 2px solid black;
-    	border-radius: 7px;
-    	padding-top:5%;
-    	padding-bottom:5%;
-    	position: relative;
-    	top:-50px;
-    	z-index:10;
-    	background-color: white;
-    }
-
-    #title{
-    	margin-bottom: 2%;
-    }
-
+.name, .position{
+	border: 2px solid black;
+	border-radius: 7px;
+	padding-top:5%;
+	padding-bottom:5%;
+	position: relative;
+	top:-50px;
+	z-index:10;
+	background-color: white;
+}
+/*------------------------------------------------------------------*/
+/*Show Interview Page*/
 .attribute_label{
 	display:inline-block;
 	font-weight: bold;
@@ -147,4 +80,168 @@
 
 #flash_notice{
 	margin: 2% auto;
+}
+
+
+/* ---------------------------------------------------- */
+/* Show Company Page */
+
+.info_container{
+	margin: 2% auto;
+	width:60%;
+}
+
+.info_container div {
+	margin:2% auto;
+}
+
+
+#info_header{
+	margin-top: 2%;
+	width: 60%;
+	text-align: justify;
+}
+
+#info_header span{
+	display: inline-block;
+	width: 30%;
+	border: 2px solid black;
+	padding-top: 3%;
+	padding-bottom: 3%;
+
+}
+#info_header > .company_info
+{
+	position:relative;
+	
+	vertical-align:middle;
+}
+
+
+/* Use text-align:justify in a container to allow multiple inline objects to be evenly distrubted
+	Also use a :after to add an extra element that contains max width to help force the inline objects to be evenly spread*/
+#info_header:after{
+	width:100%;
+	content:"";
+	height:0;
+	display:inline-block;
+}
+
+.company_name{
+	width: 200px !important;
+	height: 200px;
+	border-radius:100%;
+}
+/*-------------------------------------------------------------------------*/
+/* General layout */
+.border2{
+	border:2px solid black;
+	border-radius:7px;
+}
+.text_center{
+	text-align:	center;
+}
+
+.centered{
+	margin: 0 auto;
+}
+
+.width60 {
+	width: 60%;
+}
+
+.width80 {
+	width: 80%;
+}
+
+.width100{
+	width: 100%;
+}
+
+.inline_block{
+	display:inline-block;
+}
+
+.inline{
+	display:inline;
+}
+
+.float_l{
+	float:left;
+}
+.float_r{
+	float:right;
+}
+
+.margin_1{
+	margin: 1% 0 1% 0;
+}
+/*---------------------------------------------------------------*/
+/*Search Index Page*/
+#title{
+	margin-bottom:	2%;
+}
+
+#result > div{
+	text-align: justify;
+}
+
+#result > .centered:after{
+	width:100%;
+	content:"";
+	height:0;
+	display:inline-block;
+}
+
+/*---------------------------------------------------------------------------*/
+/* List Interviews Page */
+
+#interview_container{
+	margin: 5% auto;
+}
+
+#interview_select{
+	margin-top:4.5%;
+	margin-bottom:3%;
+}
+
+.interview_link > table > tbody > tr > td {
+	color:	black;
+}
+
+.interview_show{
+	margin: 1% 0 1% 0;
+	padding-top: 1.5%;
+	padding-bottom:1.5%;
+}
+
+.interview_show > td {
+	width:24%;
+}
+
+#no_interview > tr{
+	padding-top: 1.5%;
+	padding-bottom: 1.5%;
+}
+
+#no_interview > tr > td {
+	width: 25%;
+}
+
+#empty_space{
+	width:800px;
+	height: 400px;
+}
+/*------------------------------------------------------------------*/
+/* Header */
+#header > #logo {
+	margin-top: -7px;
+	margin-left: 10px;
+	height: 60px;
+}
+
+#nav{
+	margin-top:10px;
+	margin-right:30px;
+	height:100%;
 }

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 <!--
 <p>
   <b>Name:</b>
@@ -26,7 +26,7 @@
 <%= link_to 'Back', companies_path %> -->
 
 <div>
-	<div style="width:50%; margin:0 auto;">
+	<!-- <div style="width:50%; margin:0 auto;">
 		<div id="info_left" style=" border:2px solid black; border-radius:7px; text-align:center; float:left; width:15%; padding-top:1.5%; padding-bottom:1.5%;">
 			<%= @company.industry %> Industry
 		</div>	
@@ -36,18 +36,30 @@
 					<span style="position: relative;top: 45%; ">
 						<h1 style="display:inline;"><%= @company.name %></h1>
 					</span>
-				<!--<div style="border:2px solid black; background-color:white; border-radius:7px;">
+				<div style="border:2px solid black; background-color:white; border-radius:7px;">
 
-				</div>-->
+				</div>
 		</div>		
 		</div>
 		<div id="info_right" style="border:2px solid black; border-radius:7px; text-align:center; float:right; width:15%;   padding-top:1.5%; padding-bottom:1.5%;">
 			Number of UofT Connections: <%= @count %>
 		</div>
+	</div> -->
+	<div id="info_header" class="centered border2">
+		<span class="text_center company_info">
+			Industry: <%= @company.industry %> 
+		</span>
+		<span class="text_center company_name" >
+
+			<%= @company.name %>
+		</span>
+		<span class="text_center company_info">
+			<%= @count %> UofT Connections
+		</span>
 	</div>
-	<div style="clear:both;">
-		<div style="width:20%; border:2px solid black; border-radius:7px; text-align:center;margin: 2% auto; ">
-			<h4> Current Interviewees </h4>
+	<div class="info_container">
+		<div class="border2 text_center">
+			<h3> Current Interviewees </h3>
 			<% @company.latest_interviews[0,3].each do |interview| %>
 			<%= interview.get_interviewee %> | <%= interview.position %>
 			<br/>
@@ -55,14 +67,14 @@
 
 
 		</div>
-		<div style="width:20%; border:2px solid black; border-radius:7px; text-align:center;margin: 2% auto; ">
-			<h4> Past Interviewees </h4>
+		<div class="border2 text_center">
+			<h3> Past Interviewees </h3>
 
 
 
 		</div>
-		<div style="width:20%; border:2px solid black; border-radius:7px; text-align:center; margin: 2% auto;">
-			<h4> Past/Current Employees </h4>
+		<div class="border2 text_center">
+			<h3> Past/Current Employees </h3>
 
 
 

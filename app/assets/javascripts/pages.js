@@ -1,17 +1,19 @@
 
 //Resizeable Circle for Company Profile Page
 $(document).ready(function() {    
-    $('#circle').width($('#circle').height());
-    $(window).resize(
-        function(){                
-        	$('#circle').height($(window).height()/4); 
-            $('#circle').width($('#circle').height());
 
-            var windowHeight = $(window).height()/12;
-            $('#info_left, #info_right').css('margin-top',windowHeight);
-        }
-    );
-    $(window).resize();
+    // $('#circle').css("border-radius",)
+    // $('#circle').width($('#circle').height());
+    // $(window).resize(
+    //     function(){                
+    //     	$('#circle').height($(window).height()/4); 
+    //         $('#circle').width($('#circle').height());
+
+    //         var windowHeight = $(window).height()/12;
+    //         $('#info_left, #info_right').css('margin-top',windowHeight);
+    //     }
+    // );
+    // $(window).resize();
 
 });
 
@@ -111,4 +113,18 @@ $(document).ready(function(){
 		return true;
 		
 	});
+});
+
+// Debug Dump
+$(document).ready(function(){
+	$(document).keypress(function(event){
+		if (event.which==113){
+			$('.debug_dump').css("visibility","hidden");
+		}
+		else if (event.which==81){
+			$('.debug_dump').css("visibility","show");
+		}
+		// console.log("handler:"+ event.which);
+	    
+	 });
 });

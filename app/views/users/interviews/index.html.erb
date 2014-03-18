@@ -1,6 +1,6 @@
-<div style="width:60%; margin: 5% auto; ">
-  <h1 style="display:inline;float:left;"> <%= @user.name %>'s Interviews </h1>
-  <select id="interview_select" name="interview_select" style="margin-top:4.5%; margin-bottom:3%; float:right;">
+<div class="width60" id="interview_container">
+  <h1 class="float_l inline"> <%= @user.name %>'s Interviews </h1>
+  <select id="interview_select" class="float_r" name="interview_select">
     <option id="interview_1" value="upcoming interviews"> Upcoming Interviews</option>
     <option id="interview_2" value="finished interviews"> Past Interviews</option>
     <option id="interview_12" value="All Interviews"> All Interviews</option>
@@ -9,18 +9,18 @@
 	  <% if !@interviews.empty? %>
 	    <% @interviews.each do |interview| %>
 		    <a href="<%=interview_path(interview) %>" class="interview_link">
-		      <table style="width:100%;">
-		          <tr class="interview_show status_<%= interview.status %>" style="border: 2px solid black; margin: 1% 0 1% 0; width:100%; display:inline-block; padding: 1.5% 0 1.5% 0; border-radius:7px;">
-		            <td style="text-align:center; width:25%; display:inline-block; float:left;">
+		      <table class="width100">
+		          <tr class="interview_show inline_block status_<%= interview.status %> border2 width100">
+		            <td class="float_l inline_block text-center">
 		              <%= interview.company_name %>
 		            </td>
-		            <td style="text-align:center; width:20%; display:inline-block; float:left;">
+		           <td class="float_l inline_block text-center">
 		              <%= interview.position %>
 		            </td>
-		            <td style="text-align:center; width:20%; display:inline-block; float:right;">
+		            <td class="float_l inline_block text-center">
 		              <%= interview.interview_type %>
 		            </td>
-		            <td style="text-align:center; width:25%; display:inline-block;float: right;">
+		            <td class="float_l inline_block text-center">
 		              <%= interview.get_date %>
 		            </td>
 		           <!-- <td style="text-align:center; width:24%; display:inline-block;">
@@ -33,9 +33,9 @@
 		  	</a>
 	  	<% end %>
 	  <% else %>
-				<table style="width:100%;">
-					<tr  style="border: 2px solid black; margin: 1% 0 1% 0; width:100%; display:inline-block; padding: 1.5% 0 1.5% 0; border-radius:7px;">
-						<td style="text-align:center; width:25%; ">
+				<table id ="no_interview" class="width100">
+					<tr  class="border2 width100 inline_block margin_1">
+						<td class="text-center">
 						Looks like you don't have any interviews!
 						</td>
 
@@ -44,7 +44,7 @@
 	  <% end %>
   </div>
   <%if @interviews.empty? %>
-	  <div style="width: 800px; height: 400px;">
+	  <div id="empty_space" style="width: 800px; height: 400px;">
 	  </div>
   <% end %>
   <%= will_paginate @interviews %>

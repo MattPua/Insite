@@ -10,7 +10,9 @@
 	    <div class="attribute_label"style="width;25; margin: 1% 0 1% 0;">
 	    Company
 	    </div>
-	    <div class="attribute_value"> <%= @interview.company_name  %></div>
+	    <div class="attribute_value"> <!-- <%= @interview.company_name  %> -->
+	    <%= link_to @interview.company_name, company_path(@interview.company_id) %>
+	    </div>
 	  </div>
 	  <div class="field" >
 	    <div class="attribute_label"style="width;25; margin: 1% 0 1% 0;">

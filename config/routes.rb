@@ -12,10 +12,10 @@ Hackathon::Application.routes.draw do
 
  # Shallow route so interviews can be accessed without going to /user/#user.id/interviews/#interview.id
   resources :users do 
-    member do
+    
       resources :interviews
       get :worked_at   #get action for companies that you have worked at or are currently working at
-    end  
+      
   end
  
   

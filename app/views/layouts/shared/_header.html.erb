@@ -45,14 +45,14 @@
                             <% end %>
                         </li>                    
                         <li role="presentation"> 
-                            <%= link_to interviews_path(current_user), :role=>"menuitem", :tabindex=>"-1" do %>
+                            <%= link_to user_interviews_path(current_user), :role=>"menuitem", :tabindex=>"-1" do %>
                                 <span class="glyphicon glyphicon-book"></span> Your Interviews
                             <% end %>
                         </li>     
 
                         <li role="presentation" class="divider"></li>
                         <li role="presentation"> 
-                            <%= link_to new_interview_path(current_user), :role=>"menuitem", :tabindex=>"-1" do %>
+                            <%= link_to new_user_interview_path(current_user), :role=>"menuitem", :tabindex=>"-1" do %>
                                 <span class="glyphicon glyphicon-th-list "></span> New Interview
                             <% end %>
                         </li>

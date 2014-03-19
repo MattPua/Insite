@@ -19,7 +19,7 @@
   <div id="interview_listing">
 	  <% if !@interviews.empty? %>
 	    <% @interviews.each do |interview| %>
-		    <a href="<%=interview_path(interview) %>" class="interview_link">
+		    <a href="<%=user_interview_path(@user,interview) %>" class="interview_link">
 		      <div class="interview_show inline_block status_<%= interview.status %> border2 width100">
 		            <span class="float_l inline_block text-center">
 		              <%= interview.company_name %>

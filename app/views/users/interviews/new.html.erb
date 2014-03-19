@@ -3,8 +3,7 @@
 		<h1>New Interview</h1>
 
 		<%= render 'users/interviews/form' %>
-		<%= link_to 'Back', user_path, :class=>"btn btn-warning", :style=>"background-color:#7A9B75; margin-left:2%; border-radius:7px;" %>
-		<!-- THIS BUTTON IS NOT ALIGNED AS THE SUBMIT BUTTON, HOW CAN I FIX THIS -->
+		<%= link_to 'Back', user_path(current_user), :class=>"btn btn-warning", :style=>"background-color:#7A9B75; margin-left:2%; border-radius:7px;" %>
 	</div>
 
 

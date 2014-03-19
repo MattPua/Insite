@@ -4,8 +4,7 @@ class InterviewsController < ApplicationController
   # GET /interviews
   # GET /interviews.json
   def index
-   
-    @user = User.find(params[:id])
+   	@user=User.find(params[:user_id])
     # get all interviews, and use JS to filter them for display purposes
     @interviews = @user.get_interviews.paginate(:page=>params[:page], :per_page=>10)
     respond_to do |format|
@@ -18,7 +17,7 @@ class InterviewsController < ApplicationController
   def show
 
     @interview = Interview.find(params[:id])
-    @user=User.find(@interview.user_id)
+    #@user=User.find(@interview.user_id)
     # Using the current interview, find the associated company
     @company = Company.find_by_name(@interview.company_name)
     respond_to do |format|
@@ -31,7 +30,6 @@ class InterviewsController < ApplicationController
   # GET /interviews/new.json
   def new
     @interview = Interview.new
-
     respond_to do |format|
       format.html { render "/users/interviews/new" }# new.html.erb
       format.json { render json: @interview }

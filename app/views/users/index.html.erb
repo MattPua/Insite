@@ -1,25 +1,23 @@
 <div class="content">
-    <div style="margin:0 auto; width:50%; text-align:center;">
-        <h1>Search Result</h1>
+    <div id="title" class="text_center centered width80">
+        <h1>Relevant People</h1>
     </div>
-    <div id ="result">
-    <div id="wrapper">
-
+    <div id ="result" class="centered width80">
+        <div class="centered width80">
             <% @users.each do |user| %>
-            <div class="profile">
-                <%= gravatar_for(user) %>
-                <h3 class="name">
-                    <%= user.name %>
-                </h3>
-                <h4 class="position">
-                    <%= user.email %>
-                 </h4>
-            </div>
+                <span class="user_profile text-center" >
+                    <%= default_picture(user) %>
+                    <div class="name">
+                        <%= user.name %>
+                    </div>
+                    <div class="position">
+                        <%= user.program %>
+                     </div>
+                </span>
             <% end %>
-
+        </div>
     </div>
-    </div>
-
+<%= will_paginate (@users) %>
 </div>
 
 <!--<%= link_to 'New User', new_user_path %>-->

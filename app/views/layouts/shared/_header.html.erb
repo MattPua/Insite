@@ -43,17 +43,35 @@
                                 <span class="glyphicon glyphicon-user"></span>
                                 Your Profile
                             <% end %>
-                        </li>
+                        </li>                    
                         <li role="presentation"> 
                             <%= link_to interviews_path(current_user), :role=>"menuitem", :tabindex=>"-1" do %>
                                 <span class="glyphicon glyphicon-book"></span> Your Interviews
                             <% end %>
-                        </li>
+                        </li>     
+
+                        <li role="presentation" class="divider"></li>
                         <li role="presentation"> 
-                            <%= link_to companies_path, :role=>"menuitem", :tabindex=>"-1" do %>
-                                <span class="glyphicon glyphicon-book"></span> All Companies
+                            <%= link_to new_interview_path(current_user), :role=>"menuitem", :tabindex=>"-1" do %>
+                                <span class="glyphicon glyphicon-th-list "></span> New Interview
                             <% end %>
-                        </li>                        
+                        </li>
+                        <li role="presentation" > 
+                            <%= link_to users_path ,:role=>"menuitem", :tabindex=>"-1" do %>
+                                <span class="glyphicon glyphicon-th-list "></span> All Users
+                            <% end %>
+                        </li> 
+                        <li role="presentation" > 
+                            <%= link_to companies_path ,:role=>"menuitem", :tabindex=>"-1" do %>
+                                <span class="glyphicon glyphicon-th-list "></span> All Companies
+                            <% end %>
+                        </li> 
+                        <li role="presentation" > 
+                            <%= link_to "" ,:role=>"menuitem", :tabindex=>"-1" do %>
+                                <span class="glyphicon glyphicon-th-list "></span> About Us
+                            <% end %>
+                        </li> 
+                        <li role="presentation" class="divider"></li>
                         <li role="presentation"> 
                             <%= link_to destroy_user_session_path , method: :delete, :role=>"menuitem", :tabindex=>"-1" do %>
                                 <span class="glyphicon glyphicon-off"></span> Log Out

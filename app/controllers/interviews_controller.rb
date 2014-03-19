@@ -16,7 +16,9 @@ class InterviewsController < ApplicationController
   # GET /interviews/1
   # GET /interviews/1.json
   def show
+
     @interview = Interview.find(params[:id])
+    @user=User.find(@interview.user_id)
     # Using the current interview, find the associated company
     @company = Company.find_by_name(@interview.company_name)
     respond_to do |format|

@@ -1,10 +1,21 @@
 <div class="width60" id="interview_container">
   <h1 class="float_l inline"> <%= @user.name %>'s Interviews </h1>
-  <select id="interview_select" class="float_r" name="interview_select">
+ <select id="interview_select" class="float_r" name="interview_select">
     <option id="interview_1" value="upcoming interviews"> Upcoming Interviews</option>
     <option id="interview_2" value="finished interviews"> Past Interviews</option>
     <option id="interview_12" value="All Interviews"> All Interviews</option>
-  </select>
+  </select> 
+
+	  <!--<div class="input-group-btn float_r">
+	    <button type="button" class="interview_filter btn btn-default dropdown-toggle float_r" data-toggle="dropdown">Select <span class="caret"></span></button>
+	    <ul class="dropdown-menu" id="interview_select">
+	      <li id="interview_1"><a href="#" >Upcoming Interviews</a></li>
+	      <li id="interview_2"><a href="#" >Past Interviews</a></li>
+	      <li id="interview_12"><a href="#" >All Interviews</a></li>
+	    </ul>
+	  </div> -->
+
+
   <div id="interview_listing">
 	  <% if !@interviews.empty? %>
 	    <% @interviews.each do |interview| %>

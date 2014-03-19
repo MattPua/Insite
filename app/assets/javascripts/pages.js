@@ -81,6 +81,7 @@ $(document).ready(function(){
 		
 	});
 });
+
 // Show Interview 
 $(document).ready(function(){
 	var x = $('#interview_content #status #status_content');

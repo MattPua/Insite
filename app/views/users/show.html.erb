@@ -30,7 +30,7 @@
           <% if can? :manage, @user %>
           <a href="<%=edit_user_path(@user)%>" >
             <ul>
-              Edit Profile
+              <span></span>Edit Profile
             </ul>
           </a>
           <% else %>
@@ -55,7 +55,7 @@
   <% @user.active_interviews[0,3].each do |interview| %>
     <p>
     <a href="<%= interview_path(interview) %>" class="interview_item">
-      <%= current_user==@user ? "You have an interview at " : "#{@user.name} has an interview at" %> <%= interview.company_name %> for a  <%= interview.position %> position [<%= interview.interview_type %>] on <%= interview.get_date %>
+      <%= current_user==@user ? "You have an interview at " : "#{@user.name} has an interview at" %> <%= interview.company_name %> for a <%= interview.interview_type %> <%= interview.position %> position  on <%= interview.get_date %>
       </a>
     </p>
   <% end %>

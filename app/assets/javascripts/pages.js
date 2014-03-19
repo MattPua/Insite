@@ -131,7 +131,7 @@ $(document).ready(function(){
 });
 
 
-// USed to format interview date value when editing interviews
+// Used to format interview date value when editing interviews
 $(document).ready(function(){
 	var x = $('.datepicker');
 	var y = x.val();
@@ -140,4 +140,13 @@ $(document).ready(function(){
 		x.val(w);
 
 	}
+});
+
+// Flash Messages 
+// $(document).ready(function(){
+// 	$(document).find("#flash_notice").css("width",500);
+// });
+
+$(document).ready(function(){
+	 $('#flash_messages, #error_explanation').delay(2500).fadeOut('slow');
 });

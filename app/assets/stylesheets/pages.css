@@ -127,7 +127,22 @@
 }
 
 #flash_notice{
-	margin: 2% auto;
+	
+    width: 400px;
+    border: 2px solid black;
+    position: absolute;
+    z-index: 100;
+    background-color: #45885A;
+    border-radius: 7px;
+    padding-left: 4%;
+    padding-right: 4%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 40px;
+    color: white;
+
 }
 
 #interview_container{
@@ -146,7 +161,7 @@
 	color: white;
 }
 
-.btn-edit,
+.btn-edit, 
 .btn-delete{
 	background-color:#8BB185;
 

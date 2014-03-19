@@ -31,7 +31,8 @@
   <div class="field">
     <%= f.label "When is your Interview?"%>
 
-    <%= f.text_field :date, :value=>@interview.get_date, :class=>"datepicker"%>
+    <%= f.text_field :date, :value=>
+    @interview.company_name.nil? ? "" : @interview.get_date , :class=>"datepicker"%>
    
   </div>
   <div class="field">

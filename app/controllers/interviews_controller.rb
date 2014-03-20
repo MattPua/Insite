@@ -54,6 +54,7 @@ class InterviewsController < ApplicationController
     # If no company is found, create a new company
     if @company.nil?
       @company=Company.new
+      @company.industry=params[:company][:industry]
       @company.name=params[:interview][:company_name]
       if !@company.save
         format.html {render action: "new"}

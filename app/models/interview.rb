@@ -3,11 +3,11 @@
 # Table name: interviews
 #
 #  id             :integer          not null, primary key
-#  company_id     :integer
-#  user_id        :integer
+#  company_id     :integer          not null
+#  user_id        :integer          not null
 #  comment        :string(255)
-#  company_name   :string(255)
-#  position       :string(255)
+#  company_name   :string(255)      not null
+#  position       :string(255)      not null
 #  date           :datetime
 #  status         :integer
 #  interview_type :string(255)

@@ -25,6 +25,7 @@ $(function() {
 // Validations for Interviews on Create Interview Page
 $(document).ready(function(){
 	// TODO: some animation for the step by step registration	
+	var x =
 	$('#btn-submit-interview').click(function(){
 		/* field validation first */
 		var company_valid = company_validation();
@@ -136,10 +137,9 @@ $(document).ready(function(){
 $(document).ready(function(){
 	var x = $('.datepicker');
 	var y = x.val();
-	if (y!=null || y!=''){
-		var w = moment(y).format("M/D/YYYY");
-		x.val(w);
-
+	if (y!=null && y!=''){
+		 var w = moment(y).format("M/D/YYYY");
+		 x.val(w);
 	}
 });
 

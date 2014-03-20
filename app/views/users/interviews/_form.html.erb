@@ -15,12 +15,17 @@
     <%= f.label "Company Name" %>
     <%= f.text_field :company_name%> 
   </div>
+    <div class="field">
+    <%= f.label "Company Industry"%>
+    <input type="text" size="30" id="company_industry" name="company[industry]"> 
+  </div>
   <div class="field">
     <%= f.label "Position"%>
     <%= f.text_field :position %>
 
-    <%= f.hidden_field :company_id %> 
+
   </div>
+
 
   <div class="field" %>
     <%= f.label "Type"%>

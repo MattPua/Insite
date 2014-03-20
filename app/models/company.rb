@@ -3,7 +3,7 @@
 # Table name: companies
 #
 #  id         :integer          not null, primary key
-#  name       :string(255)
+#  name       :string(255)      not null
 #  industry   :string(255)
 #  location   :string(255)
 #  created_at :datetime         not null

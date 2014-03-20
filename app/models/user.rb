@@ -3,15 +3,16 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  name                   :string(255)
-#  email                  :string(255)
-#  year                   :integer
+#  name                   :string(255)      not null
+#  email                  :string(255)      not null
+#  year                   :integer          not null
 #  alumni                 :boolean
-#  program                :string(255)
-#  faculty                :string(255)
+#  program                :string(255)      not null
+#  faculty                :string(255)      not null
 #  phone                  :integer
+#  privacy                :boolean
 #  registerterms          :boolean
-#  admin                  :boolean          default(FALSE)
+#  admin                  :boolean
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  encrypted_password     :string(255)      default(""), not null
@@ -46,7 +47,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :company_id
-  attr_accessible :faculty, :name, :phone, :program, :registerterms, :year, :position
+  attr_accessible :faculty, :name, :phone, :program, :registerterms, :year, :position, :admin, :privacy
  
   # A user has many interviews, and the interviews are dependent on the user (if the user is destroyed, the interviews are destroyed)
   has_many :interviews, dependent: :destroy
@@ -81,13 +82,11 @@ class User < ActiveRecord::Base
    validates_presence_of :encrypted_password
 
    validates :program,
-   :allow_blank =>true,
    format: {
       with: /[a-zA-Z]*\s?/,
       message: "Only valid characters are allowed"
   	}
   validates :faculty,
-   :allow_blank =>true,
    format: {
       with: /[a-zA-Z]*\s?/,
       message: "Only valid characters are allowed"

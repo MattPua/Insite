@@ -61,6 +61,14 @@
                 <%= f.telephone_field :phone , class:"form-control", placeholder:"Phone Number (Optional)"%>
               </div>
             </div>  
+            <div class="form-group row">
+              <label class="col-xs-4 control-label">Privacy Settings</label>
+              <label class="inline control-label"> Enabling this feature will prevent other users from being able to see your interviews and experiences. </label>
+              <div class="col-xs-8 float_r" id="privacy_settings">
+                <%= f.radio_button :privacy, 'true'%> Yes
+                <%= f.radio_button :privacy, 'false', :checked=>false %> No
+              </div>
+            </div>  
             <div class=" form-group"> 
               <%= f.submit "Submit", class:"btn btn-lg btn-warning pull-right btn-submit", id:"btn-user-edit"%>
 

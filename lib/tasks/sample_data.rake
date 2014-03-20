@@ -22,12 +22,15 @@ namespace :db do
       email = "#{n+1}@utoronto.com"
       password  = "12345678"
       program="#{program_array[n%10]} Engineering"
-      confirmed=Time.now
+      faculty="Engineering"
+      year = 2015
       User.create!(name: name,
                    email: email,
                    password: password,
                    password_confirmation: password,
-                   program: program
+                   program: program,
+                   faculty: faculty,
+                   year: year
                    )
         2.times do |i|
         name = array[(n%10)]

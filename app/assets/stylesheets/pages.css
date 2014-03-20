@@ -62,10 +62,10 @@
 }
 
 .float_l{
-	float:left;
+	float:left !important;
 }
 .float_r{
-	float:right;
+	float:right !important;
 }
 
 .margin_1{
@@ -186,7 +186,8 @@
 #interview_status,
 #interview_date, 
 #interview_company_name,
-#interview_interview_type{
+#interview_interview_type,
+#company_industry{
 	float:	right;
 	width:	50%;
 }
@@ -380,4 +381,8 @@
 	width:32.5%;
 	display:inline-block;
 	text-align:center;
+}
+#interview_position, #interview_status, #interview_date, #interview_company_name, #interview_interview_type, #company_ {
+	float: right;
+	width: 50%;
 }

@@ -64,12 +64,12 @@ class InterviewsController < ApplicationController
     # Checks all companies to see if the company already exists, don't know why I have to grab first though.
     # Need to probably fix that. also move to Helpers
     @interview.company_id = @company.id
-
+    @interview.user_id = current_user.id
     @interview.format_date(params[:interview][:date])
     @interview.status = @interview.format_status(params[:interview][:status])
     respond_to do |format|
       if @interview.save
-        format.html { redirect_to @interview, notice: 'Interview was successfully created.' }
+        format.html { redirect_to user_interview_path(current_user,@interview), notice: 'Interview was successfully created.' }
         format.json { render json: @interview, status: :created, location: @interview }
       else
         format.html { render "/users/interviews/new" }
@@ -101,7 +101,7 @@ class InterviewsController < ApplicationController
     @interview.status = @interview.format_status(params[:interview][:status])
     respond_to do |format|
       if @interview.save
-        format.html { redirect_to @interview, notice: 'Interview was successfully edited.' }
+        format.html { redirect_to user_interview_path(current_user,@interview), notice: 'Interview was successfully edited.' }
         format.json { render json: @interview, status: :created, location: @interview }
       else
         format.html { render "/users/interviews/edit" }

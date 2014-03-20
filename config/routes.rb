@@ -10,7 +10,6 @@ Hackathon::Application.routes.draw do
   resources :companies do
   end
 
- # Shallow route so interviews can be accessed without going to /user/#user.id/interviews/#interview.id
   resources :users do 
     
       resources :interviews

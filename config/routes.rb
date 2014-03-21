@@ -19,6 +19,10 @@ Hackathon::Application.routes.draw do
  
   
   root to:'home#index'
+
+  match "/401" => "errors#unauthorized"
+  match "/404" => "errors#not_found"
+  match "/500" => "errors#error"
   # match "/:name" =>"users#show", :as => :show_user
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -75,5 +79,9 @@ Hackathon::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  # match ':controller(/:action(/:id))(.:format)''
+
+  # any other error page not matched
+  # match '*path', :to =>'errors#routing_error'
+
 end

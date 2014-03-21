@@ -4,7 +4,6 @@
   <title>InsiteUofT</title>  
   <!-- Import google fonts for home page font -->
   <!-- include normalize css to unify styling in different browser -->
-  <%= stylesheet_link_tag    "normalize", :media => "all" %>
   <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'/>
   <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
@@ -13,6 +12,8 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <!-- For mobile viewing -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>

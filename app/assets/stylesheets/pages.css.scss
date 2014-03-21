@@ -33,9 +33,6 @@
 .border_radius7{
 	border-radius:7px;
 }
-.text_center{
-	text-align:	center;
-}
 
 .centered{
 	margin: 0 auto;
@@ -70,6 +67,23 @@
 
 .margin_1{
 	margin: 1% 0 1% 0;
+}
+
+.container_margin_topbottom{
+	margin-top:3%;
+	margin-bottom:3%;
+}
+
+.container_padding_bottom{
+	padding-bottom:3%;
+}
+/*
+ * Edit default pagination links
+ */
+.pagination{
+    display:    block !important;
+    text-align: center;
+
 }
 /*****************************************************************************/
 
@@ -112,6 +126,7 @@
 	width:800px;
 	height: 400px;
 }
+
 /*------------------------------------------------------------------*/
 /* Show Interview Page */
 .attribute_label{
@@ -187,16 +202,16 @@
 #interview_date, 
 #interview_company_name,
 #interview_interview_type,
-#company_industry{
+{
 	float:	right;
 	width:	50%;
 }
 /*---------------------------------------------------------------------*/
 /* Interview New/Edit Form*/
-.field > label {
+/*.field > label {
 	width:40%;
 	margin: 1% 0 1% 0;
-}
+}*/
 
 .interview {
 	margin: 2% 0 1% 0;
@@ -358,7 +373,6 @@
 .company_container{
 	margin-top: 1%;
 	margin-bottom: 1.5%;
-	height: 10%;
 	border-radius:10px !important;
 }
 

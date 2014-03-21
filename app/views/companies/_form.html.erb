@@ -1,28 +1,43 @@
-<%= form_for(@company) do |f| %>
-  <% if @company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+<div class="row">
+  <%= form_for(@company) do |f| %>
+  <div class="col-md-12 text-left">
+    <% if @company.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
 
-      <ul>
-      <% @company.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @company.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-12 field input-group" id="company_name">
+    <label class=" col-md-4 control-label"> Company Name </label>
+    <div class="col-md-8">
+
+    <%= f.text_field :name, :class=>"form-control", :placeholder=>"e.g. XYZ Electronics"%>
     </div>
+  </div>
+  <div class="col-md-12 field input-group">
+    <label class=" col-md-4 control-label" id="company_industry"> Industry </label>
+    <div class="col-md-8">
+
+    <%= f.text_field :industry, :class=>"form-control", :placeholder=>"e.g. Electronics" %>
+    </div>
+  </div>
+  <div class="col-md-12 field input-group" id="company_location">
+    <label class=" col-md-4 control-label input-group-a"> Location </label>
+    <div class="col-md-8">
+    <%= f.text_field :location, :class=>"form-control", :placeholder=>"e.g. Toronto, Ontario" %>
+    </div>
+  </div>
+  <div class="col-md-6 field">
+    <%= f.submit "#{params[:action]=="edit" ? "Save Changes" : "Add Company"}", class:"btn btn-success"%>
+    <a href="<%= companies_path %>" ><button type="button" class="btn btn-warning"> Back </button></a>
+  </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label "Company Name", :style=>"width:25%; margin:1% 0 1% 0;" %>
-    <%= f.text_field :name%>
-  </div>
-  <div class="field" >
-    <%= f.label :industry, :style=>"width:25%; margin:1% 0 1% 0;" %>
-    <%= f.text_field :industry %>
-  </div>
 
-
-  <div class="actions" style="margin: 2% 0 1% 0;">
-    <%= f.submit "#{params[:action]=="edit" ? "Edit" : "New"} Company", class:"btn btn-warning", style:" border-radius:7px; margin:0; float:left;"%>
-    <!-- What does btn, btn-warning do? --> 
-  </div>
-<% end %>
+</div>

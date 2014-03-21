@@ -1,91 +1,77 @@
-<div id="header">
-    <!-- for transparent header background -->
-    <% if (params[:controller]=="home" && params[:action]=="index")%>
-    <div id="header-background" ></div>
-    <% end %> 
-    
-    <div style="position: absolute; width: 100%; height: 60px; margin:0; 
+<nav class="navbar navbar-default navbar-fixed-top" id="header" role="navigation" style="
         <%= "background: #8ba987;" unless (params[:controller]=="home" && params[:action]=="index")%>">
-
-        <div id="logo" class="pull-left">
-            <%= link_to (image_tag("insite-logo.png")),root_path %>
+    <% if (params[:controller]=="home" && params[:action]=="index")%>
+        <div id="header-background" ></div>
+    <% end %> 
+    <div class="container-fluid">
+    <!-- Group stuff together for mobile displays -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="#"></a> -->
+          <div id="logo">
+            <%= link_to (image_tag("insite-logo.png")),root_path, :class=>"navbar-brand" %>
+          </div>
         </div>
+       
 
-        <!-- search bar -->
-        <!--
-        <% if user_signed_in? %>
-            <span style=" text-align:center; ">
-                <%= form_tag users_path, style:"margin:3% auto; width:20%;", method: :get do %>
-                <%= text_field_tag :search, ''    %>
-                <%= submit_tag "Search", :name => nil %>
-                <% end %>
-            <span>
-        <% end %>
-        -->
-
-        <div id="nav" class="float_r">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
             <% if !user_signed_in? %>
-			    <%= link_to "Log In", new_user_session_path, class:"btn btn-default"%>
+                <%= link_to "Log In", new_user_session_path, class:"btn btn-default"%>
                 <%= link_to "Sign Up", new_user_registration_path , class:"btn btn-warning"%>
             <% else %>
-                <div class="dropdown">
-                    <a class="btn btn-default" data-toggle="dropdown" data-target="#" srole="button">
-                        <div id="user-name" class="clip">
-                            <%= "#{current_user.name.titleize}" %>
-                        </div>
-                        <div>
-                              ▼
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
-                        <li role="presentation"> 
-                            <%= link_to user_path(current_user), :tabindex=>"-1" do %>
-                                <span class="glyphicon glyphicon-user"></span>
-                                Your Profile
-                            <% end %>
-                        </li>                    
-                        <li role="presentation"> 
-                            <%= link_to user_interviews_path(current_user), :role=>"menuitem", :tabindex=>"-1" do %>
-                                <span class="glyphicon glyphicon-book"></span> Your Interviews
-                            <% end %>
-                        </li>     
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown"><%= "#{current_user.name.titleize}" %> <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                     <li role="presentation"> 
+                        <%= link_to user_path(current_user), :tabindex=>"-1" do %>
+                            <span class="glyphicon glyphicon-user"></span>
+                            Your Profile
+                        <% end %>
+                    </li>                    
+                    <li role="presentation"> 
+                        <%= link_to user_interviews_path(current_user), :role=>"menuitem", :tabindex=>"-1" do %>
+                            <span class="glyphicon glyphicon-book"></span> Your Interviews
+                        <% end %>
+                    </li>     
 
-                        <li role="presentation" class="divider"></li>
-                        <li role="presentation"> 
-                            <%= link_to new_user_interview_path(current_user), :role=>"menuitem", :tabindex=>"-1" do %>
-                                <span class="glyphicon glyphicon-th-list "></span> New Interview
-                            <% end %>
-                        </li>
-                        <li role="presentation" > 
-                            <%= link_to users_path ,:role=>"menuitem", :tabindex=>"-1" do %>
-                                <span class="glyphicon glyphicon-th-list "></span> All Users
-                            <% end %>
-                        </li> 
-                        <li role="presentation" > 
-                            <%= link_to companies_path ,:role=>"menuitem", :tabindex=>"-1" do %>
-                                <span class="glyphicon glyphicon-th-list "></span> All Companies
-                            <% end %>
-                        </li> 
-                        <li role="presentation" > 
-                            <%= link_to "" ,:role=>"menuitem", :tabindex=>"-1" do %>
-                                <span class="glyphicon glyphicon-th-list "></span> About Us
-                            <% end %>
-                        </li> 
-                        <li role="presentation" class="divider"></li>
-                        <li role="presentation"> 
-                            <%= link_to destroy_user_session_path , method: :delete, :role=>"menuitem", :tabindex=>"-1" do %>
-                                <span class="glyphicon glyphicon-off"></span> Log Out
-                            <% end %>
-                        </li> 
-                    </ul>
-                </div>  
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation"> 
+                        <%= link_to new_user_interview_path(current_user), :role=>"menuitem", :tabindex=>"-1" do %>
+                            <span class="glyphicon glyphicon-th-list "></span> New Interview
+                        <% end %>
+                    </li>
+                    <li role="presentation" > 
+                        <%= link_to users_path ,:role=>"menuitem", :tabindex=>"-1" do %>
+                            <span class="glyphicon glyphicon-th-list "></span> All Users
+                        <% end %>
+                    </li> 
+                    <li role="presentation" > 
+                        <%= link_to companies_path ,:role=>"menuitem", :tabindex=>"-1" do %>
+                            <span class="glyphicon glyphicon-th-list "></span> All Companies
+                        <% end %>
+                    </li> 
+                    <li role="presentation" > 
+                        <%= link_to "" ,:role=>"menuitem", :tabindex=>"-1" do %>
+                            <span class="glyphicon glyphicon-th-list "></span> About Us
+                        <% end %>
+                    </li> 
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation"> 
+                        <%= link_to destroy_user_session_path , method: :delete, :role=>"menuitem", :tabindex=>"-1" do %>
+                            <span class="glyphicon glyphicon-off"></span> Log Out
+                        <% end %>
+                    </li> 
+                  </ul>
+                </li>
             <% end %>
-        </div>
+          </ul>
+        </div><!-- /.navbar-collapse -->
     </div>
-</div>
 
-<!-- dummy header for non transparent banner -->
-<div style="
-    <%= "height: 60px;" unless (params[:controller]=="home" && params[:action] =="index")%>">
-</div>
-
+</nav>

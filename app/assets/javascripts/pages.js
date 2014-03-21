@@ -1,22 +1,3 @@
-
-//Resizeable Circle for Company Profile Page
-$(document).ready(function() {    
-
-    // $('#circle').css("border-radius",)
-    // $('#circle').width($('#circle').height());
-    // $(window).resize(
-    //     function(){                
-    //     	$('#circle').height($(window).height()/4); 
-    //         $('#circle').width($('#circle').height());
-
-    //         var windowHeight = $(window).height()/12;
-    //         $('#info_left, #info_right').css('margin-top',windowHeight);
-    //     }
-    // );
-    // $(window).resize();
-
-});
-
 $(function() {
   $('.datepicker').datepicker();
 });
@@ -142,11 +123,6 @@ $(document).ready(function(){
 		 x.val(w);
 	}
 });
-
-// Flash Messages 
-// $(document).ready(function(){
-// 	$(document).find("#flash_notice").css("width",500);
-// });
 
 $(document).ready(function(){
 	 $('#flash_messages, #error_explanation').delay(2500).fadeOut('slow');

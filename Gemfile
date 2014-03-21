@@ -2,24 +2,39 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'thin'
-gem 'better_errors'
+# better Server
+
 gem 'flay'
 gem 'faker'
+# testing purposes
 gem 'activesupport'
 gem 'devise'
+# better user models
 gem 'will_paginate' , '~> 3.0'
+# pagination
 gem 'cancan'
+# security handling
 gem 'binding_of_caller'
 gem 'pg_search'
+# better searching through PG database
 gem 'mail'
 gem 'jquery-ui-rails'
+gem 'sass-rails',   '~> 3.2.3'
+gem 'bootstrap-sass', '~>3.1.1'
+gem 'pg', '0.12.2'
+# Using PG Database
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+# To use ActiveModel has_secure_password
+gem 'bcrypt-ruby'
+gem 'modernizr-rails'
+# To use Jbuilder templates for JSON
+# gem 'jbuilder'
+
+# To use debugger
+gem 'debugger'
 
 group :development, :test do
-  gem 'pg', '0.12.2'
-  gem 'rspec-rails', '2.11.0'
+  # gem 'rspec-rails', '2.11.0'
   # gem 'guard-rspec', '1.2.1'
   # gem 'guard-spork', '1.2.0'  
   # gem 'childprocess', '0.3.6'
@@ -27,23 +42,21 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg', '0.12.2'
+
 end
 
 group :development do
 	gem 'bullet'
   gem 'annotate'
   gem 'pry-rails'
+  gem 'better_errors'
+  #more informative errors
+
 end
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -54,17 +67,4 @@ group :doc do
 	gem 'sdoc', require: false
 end
 
-# To use ActiveModel has_secure_password
-gem 'bcrypt-ruby'
-gem 'modernizr-rails'
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-gem 'debugger'

@@ -15,7 +15,7 @@ class Company < ActiveRecord::Base
   multisearchable :against => [:name,:industry]
   pg_search_scope :search_by_company, :against=>[:name,:industry]
 	
-  attr_accessible :name, :company_id, :connections, :industry
+  attr_accessible :name, :company_id, :connections, :industry, :location
 
 	has_many :interviews, dependent: :destroy
 	has_many :users, through: :interviews  

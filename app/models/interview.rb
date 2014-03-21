@@ -26,7 +26,7 @@ class Interview < ActiveRecord::Base
 
 
   attr_accessible :company_name, :position, :user_id, :company_id, :date, :status, :interview_type
-
+  attr_accessible :comment
   #before_save :default_date
 
   belongs_to :user

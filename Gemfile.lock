@@ -32,7 +32,7 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (3.0.3)
-    atomic (1.1.15)
+    atomic (1.1.16)
     bcrypt (3.1.7)
     bcrypt (3.1.7-x86-mingw32)
     bcrypt-ruby (3.1.5)
@@ -44,6 +44,8 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.1.1.0)
+      sass (~> 3.2)
     builder (3.0.4)
     bullet (4.8.0)
       activesupport
@@ -66,13 +68,12 @@ GEM
       debugger-ruby_core_source (~> 1.3.2)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.3.2)
-    devise (3.2.3)
-      bcrypt-ruby (~> 3.0)
+    devise (3.2.4)
+      bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    diff-lcs (1.1.3)
     erubis (2.7.0)
     eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
@@ -97,7 +98,7 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     modernizr-rails (2.7.1)
-    multi_json (1.9.0)
+    multi_json (1.9.2)
     orm_adapter (0.5.0)
     pg (0.12.2)
     pg (0.12.2-x86-mingw32)
@@ -142,22 +143,9 @@ GEM
     rake (10.1.1)
     rdoc (3.12.2)
       json (~> 1.4)
-    rspec (2.11.0)
-      rspec-core (~> 2.11.0)
-      rspec-expectations (~> 2.11.0)
-      rspec-mocks (~> 2.11.0)
-    rspec-core (2.11.1)
-    rspec-expectations (2.11.3)
-      diff-lcs (~> 1.1.3)
-    rspec-mocks (2.11.3)
-    rspec-rails (2.11.0)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      railties (>= 3.0)
-      rspec (~> 2.11.0)
     ruby_parser (3.4.1)
       sexp_processor (~> 4.1)
-    sass (3.3.2)
+    sass (3.3.3)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -165,7 +153,7 @@ GEM
     sdoc (0.3.20)
       json (>= 1.1.3)
       rdoc (~> 3.10)
-    sexp_processor (4.4.1)
+    sexp_processor (4.4.2)
     slop (3.5.0)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -186,7 +174,7 @@ GEM
     turbolinks (2.2.1)
       coffee-rails
     tzinfo (0.3.39)
-    uglifier (2.4.0)
+    uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     uniform_notifier (1.4.0)
@@ -205,6 +193,7 @@ DEPENDENCIES
   bcrypt-ruby
   better_errors
   binding_of_caller
+  bootstrap-sass (~> 3.1.1)
   bullet
   cancan
   debugger
@@ -219,7 +208,6 @@ DEPENDENCIES
   pg_search
   pry-rails
   rails (= 3.2.13)
-  rspec-rails (= 2.11.0)
   sass-rails (~> 3.2.3)
   sdoc
   thin

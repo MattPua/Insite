@@ -129,20 +129,6 @@
 
 /*------------------------------------------------------------------*/
 /* Show Interview Page */
-.attribute_label{
-	display:inline-block;
-	font-weight: bold;
-	text-align:justify;
-	font-family:'Raleway', sans-serif;
-	font-size: 15px;
-	width: 30%;
-	margin: 1% 0 1% 0;
-}
-
-.attribute_value{
-	display:inline-block;
-}
-
 #flash_notice{
 	
     width: 400px;
@@ -162,64 +148,9 @@
 
 }
 
-#interview_container{
-	border-radius:10px;
-	margin-top: 5%;
-}
-
-#interview_content{
-	margin: 3% 5% 3% 8%;
-}
-
-.btn-edit,
-.btn-delete,
-.btn-back{
-	margin-top:2%;
-	color: white;
-}
-
-.btn-edit, 
-.btn-delete{
-	background-color:#8BB185;
-
-	
-}
-
-.btn-edit:hover,
-.btn-delete:hover{
-	background-color: #8BB185;
-	border-color: #60755C;
-	color: white;
-}
-
-.btn-back{
-	background-color:#D58512;
-}
-/*---------------------------------------------------------------------*/
-/* New/edit Interview Page */
-#interview_position, 
-#interview_status,
-#interview_date, 
-#interview_company_name,
-#interview_interview_type,
-{
-	float:	right;
-	width:	50%;
-}
 /*---------------------------------------------------------------------*/
 /* Interview New/Edit Form*/
-/*.field > label {
-	width:40%;
-	margin: 1% 0 1% 0;
-}*/
 
-.interview {
-	margin: 2% 0 1% 0;
-}
-
-#btn-submit-interview {
-	margin: 0;
-}
 
 
 /******************************************************************/
@@ -391,12 +322,3 @@
 	padding-left: 0.5%;
 }
 
-.company_block_piece{
-	width:32.5%;
-	display:inline-block;
-	text-align:center;
-}
-#interview_position, #interview_status, #interview_date, #interview_company_name, #interview_interview_type, #company_ {
-	float: right;
-	width: 50%;
-}

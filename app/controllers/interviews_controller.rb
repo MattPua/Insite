@@ -39,6 +39,8 @@ class InterviewsController < ApplicationController
   # GET /interviews/1/edit
   def edit
     @interview = Interview.find(params[:id])
+    @company = Company.find(@interview.company_id)
+    
     respond_to do |format|
       format.html { render "/users/interviews/edit"} # edit.html.erb
       format.json { render json: @interview }

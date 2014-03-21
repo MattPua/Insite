@@ -33,9 +33,12 @@
     <%= f.text_field :location, :class=>"form-control", :placeholder=>"e.g. Toronto, Ontario" %>
     </div>
   </div>
-  <div class="col-md-6 field">
+  <div class="col-md-12 field btn-group">
     <%= f.submit "#{params[:action]=="edit" ? "Save Changes" : "Add Company"}", class:"btn btn-success"%>
-    <a href="<%= companies_path %>" ><button type="button" class="btn btn-warning"> Back </button></a>
+    <% if params[:action]=="edit" %>
+      <a href="<%= company_path(@company) %>" class="btn btn-success" role="button">Show Company</a>
+    <% end %>
+    <a href="<%= companies_path %>" class="btn btn-warning" role="button" >Back</a>
   </div>
   <% end %>
 

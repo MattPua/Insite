@@ -1,49 +1,73 @@
-<%= form_for [current_user,@interview] do |f| %>
+<div class="row">
+ <%= form_for [current_user,@interview] do |f| %>
+  <div class="col-md-12 text-left">
     <% if @interview.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@interview.errors.count, "error") %> prohibited this interview from being saved:</h2>
+      <div id="error_explanation">
+        <h2><%= pluralize(@interview.errors.count, "error") %> prohibited this interview from being saved:</h2>
 
-      <ul>
-      <% @interview.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @interview.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-12 field input-group">
+    <label class=" col-md-4 control-label"> Company Name </label>
+    <div class="col-md-8">
+    <%= f.text_field :company_name, :class=>"form-control", :placeholder=>"e.g. XYZ Electronics"%>
     </div>
+  </div>
+  <div class="col-md-12 field input-group">
+    <label class=" col-md-4 control-label"> Company Industry </label>
+    <div class="col-md-8">
+    <input type="text" size="30" id="company_industry" name="company[industry]" class="form-control" placeholder="e.g. Electronics" value="<%= @company.industry unless @company.nil? %>"> 
+    </div>
+  </div>
+  <div class="col-md-12 field input-group">
+    <label class=" col-md-4 control-label input-group-a"> Position </label>
+    <div class="col-md-8">
+    <%= f.text_field :position, :class=>"form-control", :placeholder=>"e.g. Software Developer Intern" %>
+    </div>
+  </div>
+  <div class="col-md-12 field input-group">
+    <label class=" col-md-4 control-label input-group-a"> Interview Type </label>
+    <div class="col-md-8">
+      <select class="form-control" id="interview_interview_type" name="interview[interview_type]">
+        <option value="Summer"> Summer </option>
+        <option value="PEY"> PEY </option>
+        <option value="Full Time"> Full Time </option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-12 field input-group">
+    <label class=" col-md-4 control-label input-group-a"> Interview Date </label>
+    <div class="col-md-8">
+    <%= f.text_field :date, :value=>@interview.company_name.nil? ? "" : @interview.get_date , :class=>"datepicker form-control"%>
+    </div>
+  </div>
+  <div class="col-md-12 field input-group">
+    <label class=" col-md-4 control-label input-group-a"> Interview Status </label>
+    <div class="col-md-8">
+      <select class="form-control" id="interview_status" name="interview[status]">
+        <option value="In Progress"> In Progress </option>
+        <option value="Finished"> Finished </option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-12 field btn-group">
+    <%= f.submit "#{params[:action]=="edit" ? "Save Changes" : "List Interview"}", class:"btn btn-success"%>
+    <% if params[:action]=="edit" %>
+      <a href="<%= user_interview_path(current_user,@interview) %>"><button type="button" class="btn btn-success"> Show Interview </button> </a>
+    <% end %>
+    <a href="<%= companies_path %>" ><button type="button" class="btn btn-warning"> Back </button></a>
+    
+
+
+
+  </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label "Company Name" %>
-    <%= f.text_field :company_name%> 
-  </div>
-    <div class="field">
-    <%= f.label "Company Industry"%>
-    <input type="text" size="30" id="company_industry" name="company[industry]"> 
-  </div>
-  <div class="field">
-    <%= f.label "Position"%>
-    <%= f.text_field :position %>
 
-
-  </div>
-
-
-  <div class="field" %>
-    <%= f.label "Type"%>
-    <%= f.select(:interview_type, [["Summer"],["PEY"],["Full Time"]]) %>
-  </div>
-  <div class="field">
-    <%= f.label "When is your Interview?"%>
-
-    <%= f.text_field :date, :value=>@interview.company_name.nil? ? "" : @interview.get_date , :class=>"datepicker"%>
-   
-  </div>
-  <div class="field">
-    <%= f.label "Status of Interview?"%>
-    
-    <%= f.select(:status, [["In Progress"],["Finished"]])%>
-    
-  </div>
-  <div class="actions interview" style="margin: 2% 0 1% 0;">
-  <%= f.submit "#{params[:action]=="edit" ? "Save Changes" : "Save Interview"}", id:"btn-submit-interview", class:"btn btn-warning float_l border_radius7"%>
-  </div>
-<% end %>
+</div>

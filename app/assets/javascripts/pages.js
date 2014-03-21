@@ -66,7 +66,7 @@ $(document).ready(function(){
 
 // Show Interview 
 $(document).ready(function(){
-	var x = $('#interview_content #status #status_content');
+	var x = $('#status_content');
 	if (x!=null){
 		var value = x.attr('val');
 		if (value==1)

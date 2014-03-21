@@ -1,11 +1,16 @@
-<div style="border: 2px solid black; width:50%; border-radius:10px; margin:0 auto; margin-top: 5%;">
-	<div id="content" style="margin: 3% 5% 3% 8%;">
-		<h1>Change Company Information</h1>
-
-		<%= render 'form' %>
-		<%= link_to 'Back', companies_path, :class=>"btn btn-warning", :style=>"background-color:#7A9B75; margin-left:2%; border-radius:7px;" %>
-		<!-- THIS BUTTON IS NOT ALIGNED AS THE SUBMIT BUTTON, HOW CAN I FIX THIS -->
+<div class="container container_margin_topbottom">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 border2" >
+			<div class="row">
+				<div class="text-left col-md-10 col-md-offset-1">
+					<h1> Edit Company Information </h1>
+				</div>
+			</div>
+			<div class="row container_padding_bottom">
+				<div class="text-left col-md-10 col-md-offset-1">
+					<%= render 'form' %>
+				</div>
+			</div>
+		</div>
 	</div>
-
-
 </div>

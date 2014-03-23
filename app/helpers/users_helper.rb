@@ -13,7 +13,7 @@ module UsersHelper
 	end
 
 	def default_picture(user)
-		link_to (image_tag("MaleShadow.jpg", :alt => 'Avatar', class: "img-circle", style:"height:175px; width:175px; border: 2px solid black; z-index: 1;")) , user_path(user)
+		link_to (image_tag("MaleShadow.jpg", :alt => 'Avatar', class: "img-circle img-responsive border2")) , user_path(user)
 	end
 
 

@@ -1,4 +1,4 @@
-<div class="content">
+<!--  <div class="content">
     <div id="title" class="text_center centered width80">
         <h1>Relevant People</h1>
     </div>
@@ -18,7 +18,39 @@
         </div>
     </div>
 <%= will_paginate (@users) %>
+</div>  --> 
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+            <h1> People at UofT </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        <% if !@users.nil? %>
+            <% @users.each do |user| %>
+            <div class="col-md-3 text-center">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <%= default_picture(user) %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 border2 user-profile">
+                        <%= user.name %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 border2 user-profile">
+                        <%= user.program %>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+        <% end %>
+        </div>
+
+    </div>
+    <%= will_paginate (@users) %>
 </div>
-
-<!--<%= link_to 'New User', new_user_path %>-->
-

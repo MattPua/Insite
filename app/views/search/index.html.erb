@@ -1,51 +1,9 @@
-<div class="content">
-    <div id="title" class="text_center centered width80">
-        <h1>Relevant People</h1>
-    </div>
-    <div id ="result" class="centered width80">
-        <div class="centered width80">
-            <% if @searchResult.present? %>
-                <% @searchResult.each do |user| %>
-                <span class="user_profile text-center" >
-                    <%= default_picture(user) %>
-                    <div class="name">
-                        <%= user.name %>
-                    </div>
-                    <div class="position">
-                        <%= user.program %>
-                     </div>
-                </span>
-                <% end %>
-            <% end %>
+<div class="container container_margin_topbottom ">
+    <div class="row container_padding_bottom">
+        <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 text-center">
+            <h1> Relevant People </h1>
         </div>
-<!--         <% if @companies.present? %>
-            <% @companies.each do |company| %>
-                        <div class="profile">
-                <h3 class="name">
-                    <%= company.name %>
-                </h3>
-                <h4 class="position">
-                    <%= company.industry %>
-                 </h4>
-            </div>
-            <% end %>
-        <% end %>
-        <% if @interviews.present? %>
-            <% @interviews.each do |interview| %>
-                <div class="profile">
-                <h3 class="name">
-                    <%= interview.company_name %>
-                </h3>
-                <h4 class="position">
-                    <%= interview.position %>
-                 </h4>
-            </div>
-            <% end %>
-        <% end %> -->
     </div>
-<%= will_paginate (@searchResult) %>
+    <%= render 'users/shared/show_profile' %>
+    <%= will_paginate(@users) %>
 </div>
-
-
-<!--<%= link_to 'New User', new_user_path %>-->
-

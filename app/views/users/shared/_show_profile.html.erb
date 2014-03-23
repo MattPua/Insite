@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+    <% if !@users.nil? %>
+        <% @users.each do |user| %>
+        <div class="col-md-3 text-center col-sm-6">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                    <%= default_picture(user) %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 border2 user-profile col-sm-10 col-sm-offset-1">
+                    <%= user.name %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 border2 user-profile col-sm-10 col-sm-offset-1">
+                    <%= user.program %>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    <% end %>
+    </div>
+</div>

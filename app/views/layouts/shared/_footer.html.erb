@@ -1,14 +1,14 @@
-﻿<%= stylesheet_link_tag "footer", :media => "all" %>
-
-<div id="footer">
-	<!-- LC: hiding social network buttons if not in intro page -->
-	<!-- it is uncommon to have such buttons on user dashboard -->
-	<% if (params[:controller]=="home" && params[:action]=="index")%>
-	    <%= link_to image_tag("social-facebook.png"), "https://www.facebook.com/UofTYoureNext"%>
-	    <%= link_to image_tag("social-twitter.png"), "https://twitter.com/UofT_YoureNext"%>
-	    <%= link_to image_tag("social-linkedin.png"), "http://www.linkedin.com/company/you're-next-career-network"%>
-    <% end %> 
-    <div id="company-logo" class="pull-right" style="margin-right: 10px; height: 100%">
-        <%= image_tag("YNCN-boxes-text.png") %>
-    </div>
-</div>
+﻿<nav class="navbar navbar-default <%= "navbar-fixed-bottom" unless params[:controller]=="home" && params[:action]=="index"%>" role="navigation">
+	<div class="container" id="footer">
+		<% if (params[:controller]=="home" && params[:action]=="index")%>
+			<!-- LC: hiding social network buttons if not in intro page -->
+			<!-- it is uncommon to have such buttons on user dashboard -->
+		    <%= link_to image_tag("social-facebook.png"), "https://www.facebook.com/UofTYoureNext"%>
+		    <%= link_to image_tag("social-twitter.png"), "https://twitter.com/UofT_YoureNext"%>
+		    <%= link_to image_tag("social-linkedin.png"), "http://www.linkedin.com/company/you're-next-career-network"%>
+	    <% end %> 
+	    <div id="company-logo" class="pull-right" style="margin-right: 10px; height: 100%">
+	        <%= image_tag("YNCN-boxes-text.png") %>
+	    </div>
+	</div>
+</nav>

@@ -1,29 +1,15 @@
-<div id="header">
-    <!-- for transparent header background -->
-    <% if (params[:controller]=="home" && params[:action]=="index")%>
-    <div id="header-background" ></div>
-    <% end %> 
-    
-    <div style="position: absolute; width: 100%; height: 60px; margin:0; 
-        <%= "background: #8ba987;" unless (params[:controller]=="home" && params[:action]=="index")%>">
+<div style="<%= "height: 60px;" unless (params[:controller]=="home" && params[:action] =="index")%>">
+</div>
 
-        <div id="logo" class="pull-left">
+<nav class="navbar <%="navbar-default" unless params[:controller]=="home" && params[:action]=="index"%> navbar-fixed-top" id="header" role="navigation" style=" <%= "background: #8ba987;" unless (params[:controller]=="home" && params[:action]=="index")%>">
+    <div class="container">
+        <% if (params[:controller]=="home" && params[:action]=="index")%>
+            <div id="header-background" ></div>
+        <% end %> 
+        <div id="logo" class="pull-left nav-info">
             <%= link_to (image_tag("insite-logo.png")),root_path %>
         </div>
-
-        <!-- search bar -->
-        <!--
-        <% if user_signed_in? %>
-            <span style=" text-align:center; ">
-                <%= form_tag users_path, style:"margin:3% auto; width:20%;", method: :get do %>
-                <%= text_field_tag :search, ''    %>
-                <%= submit_tag "Search", :name => nil %>
-                <% end %>
-            <span>
-        <% end %>
-        -->
-
-        <div id="nav" class="float_r">
+        <div id="nav" class="pull-right nav-info">
             <% if !user_signed_in? %>
                 <%= link_to "Log In", new_user_session_path, class:"btn btn-default"%>
                 <%= link_to "Sign Up", new_user_registration_path , class:"btn btn-warning"%>
@@ -86,9 +72,4 @@
             <% end %>
         </div>
     </div>
-</div>
-
-<!-- dummy header for non transparent banner -->
-<div style="<%= "height: 60px;" unless (params[:controller]=="home" && params[:action] =="index")%>">
-</div>
-
+</nav>

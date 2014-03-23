@@ -1,15 +1,9 @@
 
 /*------------------------------------------------------------------*/
 /* Header */
-#header > #logo {
-	margin-top: -7px;
-	margin-left: 10px;
-	height: 60px;
-}
 
 #nav{
 	margin-top:10px;
-	margin-right:30px;
 	height:100%;
 }
 
@@ -77,6 +71,10 @@
 .container_padding_bottom{
 	padding-bottom:3%;
 }
+
+.container_padding{
+	padding:2%;
+}
 /*
  * Edit default pagination links
  */
@@ -84,6 +82,18 @@
     display:    block !important;
     text-align: center;
 
+}
+.white{
+	background-color: white;
+}
+
+.nav-info{
+	position: relative;
+	z-index: 10;
+}
+
+body{
+	padding-bottom:20px;
 }
 /*****************************************************************************/
 

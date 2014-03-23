@@ -23,7 +23,7 @@
 			</div>
 			<% if !@interviews.empty? %>
 			    <% @interviews.each do |interview| %>
-					<div class="row border2 status_<%= interview.status %> <%=interview.interview_type%> interview_show">
+					<div class="row border2 status_<%= interview.status %> <%=interview.interview_type%> interview_show container_margin_topbottom container_padding">
 						<a href="<%=user_interview_path(@user,interview)%>">
 							<div class="container-fluid ">
 								<div class="row">

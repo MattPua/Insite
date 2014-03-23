@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  
   def index
 
 # Herein lies my overlycomplicated multisearching system. Essentially, I break down the search words entered into user_search into individual strings.
@@ -66,7 +67,7 @@ class SearchController < ApplicationController
    end
    @users.sort!{ |a,b| a.name.downcase<=> b.name.downcase}
 
-   @searchResult = @users.paginate(:page => params[:page], :per_page => 12)
+   @users = @users.paginate(:page => params[:page], :per_page => 12)
     
 
     respond_to do |format|

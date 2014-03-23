@@ -21,48 +21,24 @@ $(document).ready(function(){
 
 // Filtering for List interviews page
 $(document).ready(function(){
-	var dropdown= document.getElementById('interview_select');
-
-	if (dropdown!=null)
+	var dropdownDate= document.getElementById('interview_date_select');
+	var dropdownType= document.getElementById('interview_type_select');
+	if (dropdownDate!=null||dropdownType!=null)
 	{
-		var dropdown_index = document.getElementById('interview_select').selectedIndex;	
-		if (dropdown_index==0)
-		{
-			$('.interview_show').hide();
-			$('.status_1').show();
-		}
-		else if(dropdown_index==1)
-		{
-			$('.interview_show').hide();
-			$('.status_2').show();
-		}
-		else
-		{
-			$('.interview_show').show();
-		}
+ 		$('.interview_show').hide();
+ 		$('.status_1').show();
 	}
-	$('#interview_select').click(function(){
-		if (dropdown!=null){
-			dropdown_index = document.getElementById('interview_select').selectedIndex;
-			if (dropdown_index==0)
-			{
-				$('.interview_show').hide();
-				$('.status_1').show();
-			}
-			else if(dropdown_index==1)
-			{
-				$('.interview_show').hide();
-				$('.status_2').show();
-			}
-			else
-			{
-				$('.interview_show').show();
-			}
-		}
-		
-		
+
+	$('#interview_date_select').click(function(){
+	 	interview_filter();
+	});
+
+	$('#interview_type_select').click(function(){
+		interview_filter();
 	});
 });
+
+
 
 // Show Interview 
 $(document).ready(function(){
@@ -127,3 +103,32 @@ $(document).ready(function(){
 $(document).ready(function(){
 	 $('#flash_messages, #error_explanation').delay(2500).fadeOut('slow');
 });
+
+
+// Used to filter interviews on show interviews page
+var interview_filter = function(){
+		var dropdown_index_date = document.getElementById('interview_date_select').selectedIndex;
+		var dropdown_index_type = document.getElementById('interview_type_select').selectedIndex;
+		$('.interview_show').hide();	//hide all the interviews first
+		$('.interview_show').removeClass("showType showDate");
+		var type_child = document.getElementById('interview_type_select').childNodes[dropdown_index_type*2+1];
+		var type = type_child.value		// Will return the type of interview i.e. PEY, Full Time, Summer
+		var date_child = document.getElementById('interview_date_select').childNodes[dropdown_index_date*2+1];
+		var date=date_child.value
+		if (type=="alltype")
+		{
+			$(".interview_show").addClass("showType");
+		}
+		else{
+			$("." + type).addClass("showType");			// Show only interviews that matched the select type value
+		}
+		if (date=="alldate")
+		{
+			$(".interview_show").addClass("showDate");
+		}
+		else{
+			$(".status_"+date).addClass("showDate");
+		}
+		$('.showDate.showType').show();
+		return true;
+}

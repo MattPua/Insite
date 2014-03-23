@@ -38,13 +38,15 @@ namespace :db do
         company_id = n%10+1
         date=2.days.from_now
         position="test-#{i+1}"
+        status=i%2+1
         typeJ = "Summer"
         Interview.create!(company_name: name,
                           position: position,
                           user_id: user_id,
                           company_id: company_id,
                           date: date,
-                          interview_type: typeJ)
+                          interview_type: typeJ,
+                          status: status)
         end
     end
 

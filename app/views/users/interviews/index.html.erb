@@ -1,52 +1,61 @@
-<div class="width60" id="interview_container">
-  <h1 class="float_l inline"> <%= @user.name %>'s Interviews </h1>
- <select id="interview_select" class="float_r" name="interview_select">
-    <option id="interview_1" value="upcoming interviews"> Upcoming Interviews</option>
-    <option id="interview_2" value="finished interviews"> Past Interviews</option>
-    <option id="interview_12" value="All Interviews"> All Interviews</option>
-  </select> 
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 text-center">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h1> <%= @user.name %>'s Interviews </h1>
+				</div>
+				<div class="col-md-6">
+					<select class="form-control" name="interview_date_select" id='interview_date_select'>
+					    <option id="interview_date_1" value="1" class="option interview_date_select"> Upcoming Interviews</option>
+					    <option id="interview_date_2" value="2" class="option interview_date_select"> Past Interviews</option>
+					    <option id="interview_date_12" value="alldate" class="option interview_date_select"> All Interviews</option>
+					</select>
+				</div>
+				<div class="col-md-6">
+					<select class="form-control" name="interview_type_select" id="interview_type_select">
+					    <option id="" value="alltype"> All Interviews</option>
+					    <option id="" value="Summer"> Summer Interviews</option>
+					    <option id="" value="PEY"> PEY Interviews</option>
+					    <option id="" value="Full Time"> Full Time Interviews</option>
+					</select>
+				</div>
+			</div>
+			<% if !@interviews.empty? %>
+			    <% @interviews.each do |interview| %>
+					<div class="row border2 status_<%= interview.status %> <%=interview.interview_type%> interview_show">
+						<a href="<%=user_interview_path(@user,interview)%>">
+							<div class="container-fluid ">
+								<div class="row">
+									<div class="col-md-3 text-center">
+									<%= interview.company_name %>
+									</div>
+									<div class="col-md-3 text-center">
+									<%= interview.position %>
+									</div>
+									<div class="col-md-3 text-center">
+									<%= interview.interview_type%>
+									</div>
+									<div class="col-md-3 text-center">
+									<%= interview.get_date%>
+									</div>
 
-	  <!--<div class="input-group-btn float_r">
-	    <button type="button" class="interview_filter btn btn-default dropdown-toggle float_r" data-toggle="dropdown">Select <span class="caret"></span></button>
-	    <ul class="dropdown-menu" id="interview_select">
-	      <li id="interview_1"><a href="#" >Upcoming Interviews</a></li>
-	      <li id="interview_2"><a href="#" >Past Interviews</a></li>
-	      <li id="interview_12"><a href="#" >All Interviews</a></li>
-	    </ul>
-	  </div> -->
-
-
-  <div id="interview_listing">
-	  <% if !@interviews.empty? %>
-	    <% @interviews.each do |interview| %>
-		    <a href="<%=user_interview_path(@user,interview) %>" class="interview_link">
-		      <div class="interview_show inline_block status_<%= interview.status %> border2 width100">
-		            <span class="float_l inline_block text-center">
-		              <%= interview.company_name %>
-		            </span>
-		           <span class="float_l inline_block text-center">
-		              <%= interview.position %>
-		            </span>
-		            <span class="float_l inline_block text-center">
-		              <%= interview.interview_type %>
-		            </span>
-		            <span class="float_l inline_block text-center">
-		              <%= interview.get_date %>
-		            </span>
-		      </div>
-		  	</a>
-	  	<% end %>
-	  <% else %>
-		<div id ="no_interview" class="width100">
-			<span class="text-center">
-			Looks like you don't have any interviews!
-			</span>
+								</div>
+							</div>
+						</a>
+					</div>
+			    <% end %>
+			<% else %>
+				<div class="row">
+					<div class="container-fluid">
+						<% if @user==current_user %>
+							<h4>It looks like you don't have any recorded interviews here! </h4>
+							<a href="<%= new_user_interview_path(current_user)%>"><h4>Register a new interview now!</h4></a>
+						<% end %>
+					</div>
+				</div>
+			<% end %>
+			
 		</div>
-	  <% end %>
-  </div>
-  <%if @interviews.empty? %>
-	  <div id="empty_space" >
-	  </div>
-  <% end %>
-  <%= will_paginate @interviews %>
+	</div>
 </div>

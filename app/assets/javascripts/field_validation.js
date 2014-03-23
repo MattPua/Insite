@@ -1,6 +1,4 @@
 /* This is all the function used for user field vaidation */
-
-
 var email_validation = function () {
 	var x = $('#user_email').val();
 	if (x==null || x==""){

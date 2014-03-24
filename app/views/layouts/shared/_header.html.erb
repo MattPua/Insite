@@ -2,7 +2,7 @@
 </div>
 
 <nav class="navbar <%="navbar-default" unless params[:controller]=="home" && params[:action]=="index"%> navbar-fixed-top" id="header" role="navigation" style=" <%= "background: #8ba987;" unless (params[:controller]=="home" && params[:action]=="index")%>">
-    <div class="container">
+    <div class="container-fluid">
         <% if (params[:controller]=="home" && params[:action]=="index")%>
             <div id="header-background" ></div>
         <% end %> 

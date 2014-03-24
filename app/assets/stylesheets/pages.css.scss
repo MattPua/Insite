@@ -20,8 +20,8 @@
 /*-------------------------------------------------------------------------*/
 /* General layout */
 .border2{
-	border:2px solid black;
-	border-radius:7px;
+	border:1px solid black;
+	border-radius:5px;
 }
 
 .centered{
@@ -68,7 +68,7 @@
 }
 
 body{
-	padding-bottom:20px;
+	padding-bottom:60px;
 }
 /*****************************************************************************/
 
@@ -315,4 +315,22 @@ body{
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
+.random-interview-container{
+	margin-top:10px;
+	margin-bottom:10px;
+	.random-interview{
+		background-color: #8BA987;
+		> div > div > h4{
+			color: white;
+			font-size:medium;
+			font-family:"Raleway";
+		}
+	}
+}
 
+.random-interview-title{
+	margin-top:15px;
+}
+
+.no-upcoming{
+}

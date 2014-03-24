@@ -157,5 +157,4 @@ def work_experiences
   self.interviews.where(:status=>3).order("date")
 end
 
-
 end

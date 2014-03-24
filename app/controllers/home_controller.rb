@@ -27,7 +27,18 @@ class HomeController < ApplicationController
     # end
     # @interview=Interview.new(params[:interview])
     @next_interviews = current_user.three_next_interviews
-    
+    @random_interviews=Array.new
+    total_interviews=Interview.count
+    i = 0
+    while i < 6 do    # get three random interviews to show on main page
+      y= rand(1..total_interviews)
+      if (!Interview.where(:id=>y, :status=>1).empty?)
+        if (!@random_interviews.include?(Interview.where(:id=>y,:status=>1)))
+          @random_interviews.push(Interview.find(y))
+          i+=1
+        end
+      end
+    end
 
   end
 

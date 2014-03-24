@@ -1,120 +1,88 @@
-﻿<%= stylesheet_link_tag "user_main", :media => "all" %>
-<div class = "content row" style="padding:0; padding-top:20px;">
-	 <span style=" text-align:center; ">
-	 		<p>Search for Users, companies or positions</p>
-             <%= form_tag search_path, style:"margin:3% auto; width:20%;", method: :get do %>
-               <%= text_field_tag :user_search, ''    %>
-               <%= submit_tag "Search", :name => nil %>
-             <% end %>
-           	<span>
-  
-          <!-- <span style=" text-align:center; ">
-           	<p>Search for Companies</p>
-             <%= form_tag search_path, style:"margin:3% auto; width:20%;", method: :get do %>
-               <%= text_field_tag :company_search, ''    %>
-               <%= submit_tag "Search", :name => nil %>
-             <% end %>
-           	<span> -->
-<!--
-           	<span style=" text-align:center; ">
-           	<p>Search for Interviews</p>
-              <%= form_tag users_path, style:"margin:3% auto; width:20%;", method: :get do %>
-               
-                <%= text_field_tag :interview_search, ''    %>
-                <%= submit_tag "Search", :name => nil %>
-              <% end %>
-            <span>-->
-	<div style="display: none;">
-		<% if @user.has_active_interview? %>
-			<!-- user upcoming interview -->
-			<div id = "upcoming-interview">
-				<div>
-					<h1>
-						Next Interview 
-						<span class="glyphicon glyphicon-calendar"></span>
-					</h1>
-				</div>
-				<!-- no image :( 
-				<div class = "company-img">
-				</div>
-				-->
-				<div class = "interview-details">
-					<div class = "company-info">
-						<p>
-							<label>Company:</label> <%= "#{@user.next_interview.company_name}" %>
-						</p>
-						<p>
-							<!-- TODO: add link to google map -->
-							<!-- Add company location -->
-
-							<label>Position: </label> <%= "#{@user.next_interview.position}" %>
-						</p>
-						<p>
-							<label>Date:</label> <%= "#{@user.next_interview.get_date}" %>
-						</p>			
-					</div>
-					<div class = "interview-edit">
-							<button type="button" class="btn btn-default pull-right">Edit</button>
-							<button type="button" class="btn btn-warning">Create New</button>
-					</div>
+﻿<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1 border2 col-sm-10 col-sm-offset-1">
+			<div class="row">
+				<div class="text-center col-md-12 col-sm-12">
+					<h1> Need some Interview Help?</h1>
+					<small> Find the right people to help you!</small>
 				</div>
 			</div>
-		<% else %>
-			<div id = "new-interview" class = "shadow">
-				<!-- create new interview form -->
-				<h1>
-					<span class="glyphicon glyphicon-calendar"></span>
-					 New Interview
-				</h1>
-				<%= form_for @interview, :url => "/users/#{@current_user.id}/interviews",
-					:html => {:method => :post} do |f| %>
-					<div class="form-inputs">
-						<div class="form-group">
-							<%= f.text_field :company_name, :class=>"form-control",
-							 :placeholder=>"Company Name" %>
-						</div>
-						<div class="form-group">
-							<%= f.text_field :position, :class=>"form-control",
-							 :placeholder=>"Position"%>
-						</div>
-						<%= f.hidden_field :user_id, :value => current_user.id %> 
-						<%= f.hidden_field :company_id %> 
-						<div class="form-group">
-							<h2>Interview Time: </h2>
-							<%= datetime_select("interview", "date", start_year: 2010, end_year:2050, 
-								prompt: true, use_month_numbers: false, :discard_hour=>true, 
-								with_css_classes: true, discard_day: false, include_blank: false) %>
-						</div>
-					</div>
+			<div class="row">	<!-- For the upcoming interviews-->
+				<div class="container-fluid">
+					<% if !@next_interviews.empty? %>
+						<% @next_interviews.each do |interview| %>
+							<div class="col-md-4 col-sm-4 upcoming-interview">
+								<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 border2">
+									<div class="row main-interview-info">
+										<div class="container-fluid border2 next-info">
+											<div class="row title">
+												<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 text-center">
+													<h3 id="upcoming-title"> Upcoming Interview </h3>
+												</div>
+											</div>
+											<div class="row days-left">
+												<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 border2 text-center" style="margin-bottom:10px;">
+													<h4 class="upcoming-day" date="<%=interview.get_date%>">  </h4>
+												</div>
+											</div>
+											<div class="row time" style="margin-bottom:10px;">
+												<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 border2 text-center">
+													<h4> <%= interview.interview_type %> </h4>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row interview-info">
+										<div class="container-fluid interview-container">
+											<div class="row ">
+												<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 ">
+												Company
+												</div>
+												<div class="col-md-6 col-sm-6">
+												<%= interview.company_name %>
+												</div>
 
-					<div class="form-actions">
-						<%= f.button :submit, :class=>"pull-right btn btn-warning"%>
-					</div>
-				<% end %>
-			</div>
-		<% end %>
-	</div>
-	<div class="col-md-1"></div>
-	<div id="contacts" class="col-md-10">
-		<!-- past interns should go here -->
-		<% if !@relevant_users.nil? %>
-			<% @relevant_users.each do |user| %>
-				<div class="profile">
-					<%= gravatar_for(user) %>
-					<h3 class="name">
-						<%= user.name %>
-					</h3>
-					<h4 class="position">
-						<%= user.email %>
-					</h4>
-					<h4 class="interview">
-					<%= "Next interview is at #{user.next_interview.company_name}" if user.has_active_interview? %>
+												<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1">
+												Position
+												</div>
+												<div class="col-md-6 col-sm-6">
+												<%= interview.position %>
+												</div>
 
-					</h4>
-					<!-- DO NOT HAVE LOCATION ENTITY -->
+												<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1">
+												Date
+												</div>
+												<div class="col-md-6 col-sm-6">
+												<%= interview.get_date %>
+												</div>
+
+												<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1">
+												Type
+												</div>
+												<div class="col-md-6 col-sm-6">
+												<%= interview.interview_type %>
+												</div>											
+
+											</div>
+										</div>
+									</div>
+									<div class="row text-center upcoming-interview-buttons">
+										<div class="container-fluid">
+											<div class="col-md-6 col-sm-6">
+												<button type="button" class="btn btn-success"> Find Help </button>
+											</div>
+
+											<div class="col-md-6 col-sm-6">
+												<a href="<%= edit_user_interview_path(current_user,interview)%>"><button type="button" class="btn btn-warning"> Edit </button> </a>
+											</div>
+										</div>
+									</div>						
+								</div>
+							</div>
+						<% end %>
+					<% end %>
 				</div>
-			<% end %>
-		<% end %>
+			</div>
+		</div>
 	</div>
-	<div class="col-md-1"></div>
 </div>

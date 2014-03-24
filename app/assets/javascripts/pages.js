@@ -99,6 +99,26 @@ $(document).ready(function(){
 		 x.val(w);
 	}
 });
+// Formatting Date on Main Page using Moment
+$(document).ready(function(){
+	var x =document.getElementsByClassName("upcoming-day");
+	// var w = $('.upcoming-day');
+	for (i=0; i<=2; i++){
+	var y = x[i].getAttribute("date");
+	x[i].innerHTML=moment(y).calendar();
+	}
+});
+// Customizing format for moment calendar time
+moment.lang('en', {
+    calendar : {
+        lastDay : '[Yesterday]',
+        sameDay : '[Today]',
+        nextDay : '[Tomorrow]',
+        lastWeek : '[last] dddd',
+        nextWeek : 'dddd',
+        sameElse : 'L'
+    }
+});
 
 $(document).ready(function(){
 	 $('#flash_messages, #error_explanation').delay(2500).fadeOut('slow');
@@ -132,3 +152,11 @@ var interview_filter = function(){
 		$('.showDate.showType').show();
 		return true;
 }
+
+$(document).ready(function(){
+	var x = $('.upcoming-interview');
+	if (x!=null && x!='')
+	{
+		x = document.getElementById('upcoming-title').innerHTML = "Next Interview";
+	}
+});

@@ -1,4 +1,4 @@
-<% if @user.errors.any? %>
+ <% if @user.errors.any? %>
   <div id="error_explanation" class="center text-centered">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
@@ -11,14 +11,12 @@
 <% end %>
 
 <div class="content row" id="user_edit">
-  <!-- add span 1 as placeholder -->
   <div class = "col-md-3"></div>
   
   <div class = "col-md-6">
     <div id="edit-user-form" class="center">
         <div id="edit-user-background" class="shadow"></div>
         <div id="edit-user-content">
-          <!-- title -->
           <div class="center" style="text-align:center;" >
             <div><h1 style="font-size: 30px;"> User Profile  </h1></div>
           </div>
@@ -74,10 +72,90 @@
 
             </div>
 
-            <!-- <div><%= f.submit "Submit" %></div> -->
           <% end %>
         </div>
       </div>
     </div>
   <div class = "col-md-3"></div>
 </div>
+ 
+<!--  <div class="container-fluid" style="background-color: #F3FAF5">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 text-center">
+      <% if @user.errors.any? %>
+        <div id="error_explanation" class="center text-centered">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul style="margin-bottom: 30px; list-style:none;">
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+    <div class="container-fluid text-center" >
+      <div class="row">
+          <div class="col-md-6 col-md-offset-3 border2 content">       
+            <div class="row">
+              <div class="col-md-12 ">
+                <h1 style="font-size: 30px;"> User Profile  </h1>
+              </div>
+              <div class="col-md-12" id="edit-user-content">
+                <%= form_for(@user) do |f| %>
+                  <div class="form-group row">
+                    <label class="col-md-4 control-label">Full Name</label>
+                    <div class="col-md-8">
+                      <%= f.text_field :name, id:"user_name", class:"form-control", placeholder:"Full Name" %>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 control-label">Email</label>
+                    <div class="col-md-8">
+                      <%= f.email_field :email, id:"user_email",class:"form-control", placeholder:"UTOR email address" %>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 control-label">Graduating Year</label>
+                    <div class="col-md-8">
+                      <%= f.number_field :year, id:"user_year",class:"form-control", placeholder:"Graduating Year", min:"1990", max:"2030" %>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 control-label">Faculty</label>
+                    <div class="col-md-8">
+                      <%= f.text_field :faculty, id:"user_faculty", class:"form-control", placeholder:"Faculty" %>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 control-label">Program</label>
+                    <div class="col-md-8">
+                      <%= f.text_field :program, class:"form-control", id:"user_program", placeholder:"Program" %>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-4 control-label">Phone</label>
+                    <div class="col-md-8" id="user_phone">
+                      <%= f.telephone_field :phone , class:"form-control", placeholder:"Phone Number (Optional)"%>
+                    </div>
+                  </div>  
+                  <div class="form-group row">
+                    <label class="col-md-4 control-label">Privacy Settings</label>
+                    <label class="inline control-label"> Enabling this feature will prevent other users from being able to see your interviews and experiences. </label>
+                    <div class="col-md-8 float_r" id="privacy_settings">
+                      <%= f.radio_button :privacy, 'true'%> Yes
+                      <%= f.radio_button :privacy, 'false', :checked=>false %> No
+                    </div>
+                  </div>  
+                  <div class=" form-group"> 
+                    <%= f.submit "Submit", class:"btn btn-lg btn-warning pull-right btn-submit", id:"btn-user-edit"%>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+ </div> -->

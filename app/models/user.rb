@@ -122,6 +122,10 @@ def next_interview
   self.interviews.where(:status=>1).order("date").first
 end
 
+def three_next_interviews
+  self.interviews.where(:status=>1).order("date").limit(3)
+end
+
 def get_interviews
   self.interviews.where(:status=>[1,2]).order("date")
 end

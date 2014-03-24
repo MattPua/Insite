@@ -102,11 +102,14 @@ $(document).ready(function(){
 // Formatting Date on Main Page using Moment
 $(document).ready(function(){
 	var x =document.getElementsByClassName("upcoming-day");
-	// var w = $('.upcoming-day');
-	for (i=0; i<=2; i++){
-	var y = x[i].getAttribute("date");
-	x[i].innerHTML=moment(y).calendar();
+	if (x!=null && x!='')
+	{
+		for (i=0; i<=2 && x[i]!=null; i++){
+			var y = x[i].getAttribute("date");
+			x[i].innerHTML=moment(y).calendar();
+		}
 	}
+	// var w = $('.upcoming-day');
 });
 // Customizing format for moment calendar time
 moment.lang('en', {
@@ -155,8 +158,8 @@ var interview_filter = function(){
 
 $(document).ready(function(){
 	var x = $('.upcoming-interview');
-	if (x!=null && x!='')
+	if (x!=null && x!='' && x!=undefined && x.length > 0)
 	{
-		x = document.getElementById('upcoming-title').innerHTML = "Next Interview";
+		document.getElementById('upcoming-title').innerHTML = "Next Interview";
 	}
 });

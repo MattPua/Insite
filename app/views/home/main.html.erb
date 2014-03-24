@@ -1,45 +1,55 @@
 ﻿<div class="container-fluid">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+		<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
 			<div class="row">
 				<% if !@next_interviews.empty? %>	<!-- Smaller headings when user does have interviews upcoming -->
 					<div class="text-center col-md-12 col-sm-12">
 						<h1> Need some Interview Help?</h1>
-						<small> Find the right people to help you!</small>
+						<h4> Find the right people to help you!</43>
 					</div>
-					<div class="col-md-offset-3 col-sm-offset-3 col-md-6 col-sm-6 text-center">
-						<div class="row">
-							<div class="col-md-6">
-								<p>Search for Users, companies or positions</p>
+					<div class="col-md-12 col-sm-12 text-center">
+						<form accept-charset="UTF-8" action="/search" method="get">
+							<div class=" col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3  text-right">
+								<div style="margin:0;padding:0;display:inline">
+									<input name="utf8" type="hidden" value="✓">
+								</div>
+								<div class="input-group">
+									<input id="user_search" name="user_search" type="text" value="" class="form-control">
+									<span class="input-group-btn">
+										<input type="submit" value="Search" class="btn btn-primary search-btn">
+									</span>
+					                
+					            </div>							
 							</div>
-							<div class="col-md-6">
-				             	<%= form_tag search_path, method: :get do %>
-					                <%= text_field_tag :user_search, ''    %>
-					                <%= submit_tag "Search", :name => nil %>
-				            	<% end %>
-			            	</div>
-		            	</div>
+<!-- 							<div class="col-md-2 col-sm-2 col-xs-2 text-left">
+								<input type="submit" value="Search" class="btn btn-success btn" value style="vertical-align:top;">
+							</div> -->
+						</form>
 					</div>
 				<% else %>	<!-- Larger heading when user doesn't have upcoming interviews -->
-					<div class="text-center col-md-12 col-sm-12 col-xs-12 jumbotron">
+					<div class="text-center col-md-12 col-sm-12 col-xs-12 jumbotron" style="background-color:white;">
 						<h1> Need some Interview Help? </h1>
 						<h3> Find people you want to talk to by searching for companies, positions, programs and more! </h3>
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12">
 								<div class="row">
-									<div class=" col-md-6 col-sm-6 col-xs-6 text-right">
-									
-									</div>
-									<div class="col-md-6 col-sm-6 col-xs-6 text-left">
-									
-									</div>
+									<form accept-charset="UTF-8" action="/search" method="get">
+										<div class=" col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3  text-right">
+											<div style="margin:0;padding:0;display:inline">
+												<input name="utf8" type="hidden" value="✓">
+											</div>
+	            							<div class="input-group">
+												<input id="user_search" name="user_search" type="text" value="" class="form-control">
+												<span class="input-group-btn">
+													<input type="submit" value="Search" class="btn btn-primary search-btn">
+												</span>
+					           				</div>								
+										</div>
+									</form>
 								</div>
 								<div class="row">
-									<div class="col-md-6 col-sm-6 col-xs-6 text-right">
-									List a New Interview!
-									</div>
-									<div class="col-md-6 col-sm-6 col-xs-6 text-left">
-									<%= link_to "Setup Interview", new_user_interview_path(current_user), :class=>"btn btn-default btn-lg" %>
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<h4> Over <%=Interview.count %> interviews from over <%=Company.count %> different companies recorded. </h4>
 									</div>
 								</div>
 							</div>
@@ -48,7 +58,7 @@
 				<% end %>
 			</div>
 			<div class="row">	
-				<div class="container-fluid">
+				<div class="container-fluid upcoming-interview-container">
 					<% if !@next_interviews.empty? %> <!-- For the upcoming interviews-->
 						<% @next_interviews.each do |interview| %>
 							<div class="col-md-4 col-sm-4 upcoming-interview">
@@ -108,10 +118,16 @@
 									</div>
 									<div class="row text-center upcoming-interview-buttons">
 										<div class="container-fluid">
-											<div class="col-md-6 col-sm-6">
-												<button type="button" class="btn btn-success"> Find Help </button>
-											</div>
-
+											<!-- Find Help button, does automatic search based on the given interview company name and position -->
+											<form accept-charset="UTF-8" action="/search" method="get">
+												<div class="col-md-6 col-sm-6">
+													<div style="margin:0;padding:0;display:inline">
+														<input name="utf8" type="hidden" value="✓">
+													</div>
+										                <input id="user_search" name="user_search" type="text" value="<%=interview.company_name %> <%= interview.position %>" class="form-control" style="display:none;">							
+												<input type="submit" value="Find Help" class="btn btn-success btn" value>
+												</div>
+											</form>
 											<div class="col-md-6 col-sm-6">
 												<a href="<%= edit_user_interview_path(current_user,interview)%>"><button type="button" class="btn btn-warning"> Edit </button> </a>
 											</div>
@@ -125,7 +141,7 @@
 				</div>
 			</div>
 			<div class="row random-interview-title"> <!-- For the randomly selected interviews, shows whether or not user has upcoming interviews or not-->
-				<div class="container-fluid text-center well ">
+				<div class="container-fluid text-center ">
 					<h3> Check out some interviews your peers currently have!</h3>
 				</div>
 				<div class="container-fluid">

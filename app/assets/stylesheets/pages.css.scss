@@ -301,6 +301,7 @@ body{
 		}
 	}
 }
+
 .interview-info > .interview-container{
 	background-color: #8BA987;
 	color: white;
@@ -311,6 +312,9 @@ body{
 	}
 } 
 
+.upcoming-interview-container{
+	margin-top: 25px;
+}
 .upcoming-interview-buttons{
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -333,4 +337,9 @@ body{
 }
 
 .no-upcoming{
+}
+
+.search-btn{
+	top:-2.5px;
+	left:-2.5px;
 }

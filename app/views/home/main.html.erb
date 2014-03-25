@@ -1,13 +1,14 @@
-﻿<div class="container-fluid">
+﻿
+<div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
 			<div class="row">
 				<% if !@next_interviews.empty? %>	<!-- Smaller headings when user does have interviews upcoming -->
-					<div class="text-center col-md-12 col-sm-12">
+					<div class="text-center col-md-12 col-sm-12 col-xs-12">
 						<h1> Need some Interview Help?</h1>
-						<h4> Find the right people to help you!</43>
+						<h4> Find the right people to help you!</h4>
 					</div>
-					<div class="col-md-12 col-sm-12 text-center">
+					<div class="col-md-12 col-sm-12 col-xs-12 text-center">
 						<form accept-charset="UTF-8" action="/search" method="get">
 							<div class=" col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3  text-right">
 								<div style="margin:0;padding:0;display:inline">
@@ -21,9 +22,6 @@
 					                
 					            </div>							
 							</div>
-<!-- 							<div class="col-md-2 col-sm-2 col-xs-2 text-left">
-								<input type="submit" value="Search" class="btn btn-success btn" value style="vertical-align:top;">
-							</div> -->
 						</form>
 					</div>
 				<% else %>	<!-- Larger heading when user doesn't have upcoming interviews -->
@@ -49,7 +47,7 @@
 								</div>
 								<div class="row">
 									<div class="col-md-12 col-sm-12 col-xs-12">
-										<h4> Over <%=Interview.count %> interviews from over <%=Company.count %> different companies recorded. </h4>
+										<h4> <%=Interview.count %> interviews from <%=Company.count %> different companies and counting. </h4>
 									</div>
 								</div>
 							</div>
@@ -61,22 +59,22 @@
 				<div class="container-fluid upcoming-interview-container">
 					<% if !@next_interviews.empty? %> <!-- For the upcoming interviews-->
 						<% @next_interviews.each do |interview| %>
-							<div class="col-md-4 col-sm-4 upcoming-interview">
-								<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 border2">
+							<div class="col-md-4 col-sm-12 col-xs-12 upcoming-interview">
+								<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 border2">
 									<div class="row main-interview-info">
-										<div class="container-fluid border2 next-info">
+										<div class="col-md-12 col-sm-12 col-xs-12 border2 next-info">
 											<div class="row title">
-												<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 text-center">
+												<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 text-center">
 													<h3 id="upcoming-title"> Upcoming Interview </h3>
 												</div>
 											</div>
 											<div class="row days-left">
-												<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 border2 text-center" style="margin-bottom:10px;">
+												<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12  border2 text-center" style="margin-bottom:10px;">
 													<h4 class="upcoming-day" date="<%=interview.get_date%>">  </h4>
 												</div>
 											</div>
 											<div class="row time" style="margin-bottom:10px;">
-												<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 border2 text-center">
+												<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 border2 text-center">
 													<h4> <%= interview.interview_type %> </h4>
 												</div>
 											</div>
@@ -85,31 +83,31 @@
 									<div class="row interview-info">
 										<div class="container-fluid interview-container">
 											<div class="row ">
-												<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 ">
+												<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-6 ">
 												Company
 												</div>
-												<div class="col-md-6 col-sm-6">
+												<div class="col-md-6 col-sm-6 col-xs-6">
 												<%= interview.company_name %>
 												</div>
 
-												<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1">
+												<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-6">
 												Position
 												</div>
-												<div class="col-md-6 col-sm-6">
+												<div class="col-md-6 col-sm-6 col-xs-6">
 												<%= interview.position %>
 												</div>
 
-												<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1">
+												<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-6">
 												Date
 												</div>
-												<div class="col-md-6 col-sm-6">
+												<div class="col-md-6 col-sm-6 col-xs-6">
 												<%= interview.get_date %>
 												</div>
 
-												<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1">
+												<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-6">
 												Type
 												</div>
-												<div class="col-md-6 col-sm-6">
+												<div class="col-md-6 col-sm-6 col-xs-6">
 												<%= interview.interview_type %>
 												</div>											
 
@@ -120,7 +118,7 @@
 										<div class="container-fluid">
 											<!-- Find Help button, does automatic search based on the given interview company name and position -->
 											<form accept-charset="UTF-8" action="/search" method="get">
-												<div class="col-md-6 col-sm-6">
+												<div class="col-md-6 col-sm-6 col-xs-6">
 													<div style="margin:0;padding:0;display:inline">
 														<input name="utf8" type="hidden" value="✓">
 													</div>
@@ -128,7 +126,7 @@
 												<input type="submit" value="Find Help" class="btn btn-success btn" value>
 												</div>
 											</form>
-											<div class="col-md-6 col-sm-6">
+											<div class="col-md-6 col-sm-6 col-xs-6">
 												<a href="<%= edit_user_interview_path(current_user,interview)%>"><button type="button" class="btn btn-warning"> Edit </button> </a>
 											</div>
 										</div>
@@ -146,20 +144,20 @@
 				</div>
 				<div class="container-fluid">
 					<% @random_interviews.each do |interview| %>
-						<div class="col-md-4 col-sm-4">
-							<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 border2 random-interview-container">
+						<div class="col-md-4 col-sm-4 col-xs-6">
+							<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 border2 random-interview-container">
 								<div class="row">
 									<div class="container-fluid random-interview">
 										<div class="row ">
-											<div class="col-md-12 col-sm-12 text-center">
+											<div class="col-md-12 col-sm-12 col-xs-12 text-center">
 												<h4><%= interview.company_name %></h4>
 											</div>
 
-											<div class="col-md-12 col-sm-12 text-center">
+											<div class="col-md-12 col-sm-12 col-xs-12 text-center">
 												<h4><%= interview.position %></h4>
 											</div>
 
-											<div class="col-md-12 col-sm-12 text-center">
+											<div class="col-md-12 col-sm-12 col-xs-12 text-center">
 												<h4><%= interview.interview_type %></h4>
 											</div>											
 										</div>

@@ -20,7 +20,7 @@ gem 'pg_search'
 gem 'mail'
 gem 'jquery-ui-rails'
 gem 'sass-rails',   '~> 3.2.3'
-gem 'bootstrap-sass', '~>3.1.1'
+gem 'bootstrap-sass'
 gem 'pg', '0.12.2'
 # Using PG Database
 

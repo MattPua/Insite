@@ -46,60 +46,55 @@
 
 </div>
 
-        
 
-<div class="user_interviews width60 centered text-center border2"> 
-  <h3>
-    Upcoming Interviews
-  </h3>
-  <% @user.active_interviews[0,3].each do |interview| %>
-    <p>
-    <a href="<%= user_interview_path(@user,interview) %>" class="interview_item">
-      <%= current_user==@user ? "You have an interview at " : "#{@user.name} has an interview at" %> <%= interview.company_name %> for a <%= interview.interview_type %> <%= interview.position %> position  on <%= interview.get_date %>
-      </a>
-    </p>
-  <% end %>
-  <div>
-  <% if current_user==@user %>
-    <% if !@user.active_interviews.empty? %>
-    <%= link_to "See All Upcoming Interviews", user_interviews_path(current_user) %>
-    or
-    <% end %>
-    <%= link_to "Schedule a New Interview Here", new_user_interview_path(current_user) %>
-   <% end %>
+<div class="row">
+  <div class="container-fluid">
+    <div class="row text-center">
+      <div class="col-md-4 border2">
+        <div class="row border2">
+          <div class="col-md-10 col-md-offset-1 border2">
+          <%= @user.name %>
+          </div>
+          <div class="col-md-10 col-md-offset-1 border2">
+          <%= @user.email %>
+          </div>  
+          <% if can? :manage, @user %>
+            <a href="<%=edit_user_path(@user)%>" >
+              <div class="col-md-10 col-md-offset-1 border2">
+                Edit Profile
+              </div>  
+            </a>  
+          <% end %>  
+        </div>
+      </div>
+      <div class="col-md-4 border2">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 border2">
+            <%= default_picture(@user) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 border2">
+          <%= @user.name %>
+          </div>
+        </div>
+
+        
+      </div>
+      <div class="col-md-4 border2">
+        <div class="row border2">
+          <div class="col-md-10 col-md-offset-1 border2">
+          Faculty of <%= @user.faculty %>
+          </div>
+          <div class="col-md-10 col-md-offset-1 border2">
+          <%= @user.program %> - Class of <%= @user.year %>
+          </div>          
+        </div>
+      </div>
+    </div>
+  
   </div>
 </div>
-
-<% if !@user.finished_interviews.empty? %>
-  <div class="user_interviews width60 centered text-center border2"> 
-    <h3>
-      Past Interviews
-    </h3>
-    <% @user.finished_interviews[0,3].each do |interview| %>
-      <p>
-        <a href="<%= user_interview_path(current_user,interview) %>" class="interview_item">
-        <%= current_user==@user ? "You had an interview at " : "#{@user.name} had an interview at" %> <%= interview.company_name %> for a  <%= interview.position %> position [<%= interview.interview_type %>] on <%= interview.get_date %>
-        </a>
-      </p>
-    <% end %>
-    <div>
-        <%= link_to "See All Past Interviews", user_interviews_path(current_user) %>
-    </div>
-  </div>
-<% end %>
-
-<!-- <div class="user_interviews"> 
-  <h3>
-    Work Experience
-  </h3>
-  <div>
-    <% @user.work_experiences.each do |interview| %>
-    <p>
-      <%= current_user==@user ? "You worked at " : "#{@user.name} worked at" %> <%= interview.company_name %> as a <%= interview.position %> position[<%= interview.interview_type %>]
-    </p>
-  <% end %>
-  </div>
-</div> -->
 
 
 
